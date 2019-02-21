@@ -135,21 +135,23 @@ webdriverio
 
 Let's take a quick look at a code and understand it.
 
-We are importing a `webdriverio` first from the node package that we installed earlier by calling 
+We are importing a `webdriverio` first from the node package that we installed earlier by calling
 `const webdriverio = require('webdriverio')`
 
 Next we are creating remote client with some basic options like browser that we want to use.
-Take a look at all options [here](https://webdriver.io/docs/options.html). We will be covering those in later part of the book
-so you don't have to worry about it now.
+
+_Take a look at all options [here](https://webdriver.io/docs/options.html). We will be covering those in later part of the book
+so you don't have to worry about it now._
 
 After that we are initializing the remote client by calling `init()` method, which will assign the session to the client.
 
-After that we are navingating to the DuckDuckGo search engine by calling `url('https://duckduckgo.com')`.
+Then navingating to the DuckDuckGo search engine by calling `url('https://duckduckgo.com')`.
 
 On the page there will input element with the id `search_form_input_homepage`, we are setting the value to that input field by
 `setValue('#search_form_input_homepage', 'BigBinary')` function. This function will actually send the keystrokes to the input field.
-If you want to take quick look at what other selectors are available, [visit](https://webdriver.io/docs/selectors.html). Don't worry about them now, 
-as said earlier we will taking look at selectors in later part of the course.
+
+_If you want to take quick look at what other selectors are available, [visit](https://webdriver.io/docs/selectors.html). Don't worry about them now, 
+as said earlier we will taking look at selectors in later part of the course._
 
 After adding a value to the input field we are clicking button on page by function `click('#search_button_homepage')`, and once we hit the button we
 are checking the title of the page by `getTitle()` function.
