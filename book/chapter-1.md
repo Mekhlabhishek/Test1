@@ -5,7 +5,7 @@
 Welcome to the first chapter of learning webdriverio. In this chapter we will get ready with our
 platform. So let's fasten our belts and start testing with WebdriverIO
 
-## Check pre requisite
+## Check pre-requisite
 
 ### 1. Check Node is installed
 
@@ -69,8 +69,69 @@ lts/dubnium -> v10.15.1
 
 _To get more idea on how to use NVM, you can always type `nvm` on command line which will print available options to use with NVM._
 
+Intsalling Node also installs `npm` along with it. Verify that npm is installed on your local machine by
+
+```
+npm -v
+```
+_This should print version >= 6.4.1_
+
 ### 2. Installing selenium-standalone and WebdriverIO
 
-Once you have Node in place let's go ahead and install tools that we will be using to
+Once you have Node in place let's go ahead and install tools that we will be using to test application.
+
+Create a separate directory by
+
+```
+mkdir learn-webdriverio && cd learn-webdriverio
+```
+
+Initialize npm using `npm init -y`
+_`-y` is yes for all questions that npm init will ask._
+
+Next, install `webdriverio` by typing
+
+```
+npm install --save webdriverio@4
+```
+
+_`--save` will add these modules as a project dependencies and `xx@4` is the version number for the package_
+
+For this time we will be installing `selenium-standalone` globally by running `npm install selenium-standalone -g`. Lets install 
+dependencies for selenium by `selenium-standalone install --version=3.4.0`
+
+This will install three things 
+1. `selenium-server`
+2. `chromewebdriver`, for Chrome
+3. `geckodriver`, for firefox
+
+Verify that you installed the selenium correctly by command
+
+```
+selenium_standalone start --version=3.4.0
+```
+
+This will start the selenium server on port `4444`. Try visiting `http://localhost:4444` and you will see selenium webpage.
+
+Hola! That's it. Now you are now ready to write your first test case.
+
+
+# 1.2 Writing your first test case
+
+Create a file using `touch first_test.js` and paste a following code into it
+
+```
+const webdriverio = require('webdriverio');
+
+webdriverio
+  .remote({ desiredCapabilities: { browserName: 'firefox' } })
+  .init()
+  .url('https://www.duckduckgo.com')
+  .setValue('#search_form_input_homepage', 'BigBinary')
+  .click('#search_button_homepage')
+  .getTitle().then(title => { console.log('Title is : ', title) })
+  .end();
+```
+
 
 
