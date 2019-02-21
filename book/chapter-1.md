@@ -133,5 +133,51 @@ webdriverio
   .end();
 ```
 
+Let's take a quick look at a code and understand it.
 
+We are importing a `webdriverio` first from the node package that we installed earlier by calling 
+`const webdriverio = require('webdriverio')`
 
+Next we are creating remote client with some basic options like browser that we want to use.
+Take a look at all options [here](https://webdriver.io/docs/options.html). We will be covering those in later part of the book
+so you don't have to worry about it now.
+
+After that we are initializing the remote client by calling `init()` method, which will assign the session to the client.
+
+After that we are navingating to the DuckDuckGo search engine by calling `url('https://duckduckgo.com')`.
+
+On the page there will input element with the id `search_form_input_homepage`, we are setting the value to that input field by
+`setValue('#search_form_input_homepage', 'BigBinary')` function. This function will actually send the keystrokes to the input field.
+If you want to take quick look at what other selectors are available, [visit](https://webdriver.io/docs/selectors.html). Don't worry about them now, 
+as said earlier we will taking look at selectors in later part of the course.
+
+After adding a value to the input field we are clicking button on page by function `click('#search_button_homepage')`, and once we hit the button we
+are checking the title of the page by `getTitle()` function.
+
+_`then()` is way to resolve a promise you can get a basic idea of a promise in JS [here](https://javascript.info/promise-basics)._
+_`title => console.log('Title is : ', title)` is called an arrow function, learn more about arrow functions [here](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)_
+
+After getting title for the webpage we are terminating our session by calling `end()`.
+
+Now this is the time to run our first test case.
+
+Start the `selenium-standalone` server by command in the terminal
+
+```
+selenium-standalone start --version=3.4.0
+```
+
+Once server starts, open up a new terminal window and navigate to the directory and start a test case by
+
+```
+node first_test.js
+```
+
+You will see FireFox window popping up navingation to DuckDuckGo, then searching for BigBinary and then closing FireFox window.
+And on terminal you will see the output as
+
+```
+Title is :  BigBinary at DuckDuckGo
+```
+
+That's it, you ran your first test case successfully. It's time to get more serious. In the next chapter we will run test case with the `wdio` testrunner, till that time you can play with the code above and try some permutations and combinations.
