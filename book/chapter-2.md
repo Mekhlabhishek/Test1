@@ -1,8 +1,10 @@
-# Writing your first program
+# Your first program
 
 In this chapter we will be writing our basic program with `webdriverio`. This program will go to the `staging.aceinvoice.com` and will complete login procedure for us.
 
 So let's start.
+
+## 1.1 writing and understanding basic program
 
 Create a file using `touch first_program.js` command on terminal and paste a following code into it
 
@@ -29,7 +31,7 @@ We are importing a `webdriverio` first from the node package that we installed e
 const webdriverio = require('webdriverio');
 ```
 
-Next we are creating remote client with some basic options like browser that we want to use with the options that we want as follows
+Next we are creating remote client with some basic options like browser that we want to use as follows
 
 ```
 webdriverio
@@ -39,9 +41,9 @@ webdriverio
 _Take a look at all options [here](https://webdriver.io/docs/options.html). We will be covering those in later part of the book
 so you don't have to worry about it now._
 
-After that we are initializing the remote client by calling `init()` method, which will assign the session to the client.
+After that we are initializing the remote client by calling `init()` method, which will assign the session to a remote client.
 
-Then navingating to the our website by calling `url('https://staging.aceinvoice.com/sign_in')`.
+Then we are navingating to our website by calling `url('https://staging.aceinvoice.com/sign_in')`.
 
 On the page there are input elements for user's email and password. Now we have to add an values to that field.
 
@@ -74,19 +76,21 @@ After getting title for the webpage we are terminating our session by calling `e
 
 Now this is the time to run our first program.
 
+## 1.2 Running your first program
+
 Start the `selenium-standalone` server by command in the terminal
 
 ```
 selenium-standalone start --version=3.4.0
 ```
 
-Once server starts, open up a new terminal window and navigate to the directory and start a test case by
+Once server starts, open up a new terminal window and navigate to the directory and start executing a program by
 
 ```
 node first_program.js
 ```
 
-You will see Chrome window popping up navingation to `staging.aceinvoice.com`, then completing login flow and closing chrome window. And on terminal you will see the output as
+You will see Chrome window popping up and navingating to `staging.aceinvoice.com`, then completing login flow and closing chrome window. And on terminal you will see the output as
 
 ```
 Title is :  Ace Invoice
@@ -112,6 +116,6 @@ webdriverio
   .end();
 ```
 
-That's it, you ran your first program successfully. It's time to get more serious. In the next chapter we will run test case with the `wdio` test runner, till that time you can play with the code above and try some permutations and combinations.
+That's it, you ran your first program successfully. It's time to get more serious. Here we are just completed login flow for AceInvoice. We are not testing if it is correct or not. In coming chapters we will write and run test cases with the `wdio` test runner, till that time you can play with the code above and try some permutations and combinations.
 
 See you in next chapter.

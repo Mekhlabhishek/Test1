@@ -83,7 +83,7 @@ Once you have Node in place let's go ahead and install tools that we will be usi
 Create a separate directory by
 
 ```
-mkdir aceinvoice_web_tests && cd aceinvoice_web_tests
+mkdir aceinvoice_web_selenium_tests && cd aceinvoice_web_selenium_tests
 ```
 
 Initialize npm using `npm init -y`
@@ -95,10 +95,19 @@ Next, install `webdriverio` by typing
 npm install --save webdriverio@4
 ```
 
-_`--save` will add these modules as a project dependencies and `xx@4` is the version number for the package_
+_`--save` will add these modules as a project dependencies and `xx@4` is the version number for the package._
 
-For this time we will be installing `selenium-standalone` globally by running `npm install selenium-standalone -g`. Lets install 
-dependencies for selenium by `selenium-standalone install --version=3.4.0`
+For this time we will be installing `selenium-standalone` globally by running 
+
+```
+npm install selenium-standalone -g
+```
+
+Let's install dependencies for selenium by
+
+```
+selenium-standalone install --version=3.4.0
+```
 
 This will install three things 
 1. `selenium-server`
@@ -114,5 +123,3 @@ selenium_standalone start --version=3.4.0
 This will start the selenium server on port `4444`. Try visiting `http://localhost:4444` and you will see selenium webpage.
 
 Hola! That's it. Now you are now ready to write your first program.
-
-
