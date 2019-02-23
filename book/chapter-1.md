@@ -1,13 +1,13 @@
 
 
-# 1.1 Installation
+# 1 Installation
 
 Welcome to the first chapter of learning webdriverio. In this chapter we will get ready with our
 platform. So let's fasten our belts and start testing with WebdriverIO
 
 ## Check pre-requisite
 
-### 1. Check Node is installed
+### 1.1 Check Node is installed
 
 Open `terminal` on your machine and check the version of the node using following command.
 
@@ -76,14 +76,14 @@ npm -v
 ```
 _This should print version >= 6.4.1_
 
-### 2. Installing selenium-standalone and WebdriverIO
+### 1.2 Installing selenium-standalone and WebdriverIO
 
 Once you have Node in place let's go ahead and install tools that we will be using to test application.
 
 Create a separate directory by
 
 ```
-mkdir learn-webdriverio && cd learn-webdriverio
+mkdir aceinvoice_web_tests && cd aceinvoice_web_tests
 ```
 
 Initialize npm using `npm init -y`
@@ -113,73 +113,6 @@ selenium_standalone start --version=3.4.0
 
 This will start the selenium server on port `4444`. Try visiting `http://localhost:4444` and you will see selenium webpage.
 
-Hola! That's it. Now you are now ready to write your first test case.
+Hola! That's it. Now you are now ready to write your first program.
 
 
-# 1.2 Writing your first test case
-
-Create a file using `touch first_test.js` and paste a following code into it
-
-```
-const webdriverio = require('webdriverio');
-
-webdriverio
-  .remote({ desiredCapabilities: { browserName: 'firefox' } })
-  .init()
-  .url('https://www.duckduckgo.com')
-  .setValue('#search_form_input_homepage', 'BigBinary')
-  .click('#search_button_homepage')
-  .getTitle().then(title => { console.log('Title is : ', title) })
-  .end();
-```
-
-Let's take a quick look at a code and understand it.
-
-We are importing a `webdriverio` first from the node package that we installed earlier by calling
-`const webdriverio = require('webdriverio')`
-
-Next we are creating remote client with some basic options like browser that we want to use.
-
-_Take a look at all options [here](https://webdriver.io/docs/options.html). We will be covering those in later part of the book
-so you don't have to worry about it now._
-
-After that we are initializing the remote client by calling `init()` method, which will assign the session to the client.
-
-Then navingating to the DuckDuckGo search engine by calling `url('https://duckduckgo.com')`.
-
-On the page there will input element with the id `search_form_input_homepage`, we are setting the value to that input field by
-`setValue('#search_form_input_homepage', 'BigBinary')` function. This function will actually send the keystrokes to the input field.
-
-_If you want to take quick look at what other selectors are available, [visit](https://webdriver.io/docs/selectors.html). Don't worry about them now, 
-as said earlier we will taking look at selectors in later part of the course._
-
-After adding a value to the input field we are clicking button on page by function `click('#search_button_homepage')`, and once we hit the button we
-are checking the title of the page by `getTitle()` function.
-
-_`then()` is way to resolve a promise you can get a basic idea of a promise in JS [here](https://javascript.info/promise-basics)._
-_`title => console.log('Title is : ', title)` is called an arrow function, learn more about arrow functions [here](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)_
-
-After getting title for the webpage we are terminating our session by calling `end()`.
-
-Now this is the time to run our first test case.
-
-Start the `selenium-standalone` server by command in the terminal
-
-```
-selenium-standalone start --version=3.4.0
-```
-
-Once server starts, open up a new terminal window and navigate to the directory and start a test case by
-
-```
-node first_test.js
-```
-
-You will see FireFox window popping up navingation to DuckDuckGo, then searching for BigBinary and then closing FireFox window.
-And on terminal you will see the output as
-
-```
-Title is :  BigBinary at DuckDuckGo
-```
-
-That's it, you ran your first test case successfully. It's time to get more serious. In the next chapter we will run test case with the `wdio` testrunner, till that time you can play with the code above and try some permutations and combinations.
