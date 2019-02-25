@@ -4,7 +4,7 @@ In this chapter we will be writing our basic program with `webdriverio`. This pr
 
 So let's start.
 
-## 1.1 writing and understanding basic program
+## 2.1 writing and understanding basic program
 
 Create a file using `touch first_program.js` command on terminal and paste a following code into it
 
@@ -76,7 +76,7 @@ After getting title for the webpage we are terminating our session by calling `e
 
 Now this is the time to run our first program.
 
-## 1.2 Running your first program
+## 2.2 Running your first program
 
 Start the `selenium-standalone` server by command in the terminal
 
