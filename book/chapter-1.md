@@ -117,7 +117,7 @@ This will install three things
 Verify that you installed the selenium correctly by command
 
 ```
-selenium_standalone start --version=3.4.0
+selenium-standalone start --version=3.4.0
 ```
 
 This will start the selenium server on port `4444`. Try visiting `http://localhost:4444` and you will see selenium webpage.
