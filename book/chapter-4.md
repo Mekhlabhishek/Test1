@@ -140,6 +140,8 @@ describe('My first program for test runner', () => {
 });
 ```
 
+_Getting timout exception? Do not put too much pause period after each execution or increase timeout setting in `wdio.conf.js`. For example `waitforTimeout: 50000,`._
+
 ## 4.4 Kickoff execution
 
 Once again kickoff program with `npm test`. This time you will see browser making some progress and logging in into AceInvoice app.
