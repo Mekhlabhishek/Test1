@@ -46,3 +46,23 @@ describe('My first program for test runner', () => {
 });
 ```
 
+Go ahead and run test case using `npm test`. You will see that our test case failed and what is error on console?
+
+```
+F
+
+0 passing (14.10s)
+1 failing
+
+1) My first program for test runner My first test:
+'Ace Invoice' == 'Random'
+running chrome
+AssertionError [ERR_ASSERTION]: 'Ace Invoice' == 'Random'
+```
+
+This is way to tell the title of page is not `Random` that we are expecting. `assert` is comparing `Ace Invoice` with `Random`.
+
+Now correct test case and replace `Random` with `Ace Invoice` and run test again, this time it will pass.
+
+At this time we are only checking title of the page. But on AceInvoice we will get title even if login fails right. In next chapter we will
+right more robust test case about sign in, so see you in next chapter.
