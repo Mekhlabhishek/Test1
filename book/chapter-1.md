@@ -103,24 +103,24 @@ npm install --save webdriverio@4
 
 _`--save` will add these modules as a project dependencies and `xx@4` is the version number for the package._
 
-For this time we will be installing `selenium-standalone` globally by running 
+We will be installing `selenium-standalone` globally by running following command.
 
 ```
 npm install selenium-standalone -g
 ```
 
-Let's install dependencies for selenium by
+Let's install dependencies for selenium by executing following command.
+This command will install three things 
+1. `selenium-server`
+2. `chromewebdriver`, for Chrome
+3. `geckodriver`, for firefox
 
 ```
 selenium-standalone install --version=3.4.0
 ```
 
-This will install three things 
-1. `selenium-server`
-2. `chromewebdriver`, for Chrome
-3. `geckodriver`, for firefox
 
-Verify that you installed the selenium correctly by command
+Verify that you installed the selenium correctly by executing following command.
 
 ```
 selenium-standalone start --version=3.4.0
