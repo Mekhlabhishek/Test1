@@ -86,8 +86,14 @@ Create a separate directory by
 mkdir aceinvoice_web_selenium_tests && cd aceinvoice_web_selenium_tests
 ```
 
-Initialize npm using `npm init -y`
-_`-y` is yes for all questions that npm init will ask._
+Initialize npm using following command.
+
+```
+npm init -y
+```
+
+`-y` is yes for all questions that npm init will ask.
+
 
 Next, install `webdriverio` by typing
 
