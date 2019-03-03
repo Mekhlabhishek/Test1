@@ -26,7 +26,8 @@ Create a configuration file by command
 ./node_modules/.bin/wdio config
 ```
 
-Follow all answers from [here](https://webdriver.io/docs/gettingstarted.html#generate-configuration-file) except one which is
+It will ask a bunch of [questions](https://webdriver.io/docs/gettingstarted.html#generate-configuration-file).
+Just hit enter to accept defaulit answer for all the questions execept for the one which says
 
 ```
 Do you want to add a service to your test setup?
