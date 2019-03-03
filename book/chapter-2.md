@@ -1,8 +1,10 @@
 # Your first program
 
-In this chapter we will be writing our basic program with `webdriverio`. This program will go to the `staging.aceinvoice.com` and will complete login procedure for us.
+In this chapter we will be writing our basic program with [webdriverio](https://webdriver.io). 
+This program will go to the [staging.aceinvoice.com](htp://staging.aceinvoice.com) 
+and will complete login procedure for us.
 
-So let's start.
+Let's start.
 
 ## 2.1 Writing and understanding basic program
 
