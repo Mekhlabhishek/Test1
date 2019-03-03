@@ -126,6 +126,8 @@ Verify that you installed the selenium correctly by executing following command.
 selenium-standalone start --version=3.4.0
 ```
 
-This will start the selenium server on port `4444`. Try visiting `http://localhost:4444` and you will see selenium webpage.
+This will start the selenium server on port `4444`. 
+Open your brwoser and Try visit [http://localhost:4444](http://localhost:4444) 
+and you will see selenium webpage.
 
 Hola! That's it. Now you are now ready to write your first program.
