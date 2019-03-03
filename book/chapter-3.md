@@ -6,16 +6,16 @@ In this chapter we will be setting up our test runner to run test cases. Follow 
 
 ## 3.1 Install wdio-cli
 
-In order to run our test suite we need wdio cli, let's install this by
+In order to run our test suite we need wdio cli, let's install it.
 
 ```
 npm install --save @wdio/cli
 ```
-_`--save` is option for npm to add package as project dependency._
 
-Good!, now in order to run our test suite we need configuration file.
+`--save` is option for npm to add package as project dependency.
 
-## 3.2 Create config file
+
+## 3.2 Creating config file
 
 When you install package it will get saved under `node_modules/.bin/`, so in order to create a config file we
 will use the wdio package installed under the `node_modules`.
