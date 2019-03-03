@@ -8,7 +8,15 @@ Let's start.
 
 ## 2.1 Writing and understanding basic program
 
-Create a file using `touch first_program.js` command on terminal and paste a following code into it
+
+Create a file by executing following command.
+
+```
+touch first_program.js
+```
+
+Open `first_command.js` in VScode and type following code.
+
 
 ```
 const webdriverio = require('webdriverio');
