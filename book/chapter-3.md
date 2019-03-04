@@ -94,12 +94,12 @@ Last part of this chapter is to make sure that your `package.json` file contains
 
 ```
 {
-  "name": "learn-webdriverio",
+  "name": "aceinvoice_web_selenium_tests",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js"
+     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
