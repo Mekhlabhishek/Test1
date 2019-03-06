@@ -89,6 +89,6 @@ mochaOpts: {
 }
 ```
 
-Last thing to cover on signin page is `signup` link. After hitting a 
+Last thing to cover on signin page is `signup` link. After hitting a link user should be redirected to the sign up page. This time take your shot and write a test case for the sign up link, after clicking link check url of the browser matches the sign up link.
 
-Now you are good sail on your own. Write some more test about signin
+Now you are good sail on your own. Write some more test about signin that you can think of.
