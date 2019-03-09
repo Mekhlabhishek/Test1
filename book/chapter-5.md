@@ -1,12 +1,12 @@
 # Writing your first test case
 
-In the last chapter, we successfully ran our program using wdio test runner. We also configured our script for the test, but we are not checking if the page that we are landing on is correct page after sign in. In this chapter, we will write our actual test case
+In the last chapter, we successfully ran our program using wdio test runner. We also configured our script for the test, but we are not checking if the page that we are landing on is correct page after sign in. In this chapter, we will write our actual test case.
 
 ## 5.1 Add assertion to the program
 
 We will be using our `first_program.spec.js` file. This will no longer our first program, so let's change the name of it to the `first_test.spec.js`.
 
-Now to start with we will just check the title of the page using `getTitle()` function. In order to make an assertion, first, let's import `assert` function by
+Now to start with we will just check the URL of the page using `getUrl()` function. In order to make an assertion, first, let's import `assert` function by
 
 ```
 const assert = require('assert')
@@ -15,15 +15,15 @@ const assert = require('assert')
 Now let's capture the title in some variable shown as below
 
 ```
-const title = browser.getTitle();
+const url = browser.getUrl();
 ```
 
-Next, we will make an assertion, in layman language, we will check if the title we got is exactly what we are expecting.
+Next, we will make an assertion, in layman language, we will check if the URL we got is exactly what we are expecting.
 
 While writing test cases it is best practice to fail a test case first and then pass it, so we will give any random title at a start like
 
 ```
-assert.equal(title, 'Random');
+assert.equal(url, 'http://www.google.com');
 ```
 
 Also remove `.pause()` calls from the program as we don't need them anymore. Our test case at this moment will look like
@@ -50,18 +50,14 @@ Go ahead and run test case using `npm test`. You will see that our test case fai
 ```
 F
 
-0 passing (14.10s)
-1 failing
-
-1) My first program for test runner My first test:
-'Ace Invoice' == 'Random'
+1) AceInvoice SignIn When login is un-successful Shows error message:
+'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
 running chrome
-AssertionError [ERR_ASSERTION]: 'Ace Invoice' == 'Random'
+AssertionError [ERR_ASSERTION]: 'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
 ```
 
-This is a way to tell the title of the page is not `Random` that we are expecting. `assert` is comparing `Ace Invoice` with `Random`.
+This is a way to tell the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `http://staging.aceinvoice.com/sign_up` with `Random`.
 
-Now correct test case and replace `Random` with `Ace Invoice` and run test again, this time it will pass.
+Now correct test case and replace `http://www.google.com` with `http://staging.aceinvoice.com/sign_up` and run test again, this time it will pass.
 
-At this time we are only checking the title of the page. But on AceInvoice we will get the title even if login fails right. In the next chapter, we will
-right more robust test case about a sign in, so see you in the next chapter.
+In this chapter we are only checking a URL of the page what about complete flow of signing up a user. We will take steps toward it in coming chapters. So let's discover more in next chapter.
