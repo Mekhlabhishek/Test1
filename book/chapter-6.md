@@ -66,3 +66,9 @@ describe('AceInvoice SignUp', () => {
   });
 });
 ```
+
+Now check if your test cases are running correctly using `npm test`. You will see all test cases are passing.
+
+_Getting timeout exception? Increase a timout in mochaOpts in config file add a parameter `timeout: 99999` for now, but this is not right way, for a time being we are using that._
+
+Now to continue with the test cases we will add a password and continue with the signup process, but before proceding, do you sense some problem here? After running test we will create a account with the email `test@webdriverio.com` and next time we run test cases it will fail, why? Because the email address is already taken, for each run we should create a new email address. We will see how to do that in next chapter.
