@@ -60,21 +60,16 @@ https://staging.aceinvoice.com
 
 with just `./`
 
-3. Change `setValue` function call
+3. Update `click()` call
 
-Right now we are using JQuery's way to set value for elements. We will not use them anymore. `setValue` accepts two arguments by default, first one query selector expression and second is value. So we will replace
-
-```
-.$('input[name="email"]').setValue('neeraj@bigbinary.com')
-```
-
-with
+Instead of selecting a element with JQuery and then clicking on element is not a good practice. WebdriverIO give a clean way to do it.
+We can pass a selector to the click function, so update our click function to look like.
 
 ```
-browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
+.click('.signup-button.border-radius-lg')
 ```
 
-3. Remove `.end()` call
+4. Remove `.end()` call
 
 As said earlier we will not have to worry about the starting and closing the browser session. So go ahead and remove `.end()` method call
 
@@ -83,10 +78,7 @@ At this stage, your final program will look like something this
 ```
 browser.url('./');
 browser.pause(1000);
-browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-browser.setValue('input[name="password"]', 'welcome');
-browser.pause(1000);
-browser.click('input.btn.btn-primary');
+browser.click('.signup-button.border-radius-lg');
 browser.pause(2000);
 ```
 
@@ -129,18 +121,13 @@ Now as the last step, move browser code to the test case function definition, yo
 ```
 describe('My first program for test runner', () => {
   it('My first test', () => {
-    browser.url('./');
-    browser.pause(1000);
-    browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-    browser.setValue('input[name="password"]', 'welcome');
-    browser.pause(1000);
-    browser.click('input.btn.btn-primary');
-    browser.pause(2000);
+      browser.url('./');
+      browser.pause(1000);
+      browser.click('.signup-button.border-radius-lg');
+      browser.pause(1000);
   });
 });
 ```
-
-_Getting timeout exception? Do not put too much pause period after each execution or increase timeout setting in `wdio.conf.js`. For example `waitforTimeout: 50000,`._
 
 ## 4.4 Kickoff execution
 

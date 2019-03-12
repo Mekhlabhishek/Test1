@@ -2,7 +2,7 @@
 
 In this chapter, we will be writing our basic program with [webdriverio](https://webdriver.io).
 This program will go to the [staging.aceinvoice.com](htp://staging.aceinvoice.com)
-and will complete login procedure for us.
+and will complete signup procedure for us.
 
 Let's start.
 
@@ -25,12 +25,9 @@ webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
   .url('https://staging.aceinvoice.com')
-  .$('input[name="email"]').setValue('neeraj@bigbinary.com')
-  .$('input[name="password"]').setValue('welcome')
-  .$('input.btn.btn-primary').click()
-  .getTitle().then(title => { console.log('Title is : ', title) })
+  .$('.signup-button.border-radius-lg').click()
+  .getUrl().then(url => { console.log('URL is : ', title) })
   .end();
-
 ```
 
 Let's take a quick look at a code and understand it.
@@ -53,36 +50,27 @@ so you don't have to worry about it now._
 
 After that, we are initializing the remote client by calling the `init()` method, which will assign the session to a remote client.
 
-Then we are navigating to our website by calling `url('https://staging.aceinvoice.com/sign_in')`.
+Then we are navigating to our website by calling `url('https://staging.aceinvoice.com')`.
 
-On the page, there are input elements for the user's email and password. Now we have to add values to that field.
+After navigating to the AceInvoice server will navigate us to the signin page
 
-First, we are selecting an element to which we want to add value by simple JQuery code as `$('input[name="email"]')`.
+On the page, there are input elements for the user's email and password and link for `signup` .
 
-Once we get hold of the element, we are setting a value to the field using `setValue()` function
+First, we are selecting an anchor tag by simple JQuery code as `$(".signup-button.border-radius-lg")`.
 
-_If you want to take a quick look at what other selectors are available, [visit](https://webdriver.io/docs/selectors.html). Don't worry about them now,
-as said earlier we will be taking look at selectors in later part of the course._
+_How do we know what selector value we should give? On signin page right click on link and select `inspect`, you will see some html code for signup link. Check for CSS class that signup link has. We can use CSS class, id or name attribute as a selector._
 
-Similarly, we are setting a password for the user using
+_If you want to take a quick look at what other selectors are available, [visit](https://webdriver.io/docs/selectors.html). Don't worry about them now, as said earlier we will be taking look at selectors in later part of the course._
 
-```
-.$('input[name="password"]').setValue('welcome')
-```
+Once we get hold of the link, we are clicking that link using `click()`.
 
-After setting a value to the input fields we are clicking a button on a page by function
-
-```
-.$('input.btn.btn-primary').click()
-```
-
-and once we hit the button we are checking the title of the page by `getTitle()` function.
+Once we click the link we are checking the URL of the page by `getUrl()` function.
 
 _`then()` is a way to resolve a promise you can get a basic idea of a promise in JS [here](https://javascript.info/promise-basics). You may have noticed we are not calling an `await` and `async` here, these are reserved keywords to resolve the promise. As moving to the WebdriverIO@5 in later part of the course we will start using them, but don't worry about it now._
 
-_`title => console.log('Title is : ', title)` is called an arrow function, learn more about arrow functions [here](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)._
+_`url => console.log('URL is : ', url)` is called an arrow function, learn more about arrow functions [here](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)._
 
-After getting a title for the webpage we are terminating our session by calling `end()`.
+After getting a URL for the webpage we are terminating our session by calling `end()`.
 
 Now, this is the time to run our first program.
 
@@ -103,7 +91,7 @@ node first_program.js
 You will see Chrome window popping up and navigating to `staging.aceinvoice.com`, then completing login flow and closing chrome window. And on the terminal, you will see the output as
 
 ```
-Title is :  Ace Invoice
+URL is :  https://staging.aceinvoice.com/sign_up
 ```
 
 Program execution may be too fast to figure you out what exactly is going on, so to tackle this situation go ahead and add a sleep time after each step using `pause(#time_in_ms)`. So our new program will look something like this
@@ -116,13 +104,9 @@ webdriverio
   .init()
   .url('https://staging.aceinvoice.com')
   .pause(1000)
-  .$('input[name="email"]').setValue('neeraj@bigbinary.com')
+  .$('.signup-button.border-radius-lg').click()
   .pause(1000)
-  .$('input[name="password"]').setValue('welcome')
-  .pause(1000)
-  .$('input.btn.btn-primary').click()
-  .pause(2000)
-  .getTitle().then(title => { console.log('Title is : ', title) })
+  .getUrl().then(url => { console.log('URL is : ', url) })
   .end();
 ```
 

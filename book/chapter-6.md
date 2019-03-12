@@ -1,94 +1,74 @@
-# Checking Contents on a page in a test case
+# Exercise for sign up flow
 
-In the last chapter, we just checked if the title is correct or not, but whether sign in failed or not a title for the page will be always the same.
-So in this chapter, we will look around how to check actual content on the page, for this purpose we will be using our same old program
-and will modify it to meet our requirement.
+In last chapter we just checked if URL of the page is correct or not. In this chapter we will cover entire signup workflow.
+So let's begin.
 
-## 6.1 Test for unsuccessful login
+## Setting email for test account
 
-So when we enter the wrong email or password, an error message pops up saying, `Incorrect email or password`. In this test case, we will check that. So go ahead and change out test case to enter wrong login details, make a wrong entry for email or/and password. So taking our old test case into consideration, this will look something like this
+In a same namespace we will create another test case for adding the email for the new account. So create a new `it` block just below previous one.
+
+When you visit the signup page you will see the field for the email. Now we have to setup the email for the our test account.
+To enter values to the input fields webdriver gives handy method called as `setValue()`. Set value accepts two values here, first one is
+selector and second one is the value for input field.
+
+So add a value for email as follows in `it` block.
 
 ```
-const assert = require('assert');
+browser.setValue('input[name="email"]', 'test@webdriver.com');
+```
 
-describe('My first program for test runner', () => {
-  it('My first test', () => {
+After adding an email we also want to click on the submit button. So our next step will be clicking on submit button using `click()` function as follows.
+
+```
+browset.click('.btn.btn-primary');
+```
+
+After entering an email for our new account server will redirect us to the second step for adding a password. Here we can check that if field for password is present or not. For this test case we will use a another function called as `getCssProperty()`. This function also accepts two values. First one the selector for the element and second one the CSS value that we want to fetch.
+
+So we can check that height for the password field is not 0 using
+
+```
+var passwordHight = browser.getCssProperty('input[name="password"]', 'height');
+```
+
+Before making an assertion let's check what this function returns. Check the value for `passwordHeight` using console log. You will see something like this
+
+```
+{ property: 'height',
+  value: '38px',
+  parsed: { type: 'number', string: '38px', unit: 'px', value: 38 } }
+```
+
+So here we can see that function returns the complete CSS data about the element. For this test case we will be using parsed height of the element which is 38 and will be checking that height is always greater than 0 as
+
+```
+assert.notEqual(passwordHeight.parsed.value, 0);
+```
+
+At this moment our file will look something like this
+
+```
+describe('AceInvoice SignUp', () => {
+  it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
     browser.url('./');
-    browser.setValue('input[name="email"]', 'fake@bigbinary.com');
-    browser.setValue('input[name="password"]', 'wrong_password');
-    browser.click('input.btn.btn-primary');
+    browser.click('.signup-button.border-radius-lg');
 
-    const title = browser.getTitle();
-    assert.equal(title, 'Random');
+    var url = browser.getUrl();
+    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+  });
+
+  it('Navigates to password page after adding an valid email', () => {
+    browser.setValue('input[name="email"]', 'test@webdriverio.com');
+    browser.click('.btn.btn-primary');
+
+    var passwordInputHeight = browser.getCssProperty('input[name="password"]', 'height');
+    assert.notEqual(passwordInputHeight.parsed.value, 0);
   });
 });
 ```
 
-Try to run a test case, what you are seeing on console? Getting error right?
+Now check if your test cases are running correctly using `npm test`. You will see all test cases are passing.
 
-```
-An element could not be located on the page using the given search parameters ("div.toast-message").
-```
+_Getting timeout exception? Increase a timout in mochaOpts in config file add a parameter `timeout: 99999` for now, but this is not right way, for a time being we are using that._
 
-What is wrong here? In a normal workflow, we are seeing an error message then why test case is failing? The reason is, after clicking a submit button we are not waiting for the response, we are checking for error message immediately which is not on the screen at that time, it getting rendered sometime after the clicking sign in button.
-
-For now, we will hold the execution flow with `pause` callback. So add some pause after clicking submit button and wait for the response and then check for the error.
-
-This time you will see our test case is getting rendered correctly. Now what we decided as a good practice while writing a test case? Now your test case passed, try to fail them and cross verify that your test case is right.
-
-_Plenty of ways to check that, add correct cred and check if an error pops up or enter wrong creds and check if an error does not pop up._
-
-## 6.2 Check for successful login
-
-Now as we checked unsuccessful login we should also check successful login as well. Add a new test case in the same file with a different description that will explain a test case purpose and add a new test case below our old test case.
-
-In this new test case, we are going to check after successful login are we getting time entry panel shown on the screen. So go ahead and try to add a test case this time to check if time entry panel or calendar is being shown after successful login.
-
-Here is code which will look something like this, we added a test case to check header text in the time entry panel, your test case may look something different, don't worry this does not has to be a perfect match, after all, everyone's thinking is different.
-
-```
-const assert = require('assert');
-
-describe('AceInvoice SignIn', () => {
-  describe('When login is un-successful', () => {
-    it('Shows error message', () => {
-      browser.url('./');
-      browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-      browser.setValue('input[name="password"]', 'welcom');
-      browser.click('input.btn.btn-primary');
-      browser.pause(10000);
-
-      const error = browser.getText('div.toast-message');
-
-      assert.equal(error, 'Incorrect email or password');
-    });
-  });
-
-  describe('When login is successful', () => {
-    it('Logs user into application', () => {
-      browser.url('./');
-      browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-      browser.setValue('input[name="password"]', 'welcome');
-      browser.click('input.btn.btn-primary');
-      browser.pause(10000);
-      const headerText = browser.getText('h4.log-entry-header');
-
-      assert.equal(headerText, 'Log Time');
-    });
-  });
-});
-
-```
-
-_Getting timeout exception while running test cases? Changing timeout won't help this time, you need to add a timeout in mochaOpts as shown below_
-
-```
-mochaOpts: {
-  ui: 'bdd',
-  timeout: 100000
-}
-```
-
-The last thing to cover on the sign-in page is `signup` link. After hitting a link user should be redirected to the sign-up page. This time take your shot and write a test case for the sign-up link, after clicking link check URL of the browser matches the sign-up link.
-
-Now you are a good sail on your own. Write some more test about sign-in that you can think of.
+Now to continue with the test cases we will add a password and continue with the signup process, but before proceding, do you sense some problem here? After running test we will create a account with the email `test@webdriverio.com` and next time we run test cases it will fail, why? Because the email address is already taken, for each run we should create a new email address. We will see how to do that in next chapter.
