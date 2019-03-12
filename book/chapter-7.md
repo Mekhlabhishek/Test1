@@ -16,6 +16,8 @@ With this we will have a new email everytime.
 
 Now add a password and confirmation password with `setValue` method and click a submit button and sign up.
 
+Don't forget to print the email to console as this will be useful for our further test cases.
+
 ## Checking page after signup
 
 Now you can make an assertion for checking header on signup page, but we might not get the set preferences page right after we click the submit button we have to wait for sometime till set preferences page renders.

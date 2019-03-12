@@ -1,94 +1,38 @@
-# Checking Contents on a page in a test case
+# Integrating chai library
 
-In the last chapter, we just checked if the title is correct or not, but whether sign in failed or not a title for the page will be always the same.
-So in this chapter, we will look around how to check actual content on the page, for this purpose we will be using our same old program
-and will modify it to meet our requirement.
+Chai is assertion rich library which gives us the plenty of the options to make the assertion over Node's assertion library.
 
-## 6.1 Test for unsuccessful login
+## Installation
 
-So when we enter the wrong email or password, an error message pops up saying, `Incorrect email or password`. In this test case, we will check that. So go ahead and change out test case to enter wrong login details, make a wrong entry for email or/and password. So taking our old test case into consideration, this will look something like this
+Install chai as package dependency with the following command.
 
 ```
-const assert = require('assert');
-
-describe('My first program for test runner', () => {
-  it('My first test', () => {
-    browser.url('./');
-    browser.setValue('input[name="email"]', 'fake@bigbinary.com');
-    browser.setValue('input[name="password"]', 'wrong_password');
-    browser.click('input.btn.btn-primary');
-
-    const title = browser.getTitle();
-    assert.equal(title, 'Random');
-  });
-});
+npm install --save chai
 ```
 
-Try to run a test case, what you are seeing on console? Getting error right?
+This will install latest version of chai. Now we are ready to use assertions from the chai library
+
+## Replacing the assertions from Node with chai
+
+Replacing the assertion is simple step. Instead of importing the assertion from node let's import it from chai as
 
 ```
-An element could not be located on the page using the given search parameters ("div.toast-message").
+const assert = require('chai').assert;
 ```
 
-What is wrong here? In a normal workflow, we are seeing an error message then why test case is failing? The reason is, after clicking a submit button we are not waiting for the response, we are checking for error message immediately which is not on the screen at that time, it getting rendered sometime after the clicking sign in button.
+That's all, you have integrated chai successfully, go ahead and run test cases once again and make sure they all are passing.
 
-For now, we will hold the execution flow with `pause` callback. So add some pause after clicking submit button and wait for the response and then check for the error.
+You can also choose the which style you want to use as `chai` provide other two styles as `expect` and `should`. `expect` style is very popular in real world as it makes your test cases more readable, but we will stick to the assert for now, you are free to update the style if you are not comfortable with the `assert`.
 
-This time you will see our test case is getting rendered correctly. Now what we decided as a good practice while writing a test case? Now your test case passed, try to fail them and cross verify that your test case is right.
+## Quick peak in chai's assertion
 
-_Plenty of ways to check that, add correct cred and check if an error pops up or enter wrong creds and check if an error does not pop up._
+Take a look at assertion that are available to use [here](https://www.chaijs.com/api/assert/). Let's use one of them, `include` in the last test case for creating a organization after signup.
 
-## 6.2 Check for successful login
-
-Now as we checked unsuccessful login we should also check successful login as well. Add a new test case in the same file with a different description that will explain a test case purpose and add a new test case below our old test case.
-
-In this new test case, we are going to check after successful login are we getting time entry panel shown on the screen. So go ahead and try to add a test case this time to check if time entry panel or calendar is being shown after successful login.
-
-Here is code which will look something like this, we added a test case to check header text in the time entry panel, your test case may look something different, don't worry this does not has to be a perfect match, after all, everyone's thinking is different.
+After creating a organization user get's redirected to the create a team member page. Let's test this. First we will fetch the browser URL and then check if URL includes `/team/active` in it as follows. Paste following code in last test case and run them.
 
 ```
-const assert = require('assert');
-
-describe('AceInvoice SignIn', () => {
-  describe('When login is un-successful', () => {
-    it('Shows error message', () => {
-      browser.url('./');
-      browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-      browser.setValue('input[name="password"]', 'welcom');
-      browser.click('input.btn.btn-primary');
-      browser.pause(10000);
-
-      const error = browser.getText('div.toast-message');
-
-      assert.equal(error, 'Incorrect email or password');
-    });
-  });
-
-  describe('When login is successful', () => {
-    it('Logs user into application', () => {
-      browser.url('./');
-      browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-      browser.setValue('input[name="password"]', 'welcome');
-      browser.click('input.btn.btn-primary');
-      browser.pause(10000);
-      const headerText = browser.getText('h4.log-entry-header');
-
-      assert.equal(headerText, 'Log Time');
-    });
-  });
-});
-
+const url = browser.getUrl();
+assert.include(url, '/team/active');
 ```
 
-_Getting timeout exception while running test cases? Changing timeout won't help this time, you need to add a timeout in mochaOpts as shown below_
-
-```
-mochaOpts: {
-  ui: 'bdd',
-  timeout: 100000
-}
-```
-
-The last thing to cover on the sign-in page is `signup` link. After hitting a link user should be redirected to the sign-up page. This time take your shot and write a test case for the sign-up link, after clicking link check URL of the browser matches the sign-up link.
-
-Now you are a good sail on your own. Write some more test about sign-in that you can think of.
+You can try some of them for practise. Also try `expect` style as a warm up and then jump on to the next chapter.
