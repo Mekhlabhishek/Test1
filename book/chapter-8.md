@@ -1,10 +1,12 @@
-# Insides for WebdriverIO and Selenium
+# Checking Contents on a page in a test case
 
-Welcome to the advanced section of the WebdriverIO course. In the last chapters, we saw how to write test cases and run them with the mocha framework. Now, we are going to see some advanced features for WebdriverIO. So, let's begin with taking a look into how webdriverio and selenium do a job for us.
+In the last chapter, we just checked if the title is correct or not, but whether sign in failed or not a title for the page will be always the same.
+So in this chapter, we will look around how to check actual content on the page, for this purpose we will be using our same old program
+and will modify it to meet our requirement.
 
-## Getting ready
+## 6.1 Test for unsuccessful login
 
-For this chapter, we will be using our very own old program which we learned in previous chapters for signing into AceInvoice, with an addition to a print title on the console.
+So when we enter the wrong email or password, an error message pops up saying, `Incorrect email or password`. In this test case, we will check that. So go ahead and change out test case to enter wrong login details, make a wrong entry for email or/and password. So taking our old test case into consideration, this will look something like this
 
 ```
 const assert = require('assert');
@@ -12,98 +14,81 @@ const assert = require('assert');
 describe('My first program for test runner', () => {
   it('My first test', () => {
     browser.url('./');
-    browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-    browser.setValue('input[name="password"]', 'welcome');
+    browser.setValue('input[name="email"]', 'fake@bigbinary.com');
+    browser.setValue('input[name="password"]', 'wrong_password');
     browser.click('input.btn.btn-primary');
 
-    var title = browser.getTitle();
-    console.log('Title is : ', title);
+    const title = browser.getTitle();
+    assert.equal(title, 'Random');
   });
 });
 ```
 
-Now, the next thing, which is important to this chapter, change log level to `verbose` in `wdio.config.js`.
-
-Good to go, let's run our program with `npm test` command. You will see a bunch of operations happening and printing some data on the console, something like this.
+Try to run a test case, what you are seeing on console? Getting error right?
 
 ```
-[17:24:04]  COMMAND     POST     "/wd/hub/session"
-[17:24:04]  DATA                {"desiredCapabilities":{"javascriptEnabled":true,"locationContextEnabled":true,"handlesAlerts":true,"rotatable":true,"maxInstances":5,"browserName":"chrome","loggingPrefs":{"browser":"ALL","driver":"ALL"},"requestOrigins":{"url":"http://webdriver.io","version":"4.14.2","name":"webdriverio"}}}
-[17:24:07]  INFO        SET SESSION ID 5facf94a01bffed6e1479c39778b89bf
-[17:24:07]  RESULT              {"acceptInsecureCerts":false,"acceptSslCerts":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","chrome":{"chromedriverVersion":"2.43.600229 (3fae4d0cda5334b4f533bede5a4787f7b832d052)","userDataDir":"/var/folders/v6/_6sh53vn5gl3lct18w533gr80000gn/T/.org.chromium.Chromium.bWkuWC"},"cssSelectorsEnabled":true,"databaseEnabled":false,"goog:chromeOptions":{"debuggerAddress":"localhost:58451"},"handlesAlerts":true,"hasTouchScreen":false,"javascriptEnabled":true,"locationContextEnabled":true,"mobileEmulationEnabled":false,"nativeEvents":true,"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platform":"Mac OS X","rotatable":false,"setWindowRect":true,"takesHeapSnapshot":true,"takesScreenshot":true,"unexpectedAlertBehaviour":"","version":"72.0.3626.121","webStorageEnabled":true,"webdriver.remote.sessionid":"5facf94a01bffed6e1479c39778b89bf"}
-[17:24:07]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/url"
-[17:24:07]  DATA                {"url":"https://staging.aceinvoice.com/"}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
-[17:24:17]  DATA                {"using":"css selector","value":"input[name=\"email\"]"}
-[17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-1"}]
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/clear"
-[17:24:17]  DATA                {}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/value"
-[17:24:17]  DATA                {"value":["n","e","e","r","a","j","@","b","i","g","(10 more items)"],"text":"neeraj@bigbinary.com"}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
-[17:24:17]  DATA                {"using":"css selector","value":"input[name=\"password\"]"}
-[17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-2"}]
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-2/clear"
-[17:24:17]  DATA                {}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-2/value"
-[17:24:17]  DATA                {"value":["w","e","l","c","o","m","e"],"text":"welcome"}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element"
-[17:24:17]  DATA                {"using":"css selector","value":"input.btn.btn-primary"}
-[17:24:17]  RESULT              {"ELEMENT":"0.07742633503067009-3"}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-3/click"
-[17:24:17]  DATA                {}
-[17:24:19]  COMMAND     GET      "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/title"
-[17:24:19]  DATA                {}
-[17:24:19]  RESULT              "Ace Invoice"
-Title is :  Ace Invoice
-․[17:24:19]  COMMAND    DELETE   "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf"
-[17:24:19]  DATA                {}
+An element could not be located on the page using the given search parameters ("div.toast-message").
 ```
 
-## Whats exactly happening here?
+What is wrong here? In a normal workflow, we are seeing an error message then why test case is failing? The reason is, after clicking a submit button we are not waiting for the response, we are checking for error message immediately which is not on the screen at that time, it getting rendered sometime after the clicking sign in button.
 
-Webdriver does not handle browser on its own, it is Selenium which takes care of the browser operations. Webdriver just sends a request to selenium server and then selenium server performs operations on browser based on the requests that it gets from the webdriver.
+For now, we will hold the execution flow with `pause` callback. So add some pause after clicking submit button and wait for the response and then check for the error.
 
-The very first request that webdriver will send out to selenium server is for getting the session ID. As you can see in a response above the first webdriver is requesting the session id to the selenium server. The server then starts the browser and gives back the session ID in JSON response. This session id will be used by webdriver to make all future requests to the selenium server.
+This time you will see our test case is getting rendered correctly. Now what we decided as a good practice while writing a test case? Now your test case passed, try to fail them and cross verify that your test case is right.
 
-Next, as we are setting URL to the browser, webdriver sends out a `post` request to the selenium server with URL in `DATA` as follows
+_Plenty of ways to check that, add correct cred and check if an error pops up or enter wrong creds and check if an error does not pop up._
 
-```
-[17:24:07]  COMMAND     POST    "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/url"
-[17:24:07]  DATA                {"url":"https://staging.aceinvoice.com/"}
-```
+## 6.2 Check for successful login
 
-Very next thing, we are setting a value to the email field. In a program, this may look like a single command but setting a value into text input is a set of three post requests.
+Now as we checked unsuccessful login we should also check successful login as well. Add a new test case in the same file with a different description that will explain a test case purpose and add a new test case below our old test case.
 
-First, webdriver will send out the `post` request to find out the element that we want, with the type of selector and value for a selector. The request then sends back element ID, which webdriver IO will use while setting text in input variable.
+In this new test case, we are going to check after successful login are we getting time entry panel shown on the screen. So go ahead and try to add a test case this time to check if time entry panel or calendar is being shown after successful login.
 
-```
-[17:24:17]  COMMAND     POST    "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
-[17:24:17]  DATA                {"using":"css selector","value":"input[name=\"email\"]"}
-[17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-1"}]
-```
-
-Once webdriver gets element ID, it will send out a request to clear out the content in that element and then will make a third request to set a value in it.
+Here is code which will look something like this, we added a test case to check header text in the time entry panel, your test case may look something different, don't worry this does not has to be a perfect match, after all, everyone's thinking is different.
 
 ```
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/clear"
-[17:24:17]  DATA                {}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/value"
-[17:24:17]  DATA                {"value":["n","e","e","r","a","j","@","b","i","g","(10 more items)"],"text":"neeraj@bigbinary.com"}
+const assert = require('assert');
+
+describe('AceInvoice SignIn', () => {
+  describe('When login is un-successful', () => {
+    it('Shows error message', () => {
+      browser.url('./');
+      browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
+      browser.setValue('input[name="password"]', 'welcom');
+      browser.click('input.btn.btn-primary');
+      browser.pause(10000);
+
+      const error = browser.getText('div.toast-message');
+
+      assert.equal(error, 'Incorrect email or password');
+    });
+  });
+
+  describe('When login is successful', () => {
+    it('Logs user into application', () => {
+      browser.url('./');
+      browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
+      browser.setValue('input[name="password"]', 'welcome');
+      browser.click('input.btn.btn-primary');
+      browser.pause(10000);
+      const headerText = browser.getText('h4.log-entry-header');
+
+      assert.equal(headerText, 'Log Time');
+    });
+  });
+});
+
 ```
 
-Same way, webdriver will send out requests for setting value in the password field and then for clicking on submit button.
-
-Then we are fetching the title of the webpage, similarly, webdriver will send out the request for fetching the title of the page. Selenium will then return the title in response as follows.
+_Getting timeout exception while running test cases? Changing timeout won't help this time, you need to add a timeout in mochaOpts as shown below_
 
 ```
-[17:24:19]  COMMAND     GET      "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/title"
-[17:24:19]  DATA                {}
-[17:24:19]  RESULT              "Ace Invoice"
+mochaOpts: {
+  ui: 'bdd',
+  timeout: 100000
+}
 ```
 
-After that, you will see the console log that we created from the program.
+The last thing to cover on the sign-in page is `signup` link. After hitting a link user should be redirected to the sign-up page. This time take your shot and write a test case for the sign-up link, after clicking link check URL of the browser matches the sign-up link.
 
-Last request webdriver will send to the selenium server to kill the session. After receiving the delete command for the session, selenium will quit the browser.
-
-Pretty interesting, isn't it? Let's move and explore some other features of WebdriverIO.
+Now you are a good sail on your own. Write some more test about sign-in that you can think of.
