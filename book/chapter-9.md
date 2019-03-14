@@ -1,109 +1,158 @@
-# Insides for WebdriverIO and Selenium
+# Moving to page objects
 
-Welcome to the advanced section of the WebdriverIO course. In the last chapters, we saw how to write test cases and run them with the mocha framework. Now, we are going to see some advanced features for WebdriverIO. So, let's begin with taking a look into how webdriverio and selenium do a job for us.
+In last chapter we added complete test suit for the signup flow, but while achieving this we wrote much of duplicate code. Page objects helps us to get rid of the duplicate code. Page object is very interesting topic but at the same time is also complex to understand. So we will not jump onto page objects here. First we will take a first step towards it in this chapter.
 
-## Getting ready
+## Browser element
 
-For this chapter, we will be using our very own old program which we learned in previous chapters for signing into AceInvoice, with an addition to a print title on the console.
+So far we are calling a methods on the browser object. This does not look good, webdriverio gives us a way to get element from the browser and then call a method to it. We can get a hold of the element using `element()` method. This method accepts the selector as a parameter.
+
+With this method in place we can rewrite our old code
 
 ```
-const assert = require('assert');
+browser.click('.signup-button.border-radius-lg');
+```
 
-describe('My first program for test runner', () => {
-  it('My first test', () => {
+as follows
+
+```
+broser.element('.signup-button.border-radius-lg').click();
+```
+
+Webdriverio provides handy operator to define this as
+
+```
+$('.signup-button.border-radius-lg').click();
+```
+
+Isn't this looks like an JQuery code and also this makes the code more readable. Also we can define a selector as a constant at the top of the code as
+
+```
+const signUpButtonSelector = '.signup-button.border-radius-lg';
+```
+
+and then replace the code for same as
+
+```
+$(signUpButtonSelector).click();
+```
+
+## Introduction to getters
+
+Sometimes we unknowingly define a element declaration even before it is present on the page. In such cases you might not get result that you expected. To overcome this `getter` are pretty much handy
+
+## Declaring getter
+
+Creating a getter is very simple. Let's take a look at simple getter to start with.
+
+```
+const getter = {
+  get element() { return $('#password_input') }
+}
+```
+
+This similar to defining a hash object with few twists. We are declaring key with name `element` and this has to be function. With the above getter defined we can now call it like
+
+
+```
+getter.element.click();
+```
+
+Simple right? With this let's change our code to use the getters. Make sure all of your test cases are passing.
+
+```
+const assert = require('chai').assert;
+
+const signUpButtonSelector = ".signup-button.border-radius-lg";
+const emailInputSelector = "input[name='email']";
+const primaryButtonSelector = ".btn.btn-primary";
+const passwordInputSelector = "input[name='password']";
+const confirmPasswordInputSelector = "input[name='password_confirmation']";
+const firstNameInputSelector = "input[name='user[first_name]']";
+const lastNameInputSelector = "input[name='user[last_name]']";
+const timeZoneDropdownSelector = "select[name='user[time_zone]']";
+const dateFormatDropdownSelector = "select[name='user[date_format]']";
+const startWeekDropdownSelector = "select[name='user[start_of_week]']";
+const pageHeaderSelector = ".page-header-left";
+const organizationNameInputSelector = "input[name='name']";
+const organizationEmailInputSelector = "input[name='email']";
+const sortingIconSelector = ".sorting_1";
+
+const signUp = {
+  get signUpLink() { return $(signUpButtonSelector) },
+  get emailInput() { return $(emailInputSelector); },
+  get primaryButton() { return $(primaryButtonSelector); },
+  get passwordInput() { return $(passwordInputSelector); },
+  get confirmPasswordInput() { return $(confirmPasswordInputSelector); },
+  get firstNameInput() { return $(firstNameInputSelector); },
+  get lastNameInput() { return $(lastNameInputSelector); },
+  get timeZoneDropdown() { return $(timeZoneDropdownSelector); },
+  get dateFormatDropdown() { return $(dateFormatDropdownSelector); },
+  get startWeekDropdown() { return $(startWeekDropdownSelector); },
+  get pageHeader() { return $(pageHeaderSelector); },
+  get organizationNameInput() { return $(organizationNameInputSelector); },
+  get organizationEmailInput() { return $(organizationEmailInputSelector); },
+  get sortingIcon() { return $(sortingIconSelector); }
+}
+
+describe('AceInvoice Signup', () => {
+  it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
     browser.url('./');
-    browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-    browser.setValue('input[name="password"]', 'welcome');
-    browser.click('input.btn.btn-primary');
+    signUp.signUpLink.click();
 
-    var title = browser.getTitle();
-    console.log('Title is : ', title);
+    var url = browser.getUrl();
+    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+  });
+
+  it('Navigates to password page after adding an valid email', () => {
+    signUp.emailInput.setValue(`test${Math.random()}@webdriverio.com`);
+    signUp.primaryButton.click();
+
+    var passwordInputHeight = signUp.passwordInput.getCssProperty('height');
+    assert.notEqual(passwordInputHeight.parsed.value, 0);
+  });
+
+  it('Creates a user with the email id and password', () => {
+    signUp.passwordInput.setValue('welcome');
+    signUp.confirmPasswordInput.setValue('welcome');
+    signUp.primaryButton.click();
+    browser.pause(500);
+    var headerText = signUp.pageHeader.getText();
+    assert.equal(headerText, 'Enter your Preferences');
+  });
+
+  it('Create preferences', () => {
+    signUp.firstNameInput.waitForVisible(5000);
+    signUp.firstNameInput.setValue('test');
+    signUp.lastNameInput.setValue('webdriverio');
+
+    browser.waitUntil(() => signUp.timeZoneDropdown.getText().length > 1000, 3000);
+    var timezoneSelector = signUp.timeZoneDropdown;
+    timezoneSelector.selectByAttribute('value', 'Mumbai');
+
+    var dateSelector = signUp.dateFormatDropdown;
+    dateSelector.selectByAttribute('value', '%m/%d/%Y');
+
+    var startSelector = signUp.startWeekDropdown;
+    startSelector.selectByAttribute('value', 'monday');
+    signUp.primaryButton.click();
+
+    signUp.organizationNameInput.waitForVisible(3000);
+    const createOrgHeader = signUp.pageHeader.getText();
+    assert.equal(createOrgHeader, 'Add New Organization');
+  });
+
+  it('Creates an organization', () => {
+    signUp.organizationNameInput.waitForVisible(3000);
+    signUp.organizationNameInput.setValue('WebdriverIO');
+    signUp.organizationEmailInput.setValue('test2@webdriverio.com');
+    signUp.primaryButton.click();
+    signUp.sortingIcon.waitForVisible(3000);
+
+    const name = signUp.sortingIcon.getText();
+    assert.equal(name, 'test webdriverio');
+
+    const url = browser.getUrl();
+    assert.include(url, '/team/active');
   });
 });
 ```
-
-Now, the next thing, which is important to this chapter, change log level to `verbose` in `wdio.config.js`.
-
-Good to go, let's run our program with `npm test` command. You will see a bunch of operations happening and printing some data on the console, something like this.
-
-```
-[17:24:04]  COMMAND     POST     "/wd/hub/session"
-[17:24:04]  DATA                {"desiredCapabilities":{"javascriptEnabled":true,"locationContextEnabled":true,"handlesAlerts":true,"rotatable":true,"maxInstances":5,"browserName":"chrome","loggingPrefs":{"browser":"ALL","driver":"ALL"},"requestOrigins":{"url":"http://webdriver.io","version":"4.14.2","name":"webdriverio"}}}
-[17:24:07]  INFO        SET SESSION ID 5facf94a01bffed6e1479c39778b89bf
-[17:24:07]  RESULT              {"acceptInsecureCerts":false,"acceptSslCerts":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","chrome":{"chromedriverVersion":"2.43.600229 (3fae4d0cda5334b4f533bede5a4787f7b832d052)","userDataDir":"/var/folders/v6/_6sh53vn5gl3lct18w533gr80000gn/T/.org.chromium.Chromium.bWkuWC"},"cssSelectorsEnabled":true,"databaseEnabled":false,"goog:chromeOptions":{"debuggerAddress":"localhost:58451"},"handlesAlerts":true,"hasTouchScreen":false,"javascriptEnabled":true,"locationContextEnabled":true,"mobileEmulationEnabled":false,"nativeEvents":true,"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platform":"Mac OS X","rotatable":false,"setWindowRect":true,"takesHeapSnapshot":true,"takesScreenshot":true,"unexpectedAlertBehaviour":"","version":"72.0.3626.121","webStorageEnabled":true,"webdriver.remote.sessionid":"5facf94a01bffed6e1479c39778b89bf"}
-[17:24:07]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/url"
-[17:24:07]  DATA                {"url":"https://staging.aceinvoice.com/"}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
-[17:24:17]  DATA                {"using":"css selector","value":"input[name=\"email\"]"}
-[17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-1"}]
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/clear"
-[17:24:17]  DATA                {}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/value"
-[17:24:17]  DATA                {"value":["n","e","e","r","a","j","@","b","i","g","(10 more items)"],"text":"neeraj@bigbinary.com"}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
-[17:24:17]  DATA                {"using":"css selector","value":"input[name=\"password\"]"}
-[17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-2"}]
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-2/clear"
-[17:24:17]  DATA                {}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-2/value"
-[17:24:17]  DATA                {"value":["w","e","l","c","o","m","e"],"text":"welcome"}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element"
-[17:24:17]  DATA                {"using":"css selector","value":"input.btn.btn-primary"}
-[17:24:17]  RESULT              {"ELEMENT":"0.07742633503067009-3"}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-3/click"
-[17:24:17]  DATA                {}
-[17:24:19]  COMMAND     GET      "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/title"
-[17:24:19]  DATA                {}
-[17:24:19]  RESULT              "Ace Invoice"
-Title is :  Ace Invoice
-․[17:24:19]  COMMAND    DELETE   "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf"
-[17:24:19]  DATA                {}
-```
-
-## Whats exactly happening here?
-
-Webdriver does not handle browser on its own, it is Selenium which takes care of the browser operations. Webdriver just sends a request to selenium server and then selenium server performs operations on browser based on the requests that it gets from the webdriver.
-
-The very first request that webdriver will send out to selenium server is for getting the session ID. As you can see in a response above the first webdriver is requesting the session id to the selenium server. The server then starts the browser and gives back the session ID in JSON response. This session id will be used by webdriver to make all future requests to the selenium server.
-
-Next, as we are setting URL to the browser, webdriver sends out a `post` request to the selenium server with URL in `DATA` as follows
-
-```
-[17:24:07]  COMMAND     POST    "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/url"
-[17:24:07]  DATA                {"url":"https://staging.aceinvoice.com/"}
-```
-
-Very next thing, we are setting a value to the email field. In a program, this may look like a single command but setting a value into text input is a set of three post requests.
-
-First, webdriver will send out the `post` request to find out the element that we want, with the type of selector and value for a selector. The request then sends back element ID, which webdriver IO will use while setting text in input variable.
-
-```
-[17:24:17]  COMMAND     POST    "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
-[17:24:17]  DATA                {"using":"css selector","value":"input[name=\"email\"]"}
-[17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-1"}]
-```
-
-Once webdriver gets element ID, it will send out a request to clear out the content in that element and then will make a third request to set a value in it.
-
-```
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/clear"
-[17:24:17]  DATA                {}
-[17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/value"
-[17:24:17]  DATA                {"value":["n","e","e","r","a","j","@","b","i","g","(10 more items)"],"text":"neeraj@bigbinary.com"}
-```
-
-Same way, webdriver will send out requests for setting value in the password field and then for clicking on submit button.
-
-Then we are fetching the title of the webpage, similarly, webdriver will send out the request for fetching the title of the page. Selenium will then return the title in response as follows.
-
-```
-[17:24:19]  COMMAND     GET      "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/title"
-[17:24:19]  DATA                {}
-[17:24:19]  RESULT              "Ace Invoice"
-```
-
-After that, you will see the console log that we created from the program.
-
-Last request webdriver will send to the selenium server to kill the session. After receiving the delete command for the session, selenium will quit the browser.
-
-Pretty interesting, isn't it? Let's move and explore some other features of WebdriverIO.
