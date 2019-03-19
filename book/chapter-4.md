@@ -28,7 +28,7 @@ _Test runner will find program into this folder so the name has to be case sensi
 
 So let's tweak our old program little bit to run using test runner.
 
-## 4.2 Changing our program.
+## 4.2 Changing our program
 
 Open `tests/specs/first_program.spec.js` into your favorite text editor and change it so as to run with the test runner.
 
