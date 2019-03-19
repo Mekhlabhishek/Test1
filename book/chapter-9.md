@@ -1,12 +1,12 @@
 # Moving to page objects
 
-In last chapter we added complete test suit for the signup flow, but while achieving this we wrote much of duplicate code. Page objects helps us to get rid of the duplicate code. Page object is very interesting topic but at the same time is also complex to understand. So we will not jump onto page objects here. First we will take a first step towards it in this chapter.
+In the last chapter, we added a complete test suit for the signup flow, but while achieving this we wrote much of duplicate code. Page objects help us to get rid of the duplicate code. The page object is a very interesting topic but at the same time is also complex to understand. So we will not jump onto page objects here. First, we will take the first step towards it in this chapter.
 
 ## Browser element
 
-So far we are calling a methods on the browser object. This does not look good, webdriverio gives us a way to get element from the browser and then call a method to it. We can get a hold of the element using `element()` method. This method accepts the selector as a parameter.
+So far we are calling a method on the browser object. This does not look good, webdriverio gives us a way to get an element from the browser and then call a method to it. We can get a hold of the element using `element()` method. This method accepts the selector as a parameter.
 
-With this method in place we can rewrite our old code
+With this method in place, we can rewrite our old code
 
 ```
 browser.click('.signup-button.border-radius-lg');
@@ -18,13 +18,13 @@ as follows
 broser.element('.signup-button.border-radius-lg').click();
 ```
 
-Webdriverio provides handy operator to define this as
+Webdriverio provides a handy operator to define this as
 
 ```
 $('.signup-button.border-radius-lg').click();
 ```
 
-Isn't this looks like an JQuery code and also this makes the code more readable. Also we can define a selector as a constant at the top of the code as
+Isn't this looks like a JQuery code and also this makes the code more readable. Also, we can define a selector as a constant at the top of the code as
 
 ```
 const signUpButtonSelector = '.signup-button.border-radius-lg';
@@ -38,7 +38,7 @@ $(signUpButtonSelector).click();
 
 ## Introduction to getters
 
-Sometimes we unknowingly define a element declaration even before it is present on the page. In such cases you might not get result that you expected. To overcome this `getter` are pretty much handy
+Sometimes we unknowingly define an element declaration even before it is present on the page. In such cases, you might not get a result that you expected. To overcome this `getter` are pretty much handy
 
 ## Declaring getter
 
@@ -50,7 +50,7 @@ const getter = {
 }
 ```
 
-This similar to defining a hash object with few twists. We are declaring key with name `element` and this has to be function. With the above getter defined we can now call it like
+This is similar to defining a hash object with a few twists. We are declaring key with name `element` and this has to be a function. With the above getter defined we can now call it like
 
 
 ```

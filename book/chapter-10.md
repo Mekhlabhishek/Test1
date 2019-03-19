@@ -1,12 +1,12 @@
 # Polishing code
 
-Ok, so with our last chapter we saw how to define getters and elements. With all the data in same file doesn't look good. Let's separate out our code based on the scope.
+Ok, so with our last chapter we saw how to define getters and elements. With all the data in the same file doesn't look good. Let's separate out our code based on the scope.
 
-First we will create a two more folders at the same level where our `specs` folder is namely, `selectors` and `getters`. You can choose any name you want, we found these names pretty easy to understand and get idea about what folder exactly contains.
+First, we will create two more folders at the same level where our `specs` folder is namely, `selectors` and `getters`. You can choose any name you want, we found these names pretty easy to understand and get an idea about what folder exactly contains.
 
 ## Creating a selector file
 
-First we will create a file in selector folder with the name `sign_up_selectors.js`. Let's move all our selectors to this file and export them from this file as
+First, we will create a file in the selector folder with the name `sign_up_selectors.js`. Let's move all our selectors to this file and export them from this file as
 
 ```
 signUpSelectors = {
@@ -33,13 +33,13 @@ So as you can see we created one single hash object with all the selectors and t
 
 ## Creating a getter file
 
-Similar to the selector create a getter file in `getters` folder with the name `sign_up_getters.js`. In this file first we will import the selectors as
+Similar to the selector create a getter file in `getters` folder with the name `sign_up_getters.js`. In this file first, we will import the selectors as
 
 ```
 const signUpSelectors = require('../selectors/sign_up_selectors');
 ```
 
-Next, same like selector we will define a hash object and export it like
+Next, same like selector, we will define a hash object and export it like
 
 ```
 const signUpGetter = {
@@ -68,7 +68,7 @@ Now back to our test case file, we will remove all the declarations that we made
 const signUpGetter = require('../getters/sign_up_getters');
 ```
 
-and now we will use this getter object from imported file to get elements like
+and now we will use this getter object from an imported file to get elements like
 
 ```
 signUpGetter.primaryButton.click();
@@ -76,7 +76,7 @@ signUpGetter.primaryButton.click();
 
 ## Setting a babel
 
-Babel is next gen JS compiler and allows source code transformations. To write test cases using next gen JS install all necessary dependencies using.
+Babel is next-gen JS compiler and allows source code transformations. To write test cases using next-gen JS install all necessary dependencies using.
 
 ```
 npm install --save @babel/core @babel/cli @babel/preset-env @babel/register
@@ -98,7 +98,7 @@ module.exports = {
 }
 ```
 
-## Add before hook in wdio config
+## Add a hook in wdio config
 
 Next step is to tell wdio use babel to compile all of our JS files. We will use the before hook from `wdio.config.js` so uncomment the before hook in wdio config file and add `require('@babel/register');` to the function. Your before hook should look like
 
@@ -110,11 +110,11 @@ before: function (_capabilities, _specs) {
 
 ## Setup babel for mocha
 
-As a last step, we will set mocha to use babel compiler by adding config in `mochaOpts`, which is `compilers: ['js:@babel/register']`. Add this config right after `ui` option and we are done with babel setup.
+As the last step, we will set mocha to use babel compiler by adding config in `mochaOpts`, which is `compilers: ['js:@babel/register']`. Add this config right after `ui` option and we are done with babel setup.
 
-With babel setup in place we can change the JS code in our test cases. First we will rewrite how we export our data from the files.
+With babel setup in place, we can change the JS code in our test cases. First, we will rewrite how we export our data from the files.
 
-Instead of exporting using `module.exports` we will export it with `export default`. So now your selector file with have export statement as
+Instead of exporting using `module.exports` we will export it with `export default`. So now your selector file with have an export statement as
 
 ```
 export default signUpSelectors;
@@ -132,9 +132,9 @@ For importing assert from chai though we will have to use little twist in syntax
 import { assert } from 'chai';
 ```
 
-_When library is exporting multiple data instead of default data then wrapping what we want in `{}` makes sure that we will import only what we need._
+_When a library is exporting multiple data instead of default data then wrapping what we want in `{}` makes sure that we will import only what we need._
 
-With babel and other settings in place our code now should look like
+With babel and other settings in place, our code now should look like
 
 ```
 import { assert } from 'chai';
@@ -203,3 +203,5 @@ describe('AceInvoice Signup', () => {
   });
 });
 ```
+
+In the next chapter, we will look into how to define page elements and how to use them.
