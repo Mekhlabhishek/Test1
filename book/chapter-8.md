@@ -2,7 +2,7 @@
 
 Chai is an assertion rich library which gives us plenty of the options to make the assertion over the Node's assertion library.
 
-## Installation
+## 8.1 Installation
 
 Install chai as a package dependency with the following command.
 
@@ -12,7 +12,7 @@ npm install --save chai
 
 This will install the latest version of chai. Now we are ready to use assertions from the chai library
 
-## Replacing the assertions from Node with chai
+## 8.2 Replacing the assertions from Node with chai
 
 Replacing the assertion is a simple step. Instead of importing the assertion from node let's import it from chai as
 
@@ -24,7 +24,7 @@ That's all, you have integrated chai successfully, go ahead and run test cases o
 
 You can also choose the which style you want to use as `chai` provide the other two styles as `expect` and `should`. `expect` style is very popular in the real world as it makes your test cases more readable, but we will stick to the asset, for now, you are free to update the style if you are not comfortable with the `assert`.
 
-## Quick peek in chai's assertion
+## 8.3 Quick peek in chai's assertion
 
 Take a look at the assertions that are available to use [here](https://www.chaijs.com/api/assert/). Let's use one of them, `include` in the last test case for creating an organization after signup.
 

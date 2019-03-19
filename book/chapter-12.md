@@ -2,6 +2,8 @@
 
 In the last chapter, we created a page object and used in our test cases. If you are still not converted your code then please take a time and convert all your test cases to use page object and not getters. Sample code is [here]()
 
+## 12.1 Creating components
+
 As you can see we are creating a getter for `primaryButton` in almost every page class. At this point, we will take a glimpse of the components.
 We will take out the `primaryButton` getter declaration and action related around that.
 

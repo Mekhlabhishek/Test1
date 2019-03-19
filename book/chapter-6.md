@@ -3,7 +3,7 @@
 In the last chapter, we just checked if the URL of the page is correct or not. In this chapter, we will cover the entire signup workflow.
 So let's begin.
 
-## Setting email for a test account
+## 6.1 Setting email for a test account
 
 In the same namespace, we will create another test case for adding the email for the new account. To create a new `it` block just below the previous one.
 

@@ -4,7 +4,7 @@ Ok, so with our last chapter we saw how to define getters and elements. With all
 
 First, we will create two more folders at the same level where our `specs` folder is namely, `selectors` and `getters`. You can choose any name you want, we found these names pretty easy to understand and get an idea about what folder exactly contains.
 
-## Creating a selector file
+## 10.1 Creating a selector file
 
 First, we will create a file in the selector folder with the name `sign_up_selectors.js`. Let's move all our selectors to this file and export them from this file as
 
@@ -31,7 +31,7 @@ module.exports = signUpSelectors;
 
 So as you can see we created one single hash object with all the selectors and then exported it.
 
-## Creating a getter file
+## 10.2 Creating a getter file
 
 Similar to the selector create a getter file in `getters` folder with the name `sign_up_getters.js`. In this file first, we will import the selectors as
 
@@ -74,7 +74,7 @@ and now we will use this getter object from an imported file to get elements lik
 signUpGetter.primaryButton.click();
 ```
 
-## Setting a babel
+## 10.3 Setting a babel
 
 Babel is next-gen JS compiler and allows source code transformations. To write test cases using next-gen JS install all necessary dependencies using.
 
@@ -82,7 +82,7 @@ Babel is next-gen JS compiler and allows source code transformations. To write t
 npm install --save @babel/core @babel/cli @babel/preset-env @babel/register
 ```
 
-## Creating a babel config file
+## 10.4 Creating a babel config file
 
 Create a file with name `babel.config.js` at the root of the folder with the following config in it.
 
@@ -98,7 +98,7 @@ module.exports = {
 }
 ```
 
-## Add a hook in wdio config
+## 10. Add a hook in wdio config
 
 Next step is to tell wdio use babel to compile all of our JS files. We will use the before hook from `wdio.config.js` so uncomment the before hook in wdio config file and add `require('@babel/register');` to the function. Your before hook should look like
 
@@ -108,7 +108,7 @@ before: function (_capabilities, _specs) {
 },
 ```
 
-## Setup babel for mocha
+## 10.5 Setup babel for mocha
 
 As the last step, we will set mocha to use babel compiler by adding config in `mochaOpts`, which is `compilers: ['js:@babel/register']`. Add this config right after `ui` option and we are done with babel setup.
 

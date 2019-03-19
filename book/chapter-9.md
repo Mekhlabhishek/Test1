@@ -2,7 +2,7 @@
 
 In the last chapter, we added a complete test suit for the signup flow, but while achieving this we wrote much of duplicate code. Page objects help us to get rid of the duplicate code. The page object is a very interesting topic but at the same time is also complex to understand. So we will not jump onto page objects here. First, we will take the first step towards it in this chapter.
 
-## Browser element
+## 9.1 Browser element
 
 So far we are calling a method on the browser object. This does not look good, webdriverio gives us a way to get an element from the browser and then call a method to it. We can get a hold of the element using `element()` method. This method accepts the selector as a parameter.
 
@@ -36,11 +36,11 @@ and then replace the code for same as
 $(signUpButtonSelector).click();
 ```
 
-## Introduction to getters
+## 9.2 Introduction to getters
 
 Sometimes we unknowingly define an element declaration even before it is present on the page. In such cases, you might not get a result that you expected. To overcome this `getter` are pretty much handy
 
-## Declaring getter
+## 9.3 Declaring getter
 
 Creating a getter is very simple. Let's take a look at simple getter to start with.
 

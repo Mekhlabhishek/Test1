@@ -3,7 +3,7 @@
 In the last chapter, we saw how to define a browser element. Page objects are similar to browser elements with few tweaks.
 In page objects, we can define a class and custom method.
 
-## Creating a page
+## 11.1 Creating a page
 
 Create a folder named `pages` at the level of `specs` folder. Inside that folder create two files with name `sign_in.page.js` and `sign_up.page.js`.
 Now, let's define a class in each of the files as follows
@@ -39,7 +39,7 @@ As you can see we haven't exported our class yet, we need to export the object o
 export default new signInPage();
 ```
 
-## Page actions
+## 11.2 Page actions
 
 Now, on the sign-in page in order to redirect to the sign-up page, we need to take action and click on a link on a page. Page action is nothing but a method in a class, by calling that method we can perform our actions. Let's define our click action first as follows
 
@@ -66,7 +66,7 @@ class SignInPage {
 export default new SignInPage();
 ```
 
-## Use case in test cases
+## 11.3 Use case in test cases
 
 Import class object that we exported as
 
@@ -86,7 +86,7 @@ it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
 });
 ```
 
-## Miscellaneous
+## 11.4 Miscellaneous
 
 Now page for sign-in is in place let's create a page for sign-up as follows
 
