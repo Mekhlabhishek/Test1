@@ -135,4 +135,4 @@ it('Navigates to password page after adding an valid email', () => {
   });
 ```
 
-At this point, you will see we are still using `signUpGetter` at some places. Give it a try and convert all test cases to use page objects. You can check your code if you get stuck [here]().
+At this point, you will see we are still using `signUpGetter` at some places. Give it a try and convert all test cases to use page objects. You can check your code if you get stuck [here](https://github.com/bigbinary/learn-webdriverio-book/blob/21-content-about-page-pbjects/book/miscellaneous.md).

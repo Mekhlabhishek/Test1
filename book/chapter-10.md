@@ -98,7 +98,7 @@ module.exports = {
 }
 ```
 
-## 10. Add a hook in wdio config
+## 10.5 Add a hook in wdio config
 
 Next step is to tell wdio use babel to compile all of our JS files. We will use the before hook from `wdio.config.js` so uncomment the before hook in wdio config file and add `require('@babel/register');` to the function. Your before hook should look like
 
@@ -108,7 +108,7 @@ before: function (_capabilities, _specs) {
 },
 ```
 
-## 10.5 Setup babel for mocha
+## 10.6 Setup babel for mocha
 
 As the last step, we will set mocha to use babel compiler by adding config in `mochaOpts`, which is `compilers: ['js:@babel/register']`. Add this config right after `ui` option and we are done with babel setup.
 

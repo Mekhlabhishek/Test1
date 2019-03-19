@@ -1,4 +1,4 @@
-# Setting preferences
+# Setting Preferences
 
 In the last chapter, we added all data for the signup process, but we need to generate the new email every time to make our test cases pass. In this chapter, we will see how to generate new emails and how to create an organization in AceInvoice.
 
