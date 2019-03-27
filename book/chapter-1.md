@@ -1,6 +1,6 @@
 
 
-# 1 Installation
+# Installation
 
 Welcome to the first chapter of learning webdriverio. In this chapter, we will get ready with our
 platform. So let's fasten our belts and start testing with WebdriverIO
@@ -19,9 +19,9 @@ _This should print node version >= 8.15.0_
 
 If the Node is not present on your machine then this is for you, let's install node on your machine.
 There are two ways of installing NodeJS.
-First one is to download the desired node version from [download](https://nodejs.org/en/download) site.
+First one is to download the desired node version from the [official](https://nodejs.org/en/download) site.
 The second one is to install with NVM(Node Version Manager). We recommend installing Node using NVM. This will
-allow you to manage the different Node versions on your local machine. Open terminal on your machine and download
+allow you to manage different Node versions on your local machine. Open terminal on your machine and download
 NVM and install it by the following command.
 
 ```
@@ -29,7 +29,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | b
 ```
 
 
-After completion of the command above you will have to restart your terminal, so go on close your terminal and open it again.
+After completion of the above command, restart your terminal.
 
 Next, verify that NVM is installed on your machine by typing
 
@@ -39,14 +39,13 @@ nvm --version
 
 _This should print version >= 0.33_
 
-Good, that you have NVM installed on your machine let's go and install NodeJS as a next step. Keep in mind you should be
-always installing the LTS(Long Term Support) version of the node. You can find the latest LTS version from the website. Let's install node by
+Now that NVM is installed, let's install NodeJS as the next step. Always keep in mind to install the LTS(Long Term Support) version of the node. You can find the latest LTS version from the website. Let's install node by
 
 ```
 nvm install 10.15.1 # 10.15.1 here is the version of node.
 ```
 
-After finishing the installation check which version you are using currently and which versions are installed on your local machine by typing
+After finishing the installation, check which version you are using currently and which versions are installed on your local machine by typing
 
 ```
 nvm list
@@ -78,7 +77,7 @@ _This should print version >= 6.4.1_
 
 ### 1.2 Installing selenium-standalone and WebdriverIO
 
-Once you have Node in place let's go ahead and install tools that we will be using to test application.
+Once you have Node in place, let's go ahead and install tools that we will be using to test application.
 
 Create a separate directory by
 
@@ -110,7 +109,7 @@ npm install selenium-standalone -g
 ```
 
 Let's install dependencies for selenium by executing the following command.
-This command will install three things
+This will install the following:
 1. `selenium-server`
 2. `chromewebdriver`, for Chrome
 3. `geckodriver`, for firefox
@@ -127,7 +126,7 @@ selenium-standalone start --version=3.4.0
 ```
 
 This will start the selenium server on port `4444`.
-Open your browser and Try to visit [http://localhost:4444](http://localhost:4444)
+Open your browser and try to visit [http://localhost:4444](http://localhost:4444)
 and you will see the selenium webpage.
 
-Hola! That's it. Now you are now ready to write your first program.
+Hola! That's it. Now, you are ready to write your first program.
