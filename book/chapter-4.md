@@ -1,11 +1,11 @@
 # Running program with wdio
 
-In the last chapter, we installed wdio command line interface for running our test suit.
+In the last chapter, we installed wdio command line interface for running our test suite.
 
 At this point, you might be wondering why to install test runner when we can execute the program without it. Here are some reasons
 
-1. Right now we are running only one program, but as go further into course there will different files for different modules. Executing those files one by one will be a very time-consuming job.
-2. Once we add a wdio as a test runner then we do not need to set up the environment every time we run our program. When you execute your program with the test runner, some basic settings will be available to you by default.
+1. Right now we are running only one program, but as we go further into the course there will be different files for different modules. Executing those files one by one will be a very time-consuming job.
+2. Once we add wdio as a test runner, we do not need to set up the environment every time we run our program. When we execute our program with the test runner, some basic settings will be available to us by default.
 
 So let us take a step further
 
@@ -17,20 +17,20 @@ In the configuration, we have a path for test cases as
 specs: [ './test/specs/**/*.js' ]
 ```
 
-So in order to run a test suit let's create a folder test and specs respectively in `aceinvoice_web_selenium_tests` folder as follows
+So, in order to run a test suite, let's create a folder test & specs respectively in `aceinvoice_web_selenium_tests` folder as follows
 
 ```
-mkdir tests && cd tests && mkdir specs && cd specs && cp ../../first_program.js first_program.spec.js
+mkdir test && cd test && mkdir specs && cd specs && cp ../../first_program.js first_program.spec.js
 ```
 
 _Test runner will find program into this folder so the name has to be case sensitive. If you wish to give a different name to the folder change the configuration file respective to the path._
 
 
-So let's tweak our old program little bit to run using test runner.
+So let's tweak our old program a little bit to run using test runner.
 
 ## 4.2 Changing our program
 
-Open `tests/specs/first_program.spec.js` into your favorite text editor and change it so as to run with the test runner.
+Open `test/specs/first_program.spec.js` into your favorite text editor and change it so as to run with the test runner.
 
 1. Remove remote client
 
@@ -62,7 +62,7 @@ with just `./`
 
 3. Update `click()` call
 
-Instead of selecting a element with JQuery and then clicking on element is not a good practice. WebdriverIO give a clean way to do it.
+Instead of selecting an element with JQuery and then clicking on that element, is not a good practice. WebdriverIO gives a clean way to do it.
 We can pass a selector to the click function, so update our click function to look like.
 
 ```
@@ -71,9 +71,9 @@ We can pass a selector to the click function, so update our click function to lo
 
 4. Remove `.end()` call
 
-As said earlier we will not have to worry about the starting and closing the browser session. So go ahead and remove `.end()` method call
+As said earlier, we will not have to worry about starting & closing the browser session. So go ahead and remove `.end()` method call.
 
-At this stage, your final program will look like something this
+At this stage, your final program will look something like this
 
 ```
 browser.url('./');
@@ -82,7 +82,7 @@ browser.click('.signup-button.border-radius-lg');
 browser.pause(2000);
 ```
 
-Try running program now with the command
+Try running the program now with the command
 
 ```
 npm test
@@ -92,11 +92,12 @@ we will see the output on console `0 passing` but browser not performing any ope
 
 ## 4.3 Wrap program into the mocha framework
 
-In mocha framework `describe` is a way to group multiple test cases under some namespace, while `it` is a way to define a test case, you can find more about mocha framework [here](https://mochajs.org/#getting-started)
+In mocha framework, `describe` is a way to group multiple test cases under some namespace, while `it` is a way to define a test case.
+You can find more about mocha framework [here](https://mochajs.org/#getting-started)
 
 Let's create our first mocha test case.
 
-Create a namespace using `describe`, paste following code at the top of `first_program.spec.js`
+Create a namespace using `describe` by adding following code at the top of `first_program.spec.js`
 
 ```
 describe('My first program for test runner', () => {
@@ -104,9 +105,9 @@ describe('My first program for test runner', () => {
 });
 ```
 
-As you can see `describe` takes two arguments, first one is the namespacing title and second is a function to execute.
+As you can see `describe` takes two arguments. First one is the namespacing title and second is a function to execute.
 
-Now we will add a blank test case to it using `it` as
+Now, we will add a blank test case to it using `it` as
 
 ```
 describe('My first program for test runner', () => {
@@ -116,7 +117,8 @@ describe('My first program for test runner', () => {
 });
 ```
 
-Now as the last step, move browser code to the test case function definition, your final code in `first_program.spec.js` should look like
+Now as the last step, move browser code to the test case function definition.
+Your final code in `first_program.spec.js` should look like
 
 ```
 describe('My first program for test runner', () => {
@@ -131,6 +133,6 @@ describe('My first program for test runner', () => {
 
 ## 4.4 Kickoff execution
 
-Once again kickoff program with `npm test`. This time you will see the browser making some progress and logging in into AceInvoice app.
+Once again, kickoff program with `npm test`. This time, you will see the browser making some progress and logging in into AceInvoice app.
 
-So far so good. Till now we are just logging into an app but we are not checking if elements on the browser after completing the execution flow are correct or not. In the next chapter, we will convert our program into a test case.
+So far so good. Till now we are just logging into an app but we are not checking if elements on the browser are correct or not, after completing the execution flow. In the next chapter, we will convert our program into a test case.
