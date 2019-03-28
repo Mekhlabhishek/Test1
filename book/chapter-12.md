@@ -1,6 +1,6 @@
 # Making code generic
 
-In the last chapter, we created a page object and used in our test cases. If you are still not converted your code then please take a time and convert all your test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/21-content-about-page-pbjects/book/miscellaneous.md)
+In the last chapter, we created a page object and used in our test cases. If you have still not converted your code, then please take some time and convert all your test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md)
 
 ## 12.1 Creating components
 
