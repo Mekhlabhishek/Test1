@@ -1,6 +1,6 @@
 # Making code generic
 
-In the last chapter, we created a page object and used in our test cases. If you are still not converted your code then please take a time and convert all your test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/21-content-about-page-pbjects/book/miscellaneous.md)
+In the last chapter, we created a page object and used in our test cases. If you are still not converted your code then please take a time and convert all your test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md)
 
 ## 12.1 Creating components
 
@@ -10,7 +10,7 @@ We will take out the `primaryButton` getter declaration and action related aroun
 Create a new folder called `components` and create a file in that folder with the name `form.component.js` and paste the following code into it.
 
 ```
-import { primaryButtonSelector } from '../selectors/sign_up.selectors';
+import { primaryButtonSelector } from '../selectors/sign_up.selector';
 
 export default class FormComponent {
   get primaryButton() { return $(primaryButtonSelector); }

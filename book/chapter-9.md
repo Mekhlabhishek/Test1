@@ -15,7 +15,7 @@ browser.click('.signup-button.border-radius-lg');
 as follows
 
 ```
-broser.element('.signup-button.border-radius-lg').click();
+browser.element('.signup-button.border-radius-lg').click();
 ```
 
 Webdriverio provides a handy operator to define this as
@@ -125,6 +125,8 @@ describe('AceInvoice Signup', () => {
     signUp.firstNameInput.setValue('test');
     signUp.lastNameInput.setValue('webdriverio');
 
+
+    signUp.timeZoneDropdown.waitForVisible(2000)
     browser.waitUntil(() => signUp.timeZoneDropdown.getText().length > 1000, 3000);
     var timezoneSelector = signUp.timeZoneDropdown;
     timezoneSelector.selectByAttribute('value', 'Mumbai');
