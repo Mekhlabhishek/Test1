@@ -13,7 +13,7 @@ Create a file by executing the following command.
 touch first_program.js
 ```
 
-Open `first_command.js` in VScode and type following code.
+Open `first_program.js` in your favourite editor and type following code.
 
 
 ```
