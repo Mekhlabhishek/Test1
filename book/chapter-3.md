@@ -61,7 +61,7 @@ For this course, we will be using the Chrome browser and not FireFox.
 sync: true
 ```
 
-We will we running our test in a synchronous manner, for two reasons first one it is easier to understand and write test cases in a synchronous manner and second we won't have to check output using `then` callback.
+We will be running our tests in a synchronous manner for two reasons: First, it is easier to understand and write test cases in a synchronous manner and secondly, we don't have to check the output using `then` callback.
 
 4. Settings for log level
 
@@ -128,7 +128,7 @@ you will see an error on a terminal as
 pattern ./test/specs/**/*.js did not match any file
 ```
 
-In addition, if you are getting an error while starting selenium server or getting an error for a local runner, install following packages and try again
+In addition, if you are getting any errors other than the above, may it be while starting selenium server or getting an error for a local runner, install following packages and try again
 
 ```
 npm install --save wdio-selenium-standalone-service selenium-standalone wdio-mocha-framework wdio-local-runner
