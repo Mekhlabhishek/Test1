@@ -39,8 +39,8 @@ describe('My first program for test runner', () => {
     browser.setValue('input[name="password"]', 'welcome');
     browser.click('input.btn.btn-primary');
 
-    const title = browser.getTitle();
-    assert.equal(title, 'Random');
+    const url = browser.getUrl();
+    assert.equal(url, 'http://www.google.com');
   });
 });
 ```
@@ -51,13 +51,13 @@ Go ahead and run test case using `npm test`. You will see that our test case fai
 F
 
 1) AceInvoice SignIn When login is un-successful Shows error message:
-'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
+'https://staging.aceinvoice.com/sign_in' == 'http://www.google.com'
 running chrome
-AssertionError [ERR_ASSERTION]: 'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
+AssertionError [ERR_ASSERTION]: 'https://staging.aceinvoice.com/sign_in' == 'http://www.google.com'
 ```
 
-This is a way to tell the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `http://staging.aceinvoice.com/sign_up` with `Random`.
+This is a way to tell the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `http://staging.aceinvoice.com/sign_in` with `http://www.google.com`.
 
-Now correct test case and replace `http://www.google.com` with `http://staging.aceinvoice.com/sign_up` and run test again, this time it will pass.
+Now correct test case and replace `http://www.google.com` with `http://staging.aceinvoice.com/sign_in` and run test again, this time it will pass.
 
-In this chapter we are only checking a URL of the page what about complete flow of signing up a user. We will take steps toward it in coming chapters. So let's discover more in next chapter.
+In this chapter we are only checking a URL of the page what about complete flow of signing in a user. We will take steps toward it in coming chapters. So let's discover more in next chapter.
