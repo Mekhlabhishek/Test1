@@ -50,7 +50,7 @@ After that, we are initializing the remote client by calling the `init()` method
 
 Then we are navigating to our website by calling `url('https://staging.aceinvoice.com')`.
 
-After navigating to the AceInvoice server will navigate us to the signin page
+After navigating to the AceInvoice, server will navigate us to the signin page.
 
 On the page, there are input elements for the user's email and password and link for `signup` .
 
@@ -86,7 +86,7 @@ Once the server starts, open up a new terminal window and navigate to the direct
 node first_program.js
 ```
 
-You will see Chrome window popping up and navigating to `staging.aceinvoice.com`, then completing login flow and closing chrome window. And on the terminal, you will see the output as
+You will see Chrome window popping up and navigating to `staging.aceinvoice.com`, then completing the sign up flow and closing chrome window. And on the terminal, you will see the output as
 
 ```
 URL is :  https://staging.aceinvoice.com/sign_up
@@ -108,6 +108,6 @@ webdriverio
   .end();
 ```
 
-That's it, you ran your first program successfully. It's time to get more serious. Here we are just completed login flow for AceInvoice. We are not testing if it is correct or not. In coming chapters we will write and run test cases with the `wdio` test runner, till that time you can play with the code above and try some permutations and combinations.
+That's it, you ran your first program successfully. It's time to get more serious. Here we are just completing the sign up flow for AceInvoice. We are not testing if it is correct or not. In coming chapters we will write and run test cases with the `wdio` test runner, till that time you can play with the code above and try some permutations and combinations.
 
 See you in the next chapter.
