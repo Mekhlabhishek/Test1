@@ -128,7 +128,7 @@ you will see an error on a terminal as
 pattern ./test/specs/**/*.js did not match any file
 ```
 
-In addition, if you are getting any errors other than the above, may it be while starting the selenium server or while running into an error for the local runner, install following packages and try again
+In addition, if you are getting any errors other than the above, may it be while starting selenium server or getting an error for a local runner, install following packages and try again
 
 ```
 npm install --save wdio-selenium-standalone-service selenium-standalone wdio-mocha-framework wdio-local-runner
