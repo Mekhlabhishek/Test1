@@ -131,6 +131,6 @@ describe('My first program for test runner', () => {
 
 ## 4.4 Kickoff execution
 
-Once again kickoff program with `npm test`. This time you will see the browser making some progress and logging in into AceInvoice app.
+Once again kickoff program with `npm test`. This time you will see the terminal displaying `1 passing` which means 1 test case passes. You can also try running the test case by removing some characters in the selector value and the terminal would display `0 passing` and `1 failing` with the error information displayed along as well.
 
-So far so good. Till now we are just logging into an app but we are not checking if elements on the browser after completing the execution flow are correct or not. In the next chapter, we will convert our program into a test case.
+So far so good. Till now we are just reaching the sign up page of the app but we are not checking if elements on the browser after completing the execution flow are correct or not. In the next chapter, we will convert our program into a test case.
