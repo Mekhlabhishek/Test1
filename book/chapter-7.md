@@ -86,7 +86,7 @@ Let's take a look at another method called `waitUntil`. This method takes a func
 We will pass an arrow function here to simply check the text length of the select options. If a length is greater than 100 then the browser will continue. Interval parameter is optional here and is a way to tell after how many time browser should check the condition again, a default value is 500ms. Let's add that call by
 
 ```
-browser.waitUntil(() => $("select[name='user[time_zone]']").getText().length > 1000, 3000);
+browser.waitUntil(() => $("select[name='user[time_zone]']").getText().length > 100, 3000);
 ```
 
 Moving ahead if you want to change the DateTime format and start of the week go ahead and add the code for same and click submit and add code to check if server redirected us to the create organization page same way we did for the preferences page.
@@ -139,7 +139,7 @@ describe('AceInvoice Signup', () => {
     dateSelector.selectByAttribute('value', '%m/%d/%Y');
 
     var startSelector = $("select[name='user[start_of_week]']");
-    startSelector.selectByAttribute('value', 'monday');
+    startSelector.selectByAttribute('value', 'Monday');
     browser.click('.btn.btn-primary');
 
     $("input[name='name']").waitForVisible(3000);
