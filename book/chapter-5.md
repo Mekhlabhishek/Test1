@@ -56,8 +56,8 @@ running chrome
 AssertionError [ERR_ASSERTION]: 'https://staging.aceinvoice.com/sign_in' == 'http://www.google.com'
 ```
 
-This is a way to tell the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `http://staging.aceinvoice.com/sign_in` with `http://www.google.com`.
+This is a way to tell the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `https://staging.aceinvoice.com/sign_in` with `http://www.google.com`.
 
-Now correct test case and replace `http://www.google.com` with `http://staging.aceinvoice.com/sign_in` and run test again, this time it will pass.
+Now correct test case and replace `http://www.google.com` with `https://staging.aceinvoice.com/sign_in` and run test again, this time it will pass.
 
 In this chapter we are only checking a URL of the page what about complete flow of signing in a user. We will take steps toward it in coming chapters. So let's discover more in next chapter.
