@@ -9,7 +9,7 @@ First, we will create two more folders at the same level where our `specs` folde
 First, we will create a file in the selector folder with the name `sign_up_selectors.js`. Let's move all our selectors to this file and export them from this file as
 
 ```
-signUpSelectors = {
+const signUpSelectors = {
   signUpButtonSelector: ".signup-button.border-radius-lg",
   emailInputSelector: "input[name='email']",
   primaryButtonSelector: ".btn.btn-primary",
