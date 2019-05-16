@@ -133,7 +133,7 @@ describe('AceInvoice Signup', () => {
     dateSelector.selectByAttribute('value', '%m/%d/%Y');
 
     var startSelector = signUp.startWeekDropdown;
-    startSelector.selectByAttribute('value', 'monday');
+    startSelector.selectByAttribute('value', 'Monday');
     signUp.primaryButton.click();
 
     signUp.organizationNameInput.waitForVisible(3000);
