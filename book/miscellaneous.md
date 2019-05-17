@@ -7,7 +7,7 @@ import {
   organizationEmailInputSelector,
   sortingIconSelector,
   primaryButtonSelector
-} from '../selectors/sign_up.selectors';
+} from '../selectors/sign_up_selectors';
 
 class CreateOrganization {
   get pageHeader() { return $(pageHeaderSelector); }
@@ -47,7 +47,7 @@ import {
   startWeekDropdownSelector,
   primaryButtonSelector,
   pageHeaderSelector
-} from '../selectors/sign_up.selectors';
+} from '../selectors/sign_up_selectors';
 
 class PreferencePage {
   get firstNameInput() { return $(firstNameInputSelector); }
@@ -78,7 +78,7 @@ class PreferencePage {
 
   getPageHeader() {
     this.pageHeader.waitForVisible(5000);
-    return this.pageHeader.getText()
+    return this.pageHeader.getText();
   }
 }
 
@@ -91,7 +91,7 @@ export default new PreferencePage();
 import {
   signUpButtonSelector,
   primaryButtonSelector
-} from '../selectors/sign_up.selectors';
+} from '../selectors/sign_up_selectors';
 
 class SignInPage {
   get signUpLink() { return $(signUpButtonSelector) }
@@ -113,7 +113,7 @@ import {
   primaryButtonSelector,
   passwordInputSelector,
   confirmPasswordInputSelector
-} from "../selectors/sign_up.selectors";
+} from "../selectors/sign_up_selectors";
 
 class SignUpPage {
   get emailInput() { return $(emailInputSelector); }
@@ -143,7 +143,7 @@ export default new SignUpPage();
 ### /test/pages/team_index.page.js
 
 ```
-import { sortingIconSelector } from '../selectors/sign_up.selectors';
+import { sortingIconSelector } from '../selectors/sign_up_selectors';
 
 class TeamIndexPage {
   get sortingIcon() { return $(sortingIconSelector); }
@@ -157,7 +157,7 @@ class TeamIndexPage {
 export default new TeamIndexPage();
 ```
 
-### /team/selectors/sign_up.selectors.js
+### /team/selectors/sign_up_selectors.js
 
 ```
 export const signUpButtonSelector = ".signup-button.border-radius-lg";
@@ -213,7 +213,7 @@ describe('AceInvoice Signup', () => {
   it('Create preferences', () => {
     preferencePage.enterFullName('test', 'webdriverio');
     browser.waitUntil(() => preferencePage.timeZoneDropdown.getText().length > 1000, 3000);
-    preferencePage.setPreferences('Mumbai', '%m/%d/%Y', 'monday');
+    preferencePage.setPreferences('Mumbai', '%m/%d/%Y', 'Monday');
     preferencePage.submit();
     const createOrgHeader = createOrgPage.getPageHeader();
 
