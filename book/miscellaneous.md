@@ -64,7 +64,9 @@ class PreferencePage {
     this.lastNameInput.setValue(lastName);
   }
 
-  setPreferences(timeZone, dateFormat, day) {
+  setPreferences(browser, timeZone, dateFormat, day) {
+    this.timeZoneDropdown.waitForVisible(5000);
+    browser.waitUntil(() => this.timeZoneDropdown.getText().length > 1000, 3000);
     this.timeZoneDropdown.selectByAttribute('value', timeZone);
 
     this.dateFormatDropdown.selectByAttribute('value', dateFormat);
@@ -212,8 +214,7 @@ describe('AceInvoice Signup', () => {
 
   it('Create preferences', () => {
     preferencePage.enterFullName('test', 'webdriverio');
-    browser.waitUntil(() => preferencePage.timeZoneDropdown.getText().length > 1000, 3000);
-    preferencePage.setPreferences('Mumbai', '%m/%d/%Y', 'Monday');
+    preferencePage.setPreferences(browser, 'Mumbai', '%m/%d/%Y', 'Monday');
     preferencePage.submit();
     const createOrgHeader = createOrgPage.getPageHeader();
 

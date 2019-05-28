@@ -22,7 +22,7 @@ const assert = require('chai').assert;
 
 That's all, you have integrated chai successfully, go ahead and run test cases once again and make sure they all are passing.
 
-You can also choose the which style you want to use as `chai` provide the other two styles as `expect` and `should`. `expect` style is very popular in the real world as it makes your test cases more readable, but we will stick to the asset, for now, you are free to update the style if you are not comfortable with the `assert`.
+You can also choose the which style you want to use as `chai` provide the other two styles as `expect` and `should`. `expect` style is very popular in the real world as it makes your test cases more readable, but we will stick with `assert`, for now, you are free to update the style if you are not comfortable with the `assert`.
 
 ## 8.3 Quick peek in chai's assertion
 

@@ -131,6 +131,7 @@ describe('AceInvoice Signup', () => {
     browser.setValue("input[name='user[first_name]']", 'test');
     browser.setValue("input[name='user[last_name]']", 'webdriverio');
 
+    $("select[name='user[time_zone]']").waitForVisible(2000);
     browser.waitUntil(() => $("select[name='user[time_zone]']").getText().length > 1000, 3000);
     var timezoneSelector = $("select[name='user[time_zone]']");
     timezoneSelector.selectByAttribute('value', 'Mumbai');
