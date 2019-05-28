@@ -20,7 +20,7 @@ specs: [ './test/specs/**/*.js' ]
 So in order to run a test suit let's create a folder test and specs respectively in `aceinvoice_web_selenium_tests` folder as follows
 
 ```
-mkdir tests && cd tests && mkdir specs && cd specs && cp ../../first_program.js first_program.spec.js
+mkdir test && cd test && mkdir specs && cd specs && cp ../../first_program.js first_program.spec.js
 ```
 
 _Test runner will find program into this folder so the name has to be case sensitive. If you wish to give a different name to the folder change the configuration file respective to the path._
@@ -30,7 +30,7 @@ So let's tweak our old program little bit to run using test runner.
 
 ## 4.2 Changing our program
 
-Open `tests/specs/first_program.spec.js` into your favorite text editor and change it so as to run with the test runner.
+Open `test/specs/first_program.spec.js` into your favorite text editor and change it so as to run with the test runner.
 
 1. Remove remote client
 
