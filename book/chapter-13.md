@@ -1,6 +1,6 @@
-# Insides for WebdriverIO and Selenium
+# How WebdriverIO and Selenium Work Together
 
-Welcome to the advanced section of the WebdriverIO course. In the last chapters, we saw how to write test cases and run them with the mocha framework. Now, we are going to see some advanced features for WebdriverIO. So, let's begin with taking a look into how webdriverio and selenium do a job for us.
+Welcome to the last section of the WebdriverIO course. In last few chapters, we saw how to write test cases and run them with the mocha framework. Now, we are going to see some advanced features for WebdriverIO. So, let's begin with taking a look into how WebdriverIO and Selenium do a job for us.
 
 ## Getting ready
 
@@ -60,13 +60,13 @@ Title is :  Ace Invoice
 [17:24:19]  DATA                {}
 ```
 
-## Whats exactly happening here?
+## Explanation
 
-Webdriver does not handle browser on its own, it is Selenium which takes care of the browser operations. Webdriver just sends a request to selenium server and then selenium server performs operations on browser based on the requests that it gets from the webdriver.
+Webdriver does not handle browser on its own, it is Selenium which takes care of the browser operations. Webdriver just sends a request to selenium server and then selenium server performs operations on browser based on the request that it gets from the Webdriver.
 
-The very first request that webdriver will send out to selenium server is for getting the session ID. As you can see in a response above the first webdriver is requesting the session id to the selenium server. The server then starts the browser and gives back the session ID in JSON response. This session id will be used by webdriver to make all future requests to the selenium server.
+The very first request that Webdriver will send out to Selenium server is for getting the session ID. As you can see in a response above, first Webdriver is requesting the session ID to the Selenium server. The server then starts the browser and gives back the session ID in JSON response. This session ID will be used by Webdriver to make all future requests to the Selenium server.
 
-Next, as we are setting URL to the browser, webdriver sends out a `post` request to the selenium server with URL in `DATA` as follows
+Next, as we are setting URL to the browser, Webdriver sends out a `post` request to the Selenium server with URL in `DATA` as follows
 
 ```
 [17:24:07]  COMMAND     POST    "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/url"
@@ -75,7 +75,7 @@ Next, as we are setting URL to the browser, webdriver sends out a `post` request
 
 Very next thing, we are setting a value to the email field. In a program, this may look like a single command but setting a value into text input is a set of three post requests.
 
-First, webdriver will send out the `post` request to find out the element that we want, with the type of selector and value for a selector. The request then sends back element ID, which webdriver IO will use while setting text in input variable.
+First, webdriver will send out the `post` request to find out the element that we want, with the type of selector and value for a selector. The request then sends back element ID, which Webdriver IO will use while setting text in input variable.
 
 ```
 [17:24:17]  COMMAND     POST    "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
@@ -83,16 +83,19 @@ First, webdriver will send out the `post` request to find out the element that w
 [17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-1"}]
 ```
 
-Once webdriver gets element ID, it will send out a request to clear out the content in that element and then will make a third request to set a value in it.
+Once Webdriver gets element ID, it will send out a request to clear out the content in that element and then will make a third request to set a value in it.
 
 ```
 [17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/clear"
 [17:24:17]  DATA                {}
+```
+
+```
 [17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/value"
 [17:24:17]  DATA                {"value":["n","e","e","r","a","j","@","b","i","g","(10 more items)"],"text":"neeraj@bigbinary.com"}
 ```
 
-Same way, webdriver will send out requests for setting value in the password field and then for clicking on submit button.
+Same way, Webdriver will send out requests for setting value in the password field and then for clicking on submit button.
 
 Then we are fetching the title of the webpage, similarly, webdriver will send out the request for fetching the title of the page. Selenium will then return the title in response as follows.
 
@@ -104,6 +107,6 @@ Then we are fetching the title of the webpage, similarly, webdriver will send ou
 
 After that, you will see the console log that we created from the program.
 
-Last request webdriver will send to the selenium server to kill the session. After receiving the delete command for the session, selenium will quit the browser.
+Last request Webdriver will send to the Selenium server to kill the session. After receiving the delete command for the session, selenium will quit the browser.
 
-Pretty interesting, isn't it? Let's move and explore some other features of WebdriverIO.
+So as we all know how exactly WebdriverIO and Selenium works together let's go and add some real test cases.
