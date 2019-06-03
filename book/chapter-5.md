@@ -36,7 +36,7 @@ describe('My first program for test runner', () => {
     browser.url('./');
     browser.click('.signup-button.border-radius-lg');
     const url = browser.getUrl();
-    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+    assert.equal(url, 'http://www.google.com');
   });
 });
 ```
