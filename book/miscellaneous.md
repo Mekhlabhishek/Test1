@@ -159,7 +159,7 @@ class TeamIndexPage {
 export default new TeamIndexPage();
 ```
 
-### /team/selectors/sign_up_selectors.js
+### /test/selectors/sign_up_selectors.js
 
 ```
 export const signUpButtonSelector = ".signup-button.border-radius-lg";
