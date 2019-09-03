@@ -110,7 +110,8 @@ Last part of this chapter is to make sure that your `package.json` file contains
   "devDependencies": {
     "wdio-dot-reporter": "0.0.10",
     "wdio-mocha-framework": "^0.6.4",
-    "wdio-selenium-standalone-service": "0.0.12"
+    "wdio-selenium-standalone-service": "0.0.12",
+    "wdio-spec-reporter": "~0.1.0"
   }
 }
 
