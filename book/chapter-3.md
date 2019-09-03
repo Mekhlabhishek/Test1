@@ -91,7 +91,7 @@ Make sure you have `selenium-standalone` as a test runner service for you
 path: '\',
 ```
 
-Delete this path variable.
+Delete the path variable if it exists.
 
 _What about other settings? Let's focus on these right now to get started with test runner. We will cover the rest of the settings in detail in the later part of the course_
 
