@@ -32,7 +32,7 @@ Good to go, let's run our program with `npm test` command. You will see a bunch 
 [17:24:07]  INFO        SET SESSION ID 5facf94a01bffed6e1479c39778b89bf
 [17:24:07]  RESULT              {"acceptInsecureCerts":false,"acceptSslCerts":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","chrome":{"chromedriverVersion":"2.43.600229 (3fae4d0cda5334b4f533bede5a4787f7b832d052)","userDataDir":"/var/folders/v6/_6sh53vn5gl3lct18w533gr80000gn/T/.org.chromium.Chromium.bWkuWC"},"cssSelectorsEnabled":true,"databaseEnabled":false,"goog:chromeOptions":{"debuggerAddress":"localhost:58451"},"handlesAlerts":true,"hasTouchScreen":false,"javascriptEnabled":true,"locationContextEnabled":true,"mobileEmulationEnabled":false,"nativeEvents":true,"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platform":"Mac OS X","rotatable":false,"setWindowRect":true,"takesHeapSnapshot":true,"takesScreenshot":true,"unexpectedAlertBehaviour":"","version":"72.0.3626.121","webStorageEnabled":true,"webdriver.remote.sessionid":"5facf94a01bffed6e1479c39778b89bf"}
 [17:24:07]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/url"
-[17:24:07]  DATA                {"url":"https://staging.aceinvoice.com/"}
+[17:24:07]  DATA                {"url":"https://qa.aceinvoice.com/"}
 [17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
 [17:24:17]  DATA                {"using":"css selector","value":"input[name=\"email\"]"}
 [17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-1"}]
@@ -70,7 +70,7 @@ Next, as we are setting URL to the browser, Webdriver sends out a `post` request
 
 ```
 [17:24:07]  COMMAND     POST    "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/url"
-[17:24:07]  DATA                {"url":"https://staging.aceinvoice.com/"}
+[17:24:07]  DATA                {"url":"https://qa.aceinvoice.com/"}
 ```
 
 Very next thing, we are setting a value to the email field. In a program, this may look like a single command but setting a value into text input is a set of three post requests.
