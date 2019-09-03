@@ -47,7 +47,7 @@ webdriverio
 and use `browser` instead, so the program will look like
 
 ```
-browser.url('https://staging.aceinvoice.com');
+browser.url('https://qa.aceinvoice.com');
 ```
 
 2. Change url() call
@@ -55,7 +55,7 @@ browser.url('https://staging.aceinvoice.com');
 When we use `browser` variable from the configuration, it already has base url with it, so we don't need to pass an explicit URL anymore, now replace
 
 ```
-https://staging.aceinvoice.com
+https://qa.aceinvoice.com
 ```
 
 with just `./`
@@ -132,7 +132,7 @@ describe('My first program for test runner', () => {
 });
 ```
 
-Output now is `https://staging.aceinvoice.com/sign_up`.
+Output now is `https://qa.aceinvoice.com/sign_up`.
 
 ## 4.4 Kickoff execution
 

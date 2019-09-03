@@ -50,14 +50,14 @@ F
 1 failing
 
 1) My first program for test runner My first test:
-'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
+'https://qa.aceinvoice.com/sign_up' == 'http://www.google.com'
 running chrome
-AssertionError [ERR_ASSERTION]: 'https://staging.aceinvoice.com/sign_in' == 'http://www.google.com'
+AssertionError [ERR_ASSERTION]: 'https://qa.aceinvoice.com/sign_in' == 'http://www.google.com'
 ```
 
 
-This is a way to tell the URL of the page is not `http://www.google.com`, as per our expectations. `assert` is comparing `http://staging.aceinvoice.com/sign_up` with `http://www.google.com`.
+This is a way to tell the URL of the page is not `http://www.google.com`, as per our expectations. `assert` is comparing `http://qa.aceinvoice.com/sign_up` with `http://www.google.com`.
 
-Now we can correct test case by replacing `http://www.google.com` with `https://staging.aceinvoice.com/sign_up` and running test again, this time it should pass.
+Now we can correct test case by replacing `http://www.google.com` with `https://qa.aceinvoice.com/sign_up` and running test again, this time it should pass.
 
 In this chapter we are only checking a URL of the page what about complete flow of signing in a user. We will take steps toward it in coming chapters. So let's discover more in next chapter.

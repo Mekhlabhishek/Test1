@@ -72,7 +72,7 @@ logLevel: 'silent'
 5. Base URL
 
 ```
-baseUrl: 'https://staging.aceinvoice.com'
+baseUrl: 'https://qa.aceinvoice.com'
 ```
 
 Every time when browser instance gets created, it will call out for base URL
