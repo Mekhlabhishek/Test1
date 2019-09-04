@@ -5,7 +5,7 @@ In page objects, we can define a class and custom method.
 
 ## 11.1 Creating a page
 
-Create a folder named `pages` at the level of `specs` folder. Inside that folder create two files with name `sign_in.page.js` and `sign_up.page.js`.
+Create a folder named `pages` at the level of `specs` folder. Inside that folder create two files with names `sign_in.page.js` and `sign_up.page.js`.
 Now, let's define a class in each of the files as follows
 
 ```
@@ -36,7 +36,7 @@ class SignInPage {
 As you can see we haven't exported our class yet, we need to export the object of the class in order to use it directly in test cases. Add export statement at the end of the file as
 
 ```
-export default new signInPage();
+export default new SignInPage();
 ```
 
 ## 11.2 Page actions
@@ -77,18 +77,18 @@ import signInPage from '../pages/sign_in.page';
 Now, with this import in place, our very first test case will look like
 
 ```
-it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
+it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
   browser.url('./');
   signInPage.clickSignUpLink();
 
   var url = browser.getUrl();
-  assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+  assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
 });
 ```
 
 ## 11.4 Miscellaneous
 
-Now page for sign-in is in place let's create a page for sign-up as follows
+Now page for sign-in is in place, let's create a page for sign-up as follows
 
 ```
 import signUpSelectors from "../selectors/sign_up_selectors";
@@ -118,10 +118,10 @@ class SignUpPage {
 export default new SignUpPage();
 ```
 
-With sign-up page object is in place let's use it in test cases. Our very next test case will look like as follows
+With sign-up page object is in place, let's use it in test cases. Our very next test case will look like as follows
 
 ```
-it('Navigates to password page after adding an valid email', () => {
+  it('Navigates to password page after adding an valid email', () => {
     signUpPage.enterEmail(`test${Math.random()}@webdriverio.com`);
     var passwordInputHeight = signUpPage.passwordInput.getCssProperty('height');
     assert.notEqual(passwordInputHeight.parsed.value, 0);
@@ -129,10 +129,10 @@ it('Navigates to password page after adding an valid email', () => {
 
   it('Creates a user with the email id and password', () => {
     signUpPage.enterPassword('welcome');
-    signUpGetter.pageHeader.waitForVisible(5000);
-    var headerText = signUpGetter.pageHeader.getText();
-    assert.equal(headerText, 'Enter your Preferences');
+    signUpGetters.pageHeader.waitForVisible(5000);
+    var headerText = signUpGetters.pageHeader.getText();
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 ```
 
-At this point, you will see we are still using `signUpGetter` at some places. Give it a try and convert all test cases to use page objects. You can check your code if you get stuck [here](https://github.com/bigbinary/learn-webdriverio-book/blob/21-content-about-page-pbjects/book/miscellaneous.md).
+At this point, you will see we are still using `signUpGetter` at some places. Give it a try and convert all test cases to use page objects. You can check your code if you get stuck [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md).

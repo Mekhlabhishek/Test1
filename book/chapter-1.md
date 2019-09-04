@@ -24,12 +24,31 @@ The second one is to install with NVM(Node Version Manager). We recommend instal
 allow you to manage different Node versions on your local machine. Open terminal on your machine and download
 NVM and install it by the following command.
 
+#### Mac, Linux users
+
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ```
 
+#### Windows users
+
+NVM is not available for Windows directly you need to download the installer from [here](https://github.com/coreybutler/nvm-windows/releases).
+At the end of installation you may see following error
+
+```
+The system cannot find the file specified
+```
+
+To overcome this error, follow steps
+
+1. Go to c:\Users\{username}\AppData\Roaming\nvm directory,
+2. copy settings.txt and
+3. paste it to c:\ .
+
 
 After completion of the above command, restart your terminal.
+
+_For windows users, you need to open a terminal with admin access. To open a terminal using admin access, right click on cmd and select `Run as administrator` option._
 
 Next, verify that NVM is installed on your machine by typing
 
@@ -74,6 +93,14 @@ Installing Node also installs `npm` along with it. Verify that npm is installed 
 npm -v
 ```
 _This should print version >= 6.4.1_
+
+Windows user may face error here stating that `npm command not found`. In order to make it go away try following steps.
+
+1. Open control panel
+2. Click on `User accounts`
+3. click on `Change my environment variables`
+4. At the end of the variable add `C:\Program Files\nodejs` and click Ok.
+5. Restart command prompt as admin and try again. This time it it should show correct version.
 
 ### 1.2 Installing selenium-standalone and WebdriverIO
 

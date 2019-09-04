@@ -47,7 +47,7 @@ webdriverio
 and use `browser` instead, so the program will look like
 
 ```
-browser.url('https://staging.aceinvoice.com');
+browser.url('https://qa.aceinvoice.com');
 ```
 
 2. Change url() call
@@ -55,7 +55,7 @@ browser.url('https://staging.aceinvoice.com');
 When we use `browser` variable from the configuration, it already has base url with it, so we don't need to pass an explicit URL anymore, now replace
 
 ```
-https://staging.aceinvoice.com
+https://qa.aceinvoice.com
 ```
 
 with just `./`
@@ -77,9 +77,8 @@ At this stage, your final program will look something like this
 
 ```
 browser.url('./');
-browser.pause(1000);
 browser.click('.signup-button.border-radius-lg');
-browser.pause(2000);
+console.log(browser.getUrl());
 ```
 
 Try running the program now with the command
@@ -88,7 +87,9 @@ Try running the program now with the command
 npm test
 ```
 
-we will see the output on console `0 passing` but browser not performing any operations.
+we will see the output on console `0 passing` and it seems browser is not performing any operations. However that is not the case. Above commnads are executed however they are not yet using synchronous mode of test runner. As we can see that `browser.getUrl()` is returning a promise here and not resoving.
+
+Output is `{ state: 'pending' }`. Lets fix that in next section.
 
 ## 4.3 Wrap program into the mocha framework
 
@@ -117,8 +118,9 @@ describe('My first program for test runner', () => {
 });
 ```
 
-Now as the last step, move browser code to the test case function definition.
+Now as the last step, move browser code to the test case function definition. You can also add browser.pause() statements to actually see what's happening
 Your final code in `first_program.spec.js` should look like
+
 
 ```
 describe('My first program for test runner', () => {
@@ -126,10 +128,13 @@ describe('My first program for test runner', () => {
       browser.url('./');
       browser.pause(1000);
       browser.click('.signup-button.border-radius-lg');
+      console.log(browser.getUrl());
       browser.pause(1000);
   });
 });
 ```
+
+Output now is `https://qa.aceinvoice.com/sign_up`.
 
 ## 4.4 Kickoff execution
 

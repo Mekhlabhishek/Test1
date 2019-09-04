@@ -73,7 +73,7 @@ logLevel: 'silent'
 5. Base URL
 
 ```
-baseUrl: 'https://staging.aceinvoice.com'
+baseUrl: 'https://qa.aceinvoice.com'
 ```
 
 Every time when browser instance gets created, it will call out for base URL
@@ -86,7 +86,17 @@ services: ['selenium-standalone']
 
 Make sure you have `selenium-standalone` as a test runner service for you
 
+
+7. Path
+
+```
+path: '\',
+```
+
+Delete the path variable if it exists.
+
 _What about other settings? Let's focus on these right now to get started with test runner. We will cover the rest of the settings in detail, in the later part of the course_
+
 
 ## 3.4 Use selenium as a service
 
@@ -111,7 +121,8 @@ Last part of this chapter is to make sure that your `package.json` file contains
   "devDependencies": {
     "wdio-dot-reporter": "0.0.10",
     "wdio-mocha-framework": "^0.6.4",
-    "wdio-selenium-standalone-service": "0.0.12"
+    "wdio-selenium-standalone-service": "0.0.12",
+    "wdio-spec-reporter": "~0.1.0"
   }
 }
 
@@ -129,7 +140,7 @@ you will see an error on terminal as
 pattern ./test/specs/**/*.js did not match any file
 ```
 
-In addition, if you are getting an error while starting selenium server or getting an error for a local runner, install following packages and try again
+In addition, if you are getting any errors other than the above, may it be while starting selenium server or getting an error for a local runner, install following packages and try again
 
 ```
 npm install --save wdio-selenium-standalone-service selenium-standalone wdio-mocha-framework wdio-local-runner

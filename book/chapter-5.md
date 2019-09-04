@@ -28,15 +28,13 @@ assert.equal(url, 'http://www.google.com');
 
 Also remove `.pause()` calls from the program as we don't need them anymore. Our test case at this moment will look like
 
-
 ```
-const assert = require('assert');
+const assert = require('assert')
 
 describe('My first program for test runner', () => {
   it('My first test', () => {
     browser.url('./');
     browser.click('input.btn.btn-primary');
-
     const url = browser.getUrl();
     assert.equal(url, 'http://www.google.com');
   });
@@ -48,14 +46,17 @@ Go ahead and run the test case using `npm test`. You will see that our test case
 ```
 F
 
+0 passing (14.60s)
+1 failing
+
 1) My first program for test runner My first test:
-'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
+'https://qa.aceinvoice.com/sign_up' == 'http://www.google.com'
 running chrome
-AssertionError [ERR_ASSERTION]: 'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
+AssertionError [ERR_ASSERTION]: 'https://qa.aceinvoice.com/sign_in' == 'http://www.google.com'
 ```
 
-This is a way to tell that the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `http://staging.aceinvoice.com/sign_up` with `http://www.google.com`.
+This is a way to tell that the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `http://qa.aceinvoice.com/sign_up` with `http://www.google.com`.
 
-Now, correct the test case by replacing `http://www.google.com` with `http://staging.aceinvoice.com/sign_up` and run it again. This time it will pass.
+Now, correct the test case by replacing `http://www.google.com` with `http://qa.aceinvoice.com/sign_up` and run it again. This time it will pass.
 
 In this chapter, we are only checking the URL of the page but what about complete flow of signing up a user. We will take steps towards it in coming chapters. So let's discover more in next chapter.
