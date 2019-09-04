@@ -85,6 +85,14 @@ services: ['selenium-standalone']
 
 Make sure you have `selenium-standalone` as a test runner service for you
 
+7. Path
+
+```
+path: '\',
+```
+
+Delete the path variable if it exists.
+
 _What about other settings? Let's focus on these right now to get started with test runner. We will cover the rest of the settings in detail in the later part of the course_
 
 ## 3.4 Use selenium as a service
