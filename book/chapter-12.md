@@ -10,7 +10,7 @@ We will take out the `primaryButton` getter declaration and action related aroun
 Create a new folder called `components` and create a file in that folder with the name `form.component.js` and paste the following code into it.
 
 ```
-import { primaryButtonSelector } from '../selectors/sign_up.selectors';
+import { primaryButtonSelector } from '../selectors/sign_up.selector';
 
 export default class FormComponent {
   get primaryButton() { return $(primaryButtonSelector); }

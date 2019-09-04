@@ -75,7 +75,7 @@ const startWeekDropdownSelector = "select[name='user[start_of_week]']";
 const pageHeaderSelector = ".page-header-left";
 const organizationNameInputSelector = "input[name='name']";
 const organizationEmailInputSelector = "input[name='email']";
-const sortingIconSelector = ".sorting_1";
+const cardSelector = ".card";
 
 const signUp = {
   get signUpLink() { return $(signUpButtonSelector) },
@@ -91,16 +91,16 @@ const signUp = {
   get pageHeader() { return $(pageHeaderSelector); },
   get organizationNameInput() { return $(organizationNameInputSelector); },
   get organizationEmailInput() { return $(organizationEmailInputSelector); },
-  get sortingIcon() { return $(sortingIconSelector); }
+  get card() { return $(cardSelector); }
 }
 
 describe('AceInvoice Signup', () => {
-  it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
+  it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
     signUp.signUpLink.click();
 
     var url = browser.getUrl();
-    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+    assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
   });
 
   it('Navigates to password page after adding an valid email', () => {
@@ -117,7 +117,7 @@ describe('AceInvoice Signup', () => {
     signUp.primaryButton.click();
     browser.pause(500);
     var headerText = signUp.pageHeader.getText();
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 
   it('Create preferences', () => {
@@ -125,6 +125,8 @@ describe('AceInvoice Signup', () => {
     signUp.firstNameInput.setValue('test');
     signUp.lastNameInput.setValue('webdriverio');
 
+
+    signUp.timeZoneDropdown.waitForVisible(2000)
     browser.waitUntil(() => signUp.timeZoneDropdown.getText().length > 1000, 3000);
     var timezoneSelector = signUp.timeZoneDropdown;
     timezoneSelector.selectByAttribute('value', 'Mumbai');
@@ -133,7 +135,7 @@ describe('AceInvoice Signup', () => {
     dateSelector.selectByAttribute('value', '%m/%d/%Y');
 
     var startSelector = signUp.startWeekDropdown;
-    startSelector.selectByAttribute('value', 'monday');
+    startSelector.selectByAttribute('value', 'Monday');
     signUp.primaryButton.click();
 
     signUp.organizationNameInput.waitForVisible(3000);
@@ -146,10 +148,10 @@ describe('AceInvoice Signup', () => {
     signUp.organizationNameInput.setValue('WebdriverIO');
     signUp.organizationEmailInput.setValue('test2@webdriverio.com');
     signUp.primaryButton.click();
-    signUp.sortingIcon.waitForVisible(3000);
+    signUp.card.waitForVisible(3000);
 
-    const name = signUp.sortingIcon.getText();
-    assert.equal(name, 'test webdriverio');
+    const name = signUp.card.getText();
+    assert.equal(name, 'Ace Invoice will be sending emails to your client and to your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
 
     const url = browser.getUrl();
     assert.include(url, '/team/active');

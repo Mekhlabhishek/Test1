@@ -7,7 +7,7 @@ import {
   organizationEmailInputSelector,
   sortingIconSelector,
   primaryButtonSelector
-} from '../selectors/sign_up.selectors';
+} from '../selectors/sign_up_selectors';
 
 class CreateOrganization {
   get pageHeader() { return $(pageHeaderSelector); }
@@ -47,7 +47,7 @@ import {
   startWeekDropdownSelector,
   primaryButtonSelector,
   pageHeaderSelector
-} from '../selectors/sign_up.selectors';
+} from '../selectors/sign_up_selectors';
 
 class PreferencePage {
   get firstNameInput() { return $(firstNameInputSelector); }
@@ -64,7 +64,9 @@ class PreferencePage {
     this.lastNameInput.setValue(lastName);
   }
 
-  setPreferences(timeZone, dateFormat, day) {
+  setPreferences(browser, timeZone, dateFormat, day) {
+    this.timeZoneDropdown.waitForVisible(5000);
+    browser.waitUntil(() => this.timeZoneDropdown.getText().length > 1000, 3000);
     this.timeZoneDropdown.selectByAttribute('value', timeZone);
 
     this.dateFormatDropdown.selectByAttribute('value', dateFormat);
@@ -78,7 +80,7 @@ class PreferencePage {
 
   getPageHeader() {
     this.pageHeader.waitForVisible(5000);
-    return this.pageHeader.getText()
+    return this.pageHeader.getText();
   }
 }
 
@@ -91,7 +93,7 @@ export default new PreferencePage();
 import {
   signUpButtonSelector,
   primaryButtonSelector
-} from '../selectors/sign_up.selectors';
+} from '../selectors/sign_up_selectors';
 
 class SignInPage {
   get signUpLink() { return $(signUpButtonSelector) }
@@ -113,7 +115,7 @@ import {
   primaryButtonSelector,
   passwordInputSelector,
   confirmPasswordInputSelector
-} from "../selectors/sign_up.selectors";
+} from "../selectors/sign_up_selectors";
 
 class SignUpPage {
   get emailInput() { return $(emailInputSelector); }
@@ -143,7 +145,7 @@ export default new SignUpPage();
 ### /test/pages/team_index.page.js
 
 ```
-import { sortingIconSelector } from '../selectors/sign_up.selectors';
+import { sortingIconSelector } from '../selectors/sign_up_selectors';
 
 class TeamIndexPage {
   get sortingIcon() { return $(sortingIconSelector); }
@@ -157,7 +159,7 @@ class TeamIndexPage {
 export default new TeamIndexPage();
 ```
 
-### /team/selectors/sign_up.selectors.js
+### /test/selectors/sign_up_selectors.js
 
 ```
 export const signUpButtonSelector = ".signup-button.border-radius-lg";
@@ -188,12 +190,12 @@ import createOrgPage from '../pages/create_organization.page';
 import teamIndexPage from '../pages/team_index.page';
 
 describe('AceInvoice Signup', () => {
-  it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
+  it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
     signInPage.clickSignUpLink();
     var url = browser.getUrl();
 
-    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+    assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
   });
 
   it('Navigates to password page after adding an valid email', () => {
@@ -207,13 +209,12 @@ describe('AceInvoice Signup', () => {
     signUpPage.enterPassword('welcome');
     var headerText = preferencePage.getPageHeader();
 
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 
   it('Create preferences', () => {
     preferencePage.enterFullName('test', 'webdriverio');
-    browser.waitUntil(() => preferencePage.timeZoneDropdown.getText().length > 1000, 3000);
-    preferencePage.setPreferences('Mumbai', '%m/%d/%Y', 'monday');
+    preferencePage.setPreferences(browser, 'Mumbai', '%m/%d/%Y', 'Monday');
     preferencePage.submit();
     const createOrgHeader = createOrgPage.getPageHeader();
 

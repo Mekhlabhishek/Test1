@@ -20,7 +20,7 @@ browser.setValue('input[name="email"]', 'test@webdriver.com');
 After adding an email we also want to click on the submit button. So our next step will be clicking on the submit button using `click()` function as follows.
 
 ```
-browset.click('.btn.btn-primary');
+browser.click('.btn.btn-primary');
 ```
 
 After entering an email for our new account server will redirect us to the second step for adding a password. Here we can check that if the field for a password is present or not. For this test case, we will use another function called `getCssProperty()`. This function also accepts two values. First one the selector for the element and second one the CSS value that we want to fetch.
@@ -48,13 +48,15 @@ assert.notEqual(passwordHeight.parsed.value, 0);
 At this moment our file will look something like this
 
 ```
+const assert = require('assert');
+
 describe('AceInvoice SignUp', () => {
-  it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
+  it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
     browser.click('.signup-button.border-radius-lg');
 
     var url = browser.getUrl();
-    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+    assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
   });
 
   it('Navigates to password page after adding an valid email', () => {

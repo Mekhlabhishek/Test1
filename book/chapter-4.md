@@ -20,7 +20,7 @@ specs: [ './test/specs/**/*.js' ]
 So in order to run a test suit let's create a folder test and specs respectively in `aceinvoice_web_selenium_tests` folder as follows
 
 ```
-mkdir tests && cd tests && mkdir specs && cd specs && cp ../../first_program.js first_program.spec.js
+mkdir test && cd test && mkdir specs && cd specs && mv ../../first_program.js first_program.spec.js
 ```
 
 _Test runner will find program into this folder so the name has to be case sensitive. If you wish to give a different name to the folder change the configuration file respective to the path._
@@ -30,7 +30,7 @@ So let's tweak our old program little bit to run using test runner.
 
 ## 4.2 Changing our program
 
-Open `tests/specs/first_program.spec.js` into your favorite text editor and change it so as to run with the test runner.
+Open `test/specs/first_program.spec.js` into your favorite text editor and change it so as to run with the test runner.
 
 1. Remove remote client
 
@@ -47,7 +47,7 @@ webdriverio
 and use `browser` instead, so the program will look like
 
 ```
-browser.url('https://staging.aceinvoice.com');
+browser.url('https://qa.aceinvoice.com');
 ```
 
 2. Change url() call
@@ -55,7 +55,7 @@ browser.url('https://staging.aceinvoice.com');
 When we use `browser` variable from the configuration, it already has base url with it, so we don't need to pass an explicit URL anymore, now replace
 
 ```
-https://staging.aceinvoice.com
+https://qa.aceinvoice.com
 ```
 
 with just `./`
@@ -77,9 +77,8 @@ At this stage, your final program will look like something this
 
 ```
 browser.url('./');
-browser.pause(1000);
 browser.click('.signup-button.border-radius-lg');
-browser.pause(2000);
+console.log(browser.getUrl());
 ```
 
 Try running program now with the command
@@ -88,7 +87,9 @@ Try running program now with the command
 npm test
 ```
 
-we will see the output on console `0 passing` but browser not performing any operations.
+we will see the output on console `0 passing` and it seems browser is not performing any operations. However that is not the case. Above commnads are executed however they are not yet using synchronous mode of test runner. As we can see that `browser.getUrl()` is returning a promise here and not resoving.
+
+Output is `{ state: 'pending' }`. Lets fix that in next section.
 
 ## 4.3 Wrap program into the mocha framework
 
@@ -116,7 +117,8 @@ describe('My first program for test runner', () => {
 });
 ```
 
-Now as the last step, move browser code to the test case function definition, your final code in `first_program.spec.js` should look like
+Now as the last step, move browser code to the test case function definition, your final code in `first_program.spec.js` .
+You can also add browser.pause() statements to actually see what's happening. Program file should look like
 
 ```
 describe('My first program for test runner', () => {
@@ -124,13 +126,16 @@ describe('My first program for test runner', () => {
       browser.url('./');
       browser.pause(1000);
       browser.click('.signup-button.border-radius-lg');
+      console.log(browser.getUrl());
       browser.pause(1000);
   });
 });
 ```
 
+Output now is `https://qa.aceinvoice.com/sign_up`.
+
 ## 4.4 Kickoff execution
 
-Once again kickoff program with `npm test`. This time you will see the browser making some progress and logging in into AceInvoice app.
+Once again kickoff program with `npm test`. This time you will see the terminal displaying `1 passing` which means 1 test case passes. You can also try running the test case by removing some characters in the selector value and the terminal would display `0 passing` and `1 failing` with the error information displayed along as well.
 
-So far so good. Till now we are just logging into an app but we are not checking if elements on the browser after completing the execution flow are correct or not. In the next chapter, we will convert our program into a test case.
+So far so good. Till now we are just reaching the sign up page of the app but we are not checking if elements on the browser after completing the execution flow are correct or not. In the next chapter, we will convert our program into a test case.

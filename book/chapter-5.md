@@ -12,7 +12,7 @@ Now to start with we will just check the URL of the page using `getUrl()` functi
 const assert = require('assert')
 ```
 
-Now let's capture the title in some variable shown as below
+Now let's capture the url in some variable shown as below
 
 ```
 const url = browser.getUrl();
@@ -28,36 +28,36 @@ assert.equal(url, 'http://www.google.com');
 
 Also remove `.pause()` calls from the program as we don't need them anymore. Our test case at this moment will look like
 
-
 ```
-const assert = require('assert');
+const assert = require('assert')
 
 describe('My first program for test runner', () => {
   it('My first test', () => {
     browser.url('./');
-    browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
-    browser.setValue('input[name="password"]', 'welcome');
-    browser.click('input.btn.btn-primary');
-
-    const title = browser.getTitle();
-    assert.equal(title, 'Random');
+    browser.click('.signup-button.border-radius-lg');
+    const url = browser.getUrl();
+    assert.equal(url, 'http://www.google.com');
   });
 });
 ```
 
-Go ahead and run test case using `npm test`. You will see that our test case failed and what is an error on console?
+Go ahead and run test case using `npm test`. You will see that our test case fails with following error
 
 ```
 F
 
-1) AceInvoice SignIn When login is un-successful Shows error message:
-'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
+0 passing (14.60s)
+1 failing
+
+1) My first program for test runner My first test:
+'https://qa.aceinvoice.com/sign_up' == 'http://www.google.com'
 running chrome
-AssertionError [ERR_ASSERTION]: 'https://staging.aceinvoice.com/sign_up' == 'http://www.google.com'
+AssertionError [ERR_ASSERTION]: 'https://qa.aceinvoice.com/sign_in' == 'http://www.google.com'
 ```
 
-This is a way to tell the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `http://staging.aceinvoice.com/sign_up` with `Random`.
 
-Now correct test case and replace `http://www.google.com` with `http://staging.aceinvoice.com/sign_up` and run test again, this time it will pass.
+This is a way to tell the URL of the page is not `http://www.google.com`, as per our expectations. `assert` is comparing `http://qa.aceinvoice.com/sign_up` with `http://www.google.com`.
 
-In this chapter we are only checking a URL of the page what about complete flow of signing up a user. We will take steps toward it in coming chapters. So let's discover more in next chapter.
+Now we can correct test case by replacing `http://www.google.com` with `https://qa.aceinvoice.com/sign_up` and running test again, this time it should pass.
+
+In this chapter we are only checking a URL of the page what about complete flow of signing in a user. We will take steps toward it in coming chapters. So let's discover more in next chapter.

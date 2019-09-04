@@ -33,12 +33,12 @@ So your final program may look like this
 const assert = require('assert');
 
 describe('AceInvoice Signup', () => {
-  it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
+  it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
     browser.click('.signup-button.border-radius-lg');
 
     var url = browser.getUrl();
-    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+    assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
   });
 
   it('Navigates to password page after adding an valid email', () => {
@@ -55,7 +55,7 @@ describe('AceInvoice Signup', () => {
     browser.click('.btn.btn-primary');
     browser.pause(500);
     var headerText = browser.getText('.page-header-left');
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 });
 ```
@@ -86,7 +86,7 @@ Let's take a look at another method called `waitUntil`. This method takes a func
 We will pass an arrow function here to simply check the text length of the select options. If the length is greater than 100, browser will continue. Interval parameter is optional here and is a way to tell after how much time browser should check the condition again, the default value is 500ms. Let's add that call by
 
 ```
-browser.waitUntil(() => $("select[name='user[time_zone]']").getText().length > 1000, 3000);
+browser.waitUntil(() => $("select[name='user[time_zone]']").getText().length > 100, 3000);
 ```
 
 Moving ahead if you want to change the DateTime format and start of the week go ahead and add the code for same and click submit and add code to check if server redirected us to the create organization page same way we did for the preferences page.
@@ -101,12 +101,12 @@ This is the final code for test case which should look like
 const assert = require('assert');
 
 describe('AceInvoice Signup', () => {
-  it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
+  it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
     browser.click('.signup-button.border-radius-lg');
 
     var url = browser.getUrl();
-    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+    assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
   });
 
   it('Navigates to password page after adding an valid email', () => {
@@ -123,7 +123,7 @@ describe('AceInvoice Signup', () => {
     browser.click('.btn.btn-primary');
     browser.pause(500);
     var headerText = browser.getText('.page-header-left');
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 
   it('Create preferences', () => {
@@ -131,15 +131,15 @@ describe('AceInvoice Signup', () => {
     browser.setValue("input[name='user[first_name]']", 'test');
     browser.setValue("input[name='user[last_name]']", 'webdriverio');
 
+    $("select[name='user[time_zone]']").waitForVisible(2000);
     browser.waitUntil(() => $("select[name='user[time_zone]']").getText().length > 1000, 3000);
     var timezoneSelector = $("select[name='user[time_zone]']");
     timezoneSelector.selectByAttribute('value', 'Mumbai');
 
-    var dateSelector = $("select[name='user[date_format]']");
-    dateSelector.selectByAttribute('value', '%m/%d/%Y');
+    browser.click('//input[@id="%m/%d/%Y"]/../div[1]');
 
-    var startSelector = $("select[name='user[start_of_week]']");
-    startSelector.selectByAttribute('value', 'monday');
+    browser.click('//input[@id="Monday"]/../div[1]');
+
     browser.click('.btn.btn-primary');
 
     $("input[name='name']").waitForVisible(3000);
@@ -152,9 +152,9 @@ describe('AceInvoice Signup', () => {
     browser.setValue("input[name='name']", 'WebdriverIO');
     browser.setValue("input[name='email']", 'test2@webdriverio.com');
     browser.click(".btn.btn-primary");
-    $('.sorting_1').waitForVisible(3000);
-    const name = browser.getText('.sorting_1');
-    assert.equal(name, 'test webdriverio');
+    $('.card').waitForVisible(3000);
+    const name = browser.getText('.card');
+    assert.equal(name, 'Ace Invoice will be sending emails to your client and to your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
   });
 });
 ```

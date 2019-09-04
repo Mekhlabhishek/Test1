@@ -1,10 +1,8 @@
 # Your first program
 
-In this chapter, we will be writing our basic program with [webdriverio](https://webdriver.io).
-This program will go to the [staging.aceinvoice.com](htp://staging.aceinvoice.com)
-and will complete signup procedure for us.
-
-Let's start.
+In this chapter, we will be writing program with [webdriverio](https://webdriver.io).
+This program will go to the [qa.aceinvoice.com](htp://qa.aceinvoice.com)
+and will complete signup procedure.
 
 ## 2.1 Writing and understanding basic program
 
@@ -15,7 +13,7 @@ Create a file by executing the following command.
 touch first_program.js
 ```
 
-Open `first_command.js` in VScode and type following code.
+Open `first_program.js` in your favourite editor and type following code.
 
 
 ```
@@ -24,9 +22,9 @@ const webdriverio = require('webdriverio');
 webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
-  .url('https://staging.aceinvoice.com')
+  .url('https://qa.aceinvoice.com')
   .$('.signup-button.border-radius-lg').click()
-  .getUrl().then(url => { console.log('URL is : ', title) })
+  .getUrl().then(url => { console.log('URL is : ', url) })
   .end();
 ```
 
@@ -50,9 +48,9 @@ so you don't have to worry about it now._
 
 After that, we are initializing the remote client by calling the `init()` method, which will assign the session to a remote client.
 
-Then we are navigating to our website by calling `url('https://staging.aceinvoice.com')`.
+Then we are navigating to our website by calling `url('https://qa.aceinvoice.com')`.
 
-After navigating to the AceInvoice server will navigate us to the signin page
+After navigating to the AceInvoice, server will navigate us to the signin page.
 
 On the page, there are input elements for the user's email and password and link for `signup` .
 
@@ -88,10 +86,10 @@ Once the server starts, open up a new terminal window and navigate to the direct
 node first_program.js
 ```
 
-You will see Chrome window popping up and navigating to `staging.aceinvoice.com`, then completing login flow and closing chrome window. And on the terminal, you will see the output as
+You will see Chrome window popping up and navigating to `qa.aceinvoice.com`, then completing the sign up flow and closing chrome window. And on the terminal, you will see the output as
 
 ```
-URL is :  https://staging.aceinvoice.com/sign_up
+URL is :  https://qa.aceinvoice.com/sign_up
 ```
 
 Program execution may be too fast to figure you out what exactly is going on, so to tackle this situation go ahead and add a sleep time after each step using `pause(#time_in_ms)`. So our new program will look something like this
@@ -102,7 +100,7 @@ const webdriverio = require('webdriverio');
 webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
-  .url('https://staging.aceinvoice.com')
+  .url('https://qa.aceinvoice.com')
   .pause(1000)
   .$('.signup-button.border-radius-lg').click()
   .pause(1000)
@@ -110,6 +108,6 @@ webdriverio
   .end();
 ```
 
-That's it, you ran your first program successfully. It's time to get more serious. Here we are just completed login flow for AceInvoice. We are not testing if it is correct or not. In coming chapters we will write and run test cases with the `wdio` test runner, till that time you can play with the code above and try some permutations and combinations.
+That's it, you ran your first program successfully. It's time to get more serious. Here we are just completing the sign up flow for AceInvoice. We are not testing if it is correct or not. In coming chapters we will write and run test cases with the `wdio` test runner, till that time you can play with the code above and try some permutations and combinations.
 
 See you in the next chapter.

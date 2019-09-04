@@ -6,7 +6,7 @@ First, we will create two more folders at the same level where our `specs` folde
 
 ## 10.1 Creating a selector file
 
-First, we will create a file in the selector folder with the name `sign_up_selectors.js`. Let's move all our selectors to this file and export them from this file as
+First, we will create a file in the `selectors` folder with the name `sign_up_selectors.js`. Let's move all our selectors to this file and export them from this file as
 
 ```
 const signUpSelectors = {
@@ -23,7 +23,7 @@ const signUpSelectors = {
   pageHeaderSelector: ".page-header-left",
   organizationNameInputSelector: "input[name='name']",
   organizationEmailInputSelector: "input[name='email']",
-  sortingIconSelector: ".sorting_1",
+  cardSelector: ".card",
 }
 
 module.exports = signUpSelectors;
@@ -42,7 +42,7 @@ const signUpSelectors = require('../selectors/sign_up_selectors');
 Next, same like selector, we will define a hash object and export it like
 
 ```
-const signUpGetter = {
+const signUpGetters = {
   get signUpLink() { return $(signUpSelectors.signUpButtonSelector) },
   get emailInput() { return $(signUpSelectors.emailInputSelector); },
   get primaryButton() { return $(signUpSelectors.primaryButtonSelector); },
@@ -56,22 +56,22 @@ const signUpGetter = {
   get pageHeader() { return $(signUpSelectors.pageHeaderSelector); },
   get organizationNameInput() { return $(signUpSelectors.organizationNameInputSelector); },
   get organizationEmailInput() { return $(signUpSelectors.organizationEmailInputSelector); },
-  get sortingIcon() { return $(signUpSelectors.sortingIconSelector); }
+  get card() { return $(signUpSelectors.cardSelector); }
 }
 
-module.exports = signUpGetter;
+module.exports = signUpGetters;
 ```
 
 Now back to our test case file, we will remove all the declarations that we made about selectors and getters and only import `sign_up_getters.js` like
 
 ```
-const signUpGetter = require('../getters/sign_up_getters');
+const signUpGetters = require('../getters/sign_up_getters');
 ```
 
 and now we will use this getter object from an imported file to get elements like
 
 ```
-signUpGetter.primaryButton.click();
+signUpGetters.primaryButton.click();
 ```
 
 ## 10.3 Setting babel
@@ -138,65 +138,66 @@ With babel and other settings in place, our code now should look like
 
 ```
 import { assert } from 'chai';
-
-import signUpGetter from '../getters/sign_up_getters';
+import signUpGetters from '../getters/sign_up_getters';
 
 describe('AceInvoice Signup', () => {
-  it('URL has sign_up and staging.aceinvoice.com as a server address', () => {
+  it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
-    signUpGetter.signUpLink.click();
+    signUpGetters.signUpLink.click();
 
     var url = browser.getUrl();
-    assert.equal(url, 'https://staging.aceinvoice.com/sign_up');
+    assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
   });
 
   it('Navigates to password page after adding an valid email', () => {
-    signUpGetter.emailInput.setValue(`test${Math.random()}@webdriverio.com`);
-    signUpGetter.primaryButton.click();
+    signUpGetters.emailInput.setValue(`test${Math.random()}@webdriverio.com`);
+    signUpGetters.primaryButton.click();
 
-    var passwordInputHeight = signUpGetter.passwordInput.getCssProperty('height');
+    var passwordInputHeight = signUpGetters.passwordInput.getCssProperty('height');
     assert.notEqual(passwordInputHeight.parsed.value, 0);
   });
 
   it('Creates a user with the email id and password', () => {
-    signUpGetter.passwordInput.setValue('welcome');
-    signUpGetter.confirmPasswordInput.setValue('welcome');
-    signUpGetter.primaryButton.click();
+    signUpGetters.passwordInput.setValue('welcome');
+    signUpGetters.confirmPasswordInput.setValue('welcome');
+    signUpGetters.primaryButton.click();
     browser.pause(500);
-    var headerText = signUpGetter.pageHeader.getText();
-    assert.equal(headerText, 'Enter your Preferences');
+    var headerText = signUpGetters.pageHeader.getText();
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 
   it('Create preferences', () => {
-    signUpGetter.firstNameInput.waitForVisible(5000);
-    signUpGetter.firstNameInput.setValue('test');
-    signUpGetter.lastNameInput.setValue('webdriverio');
+    signUpGetters.firstNameInput.waitForVisible(5000);
+    signUpGetters.firstNameInput.setValue('test');
+    signUpGetters.lastNameInput.setValue('webdriverio');
 
-    browser.waitUntil(() => signUpGetter.timeZoneDropdown.getText().length > 1000, 3000);
-    var timezoneSelector = signUpGetter.timeZoneDropdown;
+
+    signUpGetters.timeZoneDropdown.waitForVisible(2000)
+    browser.waitUntil(() => signUpGetters.timeZoneDropdown.getText().length > 1000, 3000);
+    var timezoneSelector = signUpGetters.timeZoneDropdown;
     timezoneSelector.selectByAttribute('value', 'Mumbai');
 
-    var dateSelector = signUpGetter.dateFormatDropdown;
+    var dateSelector = signUpGetters.dateFormatDropdown;
     dateSelector.selectByAttribute('value', '%m/%d/%Y');
 
-    var startSelector = signUpGetter.startWeekDropdown;
-    startSelector.selectByAttribute('value', 'monday');
-    signUpGetter.primaryButton.click();
+    var startSelector = signUpGetters.startWeekDropdown;
+    startSelector.selectByAttribute('value', 'Monday');
+    signUpGetters.primaryButton.click();
 
-    signUpGetter.organizationNameInput.waitForVisible(3000);
-    const createOrgHeader = signUpGetter.pageHeader.getText();
+    signUpGetters.organizationNameInput.waitForVisible(3000);
+    const createOrgHeader = signUpGetters.pageHeader.getText();
     assert.equal(createOrgHeader, 'Add New Organization');
   });
 
   it('Creates an organization', () => {
-    signUpGetter.organizationNameInput.waitForVisible(3000);
-    signUpGetter.organizationNameInput.setValue('WebdriverIO');
-    signUpGetter.organizationEmailInput.setValue('test2@webdriverio.com');
-    signUpGetter.primaryButton.click();
-    signUpGetter.sortingIcon.waitForVisible(3000);
+    signUpGetters.organizationNameInput.waitForVisible(3000);
+    signUpGetters.organizationNameInput.setValue('WebdriverIO');
+    signUpGetters.organizationEmailInput.setValue('test2@webdriverio.com');
+    signUpGetters.primaryButton.click();
+    signUpGetters.card.waitForVisible(3000);
 
-    const name = signUpGetter.sortingIcon.getText();
-    assert.equal(name, 'test webdriverio');
+    const name = signUpGetters.card.getText();
+    assert.equal(name, 'Ace Invoice will be sending emails to your client and to your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
 
     const url = browser.getUrl();
     assert.include(url, '/team/active');
