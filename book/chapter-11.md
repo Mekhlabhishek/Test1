@@ -131,7 +131,7 @@ We will import it similar to sign-in page object. With sign-up page object is in
     signUpPage.enterPassword('welcome');
     signUpGetters.pageHeader.waitForVisible(5000);
     var headerText = signUpGetters.pageHeader.getText();
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 ```
 

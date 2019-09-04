@@ -55,7 +55,7 @@ describe('AceInvoice Signup', () => {
     browser.click('.btn.btn-primary');
     browser.pause(500);
     var headerText = browser.getText('.page-header-left');
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 });
 ```
@@ -145,6 +145,16 @@ describe('AceInvoice Signup', () => {
     $("input[name='name']").waitForVisible(3000);
     const createOrgHeader = browser.getText('.page-header-left');
     assert.equal(createOrgHeader, 'Add New Organization');
+  });
+
+  it('Creates an organization', () => {
+    $("input[name='name']").waitForVisible(3000);
+    browser.setValue("input[name='name']", 'WebdriverIO');
+    browser.setValue("input[name='email']", 'test2@webdriverio.com');
+    browser.click(".btn.btn-primary");
+    $('.card').waitForVisible(3000);
+    const name = browser.getText('.card');
+    assert.equal(name, 'Ace Invoice will be sending emails to your client and to your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
   });
 });
 ```

@@ -75,7 +75,7 @@ const startWeekDropdownSelector = "select[name='user[start_of_week]']";
 const pageHeaderSelector = ".page-header-left";
 const organizationNameInputSelector = "input[name='name']";
 const organizationEmailInputSelector = "input[name='email']";
-const sortingIconSelector = ".sorting_1";
+const cardSelector = ".card";
 
 const signUp = {
   get signUpLink() { return $(signUpButtonSelector) },
@@ -91,7 +91,7 @@ const signUp = {
   get pageHeader() { return $(pageHeaderSelector); },
   get organizationNameInput() { return $(organizationNameInputSelector); },
   get organizationEmailInput() { return $(organizationEmailInputSelector); },
-  get sortingIcon() { return $(sortingIconSelector); }
+  get card() { return $(cardSelector); }
 }
 
 describe('AceInvoice Signup', () => {
@@ -117,7 +117,7 @@ describe('AceInvoice Signup', () => {
     signUp.primaryButton.click();
     browser.pause(500);
     var headerText = signUp.pageHeader.getText();
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 
   it('Create preferences', () => {
@@ -148,10 +148,10 @@ describe('AceInvoice Signup', () => {
     signUp.organizationNameInput.setValue('WebdriverIO');
     signUp.organizationEmailInput.setValue('test2@webdriverio.com');
     signUp.primaryButton.click();
-    signUp.sortingIcon.waitForVisible(3000);
+    signUp.card.waitForVisible(3000);
 
-    const name = signUp.sortingIcon.getText();
-    assert.equal(name, 'test webdriverio');
+    const name = signUp.card.getText();
+    assert.equal(name, 'Ace Invoice will be sending emails to your client and to your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
 
     const url = browser.getUrl();
     assert.include(url, '/team/active');
