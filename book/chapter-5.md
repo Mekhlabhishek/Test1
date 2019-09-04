@@ -4,23 +4,23 @@ In the last chapter, we successfully ran our program using wdio test runner. We 
 
 ## 5.1 Add assertion to the program
 
-We will be using our `first_program.spec.js` file. This will no longer our first program, so let's change the name of it to the `first_test.spec.js`.
+We will be using our `first_program.spec.js` file. This will no longer be our first program, so let's change the file name to `first_test.spec.js`.
 
-Now to start with we will just check the URL of the page using `getUrl()` function. In order to make an assertion, first, let's import `assert` function by
+Now to start with, we will just check the URL of the page using `getUrl()` function. In order to make an assertion, first, let's import `assert` function by
 
 ```
 const assert = require('assert')
 ```
 
-Now let's capture the url in some variable shown as below
+And capture the title in some variable, shown as below
 
 ```
 const url = browser.getUrl();
 ```
 
-Next, we will make an assertion, in layman language, we will check if the URL we got is exactly what we are expecting.
+Next, we will make an assertion, in layman language. We will check if the URL we got is exactly what we are expecting.
 
-While writing test cases it is best practice to fail a test case first and then pass it, so we will give any random title at a start like
+While writing test cases, it is a good practice to make a test case fail first and then make it pass. So, we will give any random url at the start like
 
 ```
 assert.equal(url, 'http://www.google.com');
@@ -34,14 +34,14 @@ const assert = require('assert')
 describe('My first program for test runner', () => {
   it('My first test', () => {
     browser.url('./');
-    browser.click('.signup-button.border-radius-lg');
+    browser.click('input.btn.btn-primary');
     const url = browser.getUrl();
     assert.equal(url, 'http://www.google.com');
   });
 });
 ```
 
-Go ahead and run test case using `npm test`. You will see that our test case fails with following error
+Go ahead and run the test case using `npm test`. You will see that our test case failed, with the below error in console.
 
 ```
 F
@@ -55,9 +55,8 @@ running chrome
 AssertionError [ERR_ASSERTION]: 'https://qa.aceinvoice.com/sign_in' == 'http://www.google.com'
 ```
 
+This is a way to tell that the URL of the page is not `http://www.google.com` that we are expecting. `assert` is comparing `http://qa.aceinvoice.com/sign_up` with `http://www.google.com`.
 
-This is a way to tell the URL of the page is not `http://www.google.com`, as per our expectations. `assert` is comparing `http://qa.aceinvoice.com/sign_up` with `http://www.google.com`.
+Now, correct the test case by replacing `http://www.google.com` with `http://qa.aceinvoice.com/sign_up` and run it again. This time it will pass.
 
-Now we can correct test case by replacing `http://www.google.com` with `https://qa.aceinvoice.com/sign_up` and running test again, this time it should pass.
-
-In this chapter we are only checking a URL of the page what about complete flow of signing in a user. We will take steps toward it in coming chapters. So let's discover more in next chapter.
+In this chapter, we are only checking the URL of the page but what about complete flow of signing up a user. We will take steps towards it in coming chapters. So let's discover more in next chapter.

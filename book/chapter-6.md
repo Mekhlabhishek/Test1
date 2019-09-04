@@ -1,29 +1,29 @@
 # Exercise for sign up flow
 
-In the last chapter, we just checked if the URL of the page is correct or not. In this chapter, we will cover the entire signup workflow.
+In the last chapter, we checked if the URL of the page is correct or not. In this chapter, we will cover the entire signup workflow.
 So let's begin.
 
 ## 6.1 Setting email for a test account
 
-In the same namespace, we will create another test case for adding the email for the new account. To create a new `it` block just below the previous one.
+In the same namespace, we will create another test case for adding the email for the new account. Create a new `it` block just below the previous one.
 
 When you visit the signup page you will see the field for the email. Now we have to set up the email for our test account.
-To enter values to the input fields webdriver gives a handy method called `setValue()`. Set value accepts two values here, the first one is
+To enter values to the input fields, webdriver gives a handy method called `setValue()`. The method accepts two values here, the first one is
 selector and the second one is the value for an input field.
 
-To add value for email as follows in `it` block.
+Add value for email in `it` block, in the following way
 
 ```
 browser.setValue('input[name="email"]', 'test@webdriver.com');
 ```
 
-After adding an email we also want to click on the submit button. So our next step will be clicking on the submit button using `click()` function as follows.
+After adding an email, we also want to click on the submit button. So our next step will be to click on the submit button using `click()` function as follows.
 
 ```
 browser.click('.btn.btn-primary');
 ```
 
-After entering an email for our new account server will redirect us to the second step for adding a password. Here we can check that if the field for a password is present or not. For this test case, we will use another function called `getCssProperty()`. This function also accepts two values. First one the selector for the element and second one the CSS value that we want to fetch.
+After entering an email for our new account, server will redirect us to the second step for adding a password. Here we can check that if the field for a password is present or not. For this test case, we will use another function called `getCssProperty()`. This function also accepts two values. First one the selector for the element and second one the CSS value that we want to fetch.
 
 So we can check that height for the password field is not 0 using
 
@@ -71,6 +71,6 @@ describe('AceInvoice SignUp', () => {
 
 Now check if your test cases are running correctly using `npm test`. You will see all test cases are passing.
 
-_Getting timeout exception? Increase a timeout in mochaOpts in config file add a parameter `timeout: 99999` for now, but this is not a right way, for a time being we are using that._
+_Getting timeout exception? Increase timeout in mochaOpts in config file by adding the parameter `timeout: 99999` for now, but this is not a right way, for the time being we are using that._
 
 Now to continue with the test cases we will add a password and continue with the signup process, but before proceeding, do you sense some problem here? After running test we will create an account with the email `test@webdriverio.com` and next time we run test cases it will fail, why? Because the email address is already taken, for each run we should create a new email address. We will see how to do that in the next chapter.
