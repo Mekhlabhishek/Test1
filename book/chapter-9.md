@@ -1,10 +1,10 @@
 # Moving to page objects
 
-In the last chapter, we added a complete test suit for the signup flow, but while achieving this we wrote much of duplicate code. Page objects help us to get rid of the duplicate code. The page object is a very interesting topic but at the same time is also complex to understand. So we will not jump onto page objects here. First, we will take the first step towards it in this chapter.
+In the last chapter, we added a complete test suite for the signup flow, but while achieving this we wrote a lot of duplicate code. Page objects help us to get rid of the duplicate code. The page object is a very interesting topic but at the same time is also complex to understand. So we will not jump onto page objects here. First, we will take the first step towards it in this chapter.
 
 ## 9.1 Browser element
 
-So far we are calling a method on the browser object. This does not look good, webdriverio gives us a way to get an element from the browser and then call a method to it. We can get a hold of the element using `element()` method. This method accepts the selector as a parameter.
+So far, we are calling a method on the browser object. This does not look good, webdriverio gives us a way to get an element from the browser and then call a method to it. We can get a hold of the element using `element()` method. This method accepts the selector as a parameter.
 
 With this method in place, we can rewrite our old code
 
@@ -24,7 +24,7 @@ Webdriverio provides a handy operator to define this as
 $('.signup-button.border-radius-lg').click();
 ```
 
-Isn't this looks like a JQuery code and also this makes the code more readable. Also, we can define a selector as a constant at the top of the code as
+Isn't this look like a JQuery code and also this makes the code more readable. Also, we can define a selector as a constant at the top of the code as
 
 ```
 const signUpButtonSelector = '.signup-button.border-radius-lg';

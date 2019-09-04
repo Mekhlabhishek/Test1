@@ -1,6 +1,6 @@
 # Integrating chai library
 
-Chai is an assertion rich library which gives us plenty of the options to make the assertion over the Node's assertion library.
+Chai is an assertion rich library which gives us plenty of options to make the assertion over Node's assertion library.
 
 ## 8.1 Installation
 
@@ -22,13 +22,13 @@ const assert = require('chai').assert;
 
 That's all, you have integrated chai successfully, go ahead and run test cases once again and make sure they all are passing.
 
-You can also choose the which style you want to use as `chai` provide the other two styles as `expect` and `should`. `expect` style is very popular in the real world as it makes your test cases more readable, but we will stick with `assert`, for now, you are free to update the style if you are not comfortable with the `assert`.
+You can also choose the style which you want to use, as `chai` provides two more styles as `expect` and `should`. `expect` style is very popular in the real world as it makes your test cases more readable, but we will stick to `assert` for now. You are free to update the style if you are not comfortable with `assert`.
 
 ## 8.3 Quick peek in chai's assertion
 
 Take a look at the assertions that are available to use [here](https://www.chaijs.com/api/assert/). Let's use one of them, `include` in the last test case for creating an organization after signup.
 
-After creating an organization user gets redirected to the create a team member page. Let's test this. First, we will fetch the browser URL and then check if the URL includes `/team/active` in it as follows. Paste the following code in the last test case and run them.
+After creating an organization user gets redirected to the *Create a team member* page. Let's test this. First, we will fetch the browser URL and then check if the URL includes `/team/active` in it as follows. Paste the following code in the last test case and run them.
 
 ```
 const url = browser.getUrl();

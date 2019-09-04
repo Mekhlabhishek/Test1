@@ -88,7 +88,7 @@ it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
 
 ## 11.4 Miscellaneous
 
-Now page for sign-in is in place let's create a page for sign-up as follows
+Now page for sign-in is in place, let's create a page for sign-up as follows
 
 ```
 import signUpSelectors from "../selectors/sign_up_selectors";
@@ -118,7 +118,7 @@ class SignUpPage {
 export default new SignUpPage();
 ```
 
-We will import it similar to sign-in page object. With sign-up page object is in place let's use it in test cases. Our very next test case will look like as follows
+With sign-up page object is in place, let's use it in test cases. Our very next test case will look like as follows
 
 ```
   it('Navigates to password page after adding an valid email', () => {
@@ -135,4 +135,4 @@ We will import it similar to sign-in page object. With sign-up page object is in
   });
 ```
 
-At this point, you will see we are still using `signUpGetters` at some places. Give it a try and convert all test cases to use page objects. You can check your code if you get stuck [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md).
+At this point, you will see we are still using `signUpGetter` at some places. Give it a try and convert all test cases to use page objects. You can check your code if you get stuck [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md).

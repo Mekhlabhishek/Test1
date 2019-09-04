@@ -74,7 +74,7 @@ and now we will use this getter object from an imported file to get elements lik
 signUpGetters.primaryButton.click();
 ```
 
-## 10.3 Setting a babel
+## 10.3 Setting babel
 
 Babel is next-gen JS compiler and allows source code transformations. To write test cases using next-gen JS install all necessary dependencies using.
 
@@ -100,10 +100,10 @@ module.exports = {
 
 ## 10.5 Add a hook in wdio config
 
-Next step is to tell wdio use babel to compile all of our JS files. We will use the before hook from `wdio.config.js` so uncomment the before hook in wdio config file and add `require('@babel/register');` to the function. Your before hook should look like
+Next step is to tell wdio to use babel to compile all of our JS files. We will use the before hook from `wdio.config.js`. So uncomment the before hook in wdio config file and add `require('@babel/register');` to the function. Your before hook should look like
 
 ```
-before: function (_capabilities, _specs) {
+before: function (capabilities, specs) {
     require('@babel/register');
 },
 ```
@@ -114,19 +114,19 @@ As the last step, we will set mocha to use babel compiler by adding config in `m
 
 With babel setup in place, we can change the JS code in our test cases. First, we will rewrite how we export our data from the files.
 
-Instead of exporting using `module.exports` we will export it with `export default`. So now your selector file with have an export statement as
+Instead of exporting using `module.exports`, we will export it with `export default`. So now your selector file will have an export statement as
 
 ```
 export default signUpSelectors;
 ```
 
-With this we can change the import statements as well like
+With this, we can change the import statement `const signUpSelectors = require('../selectors/sign_up_selectors');` in getter file to
 
 ```
 import signUpSelectors from '../selectors/sign_up_selectors';
 ```
 
-For importing assert from chai though we will have to use little twist in syntax like
+For importing assert from chai though we will have to use a little twist in syntax like
 
 ```
 import { assert } from 'chai';
