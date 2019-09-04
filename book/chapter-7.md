@@ -55,7 +55,7 @@ describe('AceInvoice Signup', () => {
     browser.click('.btn.btn-primary');
     browser.pause(500);
     var headerText = browser.getText('.page-header-left');
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 });
 ```
@@ -123,7 +123,7 @@ describe('AceInvoice Signup', () => {
     browser.click('.btn.btn-primary');
     browser.pause(500);
     var headerText = browser.getText('.page-header-left');
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 
   it('Create preferences', () => {
@@ -136,11 +136,10 @@ describe('AceInvoice Signup', () => {
     var timezoneSelector = $("select[name='user[time_zone]']");
     timezoneSelector.selectByAttribute('value', 'Mumbai');
 
-    var dateSelector = $("select[name='user[date_format]']");
-    dateSelector.selectByAttribute('value', '%m/%d/%Y');
+    browser.click('//input[@id="%m/%d/%Y"]/../div[1]');
 
-    var startSelector = $("select[name='user[start_of_week]']");
-    startSelector.selectByAttribute('value', 'Monday');
+    browser.click('//input[@id="Monday"]/../div[1]');
+
     browser.click('.btn.btn-primary');
 
     $("input[name='name']").waitForVisible(3000);
@@ -153,9 +152,9 @@ describe('AceInvoice Signup', () => {
     browser.setValue("input[name='name']", 'WebdriverIO');
     browser.setValue("input[name='email']", 'test2@webdriverio.com');
     browser.click(".btn.btn-primary");
-    $('.sorting_1').waitForVisible(3000);
-    const name = browser.getText('.sorting_1');
-    assert.equal(name, 'test webdriverio');
+    $('.card').waitForVisible(3000);
+    const name = browser.getText('.card');
+    assert.equal(name, 'Ace Invoice will be sending emails to your client and to your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
   });
 });
 ```

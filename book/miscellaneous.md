@@ -209,7 +209,7 @@ describe('AceInvoice Signup', () => {
     signUpPage.enterPassword('welcome');
     var headerText = preferencePage.getPageHeader();
 
-    assert.equal(headerText, 'Enter your Preferences');
+    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
   });
 
   it('Create preferences', () => {
