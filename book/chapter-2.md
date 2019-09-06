@@ -23,7 +23,7 @@ webdriverio
   .init()
   .url('https://qa.aceinvoice.com')
   .$('.signup-button.border-radius-lg').click()
-  .getUrl().then(url => { console.log('URL is: ', title) })
+  .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
 ```
 
