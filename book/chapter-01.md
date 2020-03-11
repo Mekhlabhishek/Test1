@@ -2,10 +2,8 @@
 
 # Installation
 
-Welcome to the first chapter of learning webdriverio. In this chapter, we will get ready with our
-platform. So let's fasten our belts and start testing with WebdriverIO
+Welcome to the first chapter of learning webdriverio. In this chapter, we will ensure that we have the requisite software to start writing our test.
 
-## Check pre-requisite
 
 ### 1.1 Check Node is installed
 
@@ -15,14 +13,12 @@ Open `terminal` on your machine and check the version of the node using the foll
 node -v
 ```
 
-_This should print node version >= 8.15.0_
+_This should print node version >= 8.15.0_. 
 
-If the Node is not present on your machine then this is for you, let's install node on your machine.
-There are two ways of installing NodeJS.
-First one is to download the desired node version from the [official](https://nodejs.org/en/download) site.
-The second one is to install with NVM(Node Version Manager). We recommend installing Node using NVM. This will
-allow you to manage different Node versions on your local machine. Open terminal on your machine and download
-NVM and install it by the following command.
+### 1.2 Installing nodejs
+
+
+Download the desired node version from the [official](https://nodejs.org/en/download) site.
 
 #### Mac, Linux users
 
@@ -106,10 +102,10 @@ Windows user may face error here stating that `npm command not found`. In order 
 
 Once you have Node in place, let's go ahead and install tools that we will be using to test application.
 
-Create a separate directory by
 
 ```
-mkdir aceinvoice_web_selenium_tests && cd aceinvoice_web_selenium_tests
+mkdir aceinvoice_web_selenium_tests
+cd aceinvoice_web_selenium_tests
 ```
 
 Initialize npm using the following command.
@@ -136,15 +132,11 @@ npm install selenium-standalone -g
 ```
 
 Let's install dependencies for selenium by executing the following command.
-This will install the following:
-1. `selenium-server`
-2. `chromewebdriver`, for Chrome
-3. `geckodriver`, for firefox
+This will install "selenium-server", "chrome webdriver" for chrome browser and "geckodriver" for Firefox.
 
 ```
 selenium-standalone install --version=3.4.0
 ```
-
 
 Verify that you installed the selenium correctly by executing the following command.
 
