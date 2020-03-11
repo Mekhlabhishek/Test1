@@ -13,7 +13,7 @@ Open `terminal` on your machine and check the version of the node using the foll
 node -v
 ```
 
-_This should print node version >= 8.15.0_. 
+_This should print node version >= 8.15.0_.
 
 ### 1.2 Installing nodejs
 
@@ -104,8 +104,8 @@ Once you have Node in place, let's go ahead and install tools that we will be us
 
 
 ```
-mkdir aceinvoice_web_selenium_tests
-cd aceinvoice_web_selenium_tests
+mkdir aceinvoice-selenium-tests
+cd aceinvoice-selenium-tests
 ```
 
 Initialize npm using the following command.

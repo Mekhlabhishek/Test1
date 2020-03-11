@@ -15,7 +15,7 @@ touch first_program.js
 
 Add the following code in that file:
 
-```
+```js
 const webdriverio = require('webdriverio');
 
 webdriverio
@@ -27,11 +27,53 @@ webdriverio
   .end();
 ```
 
+## 2.2 Running your first program
+
+Start the `selenium-standalone` server, using the following command in the terminal
+
+```
+selenium-standalone start --version=3.4.0
+```
+
+Once the server starts, open up a new terminal window and navigate to the directory and start executing a program by
+
+```
+node first_program.js
+```
+
+You will see Chrome window popping up and navigating to `qa.aceinvoice.com`, then completing the sign up flow and closing chrome window. And on the terminal, you will see the output as
+
+```
+URL is :  https://qa.aceinvoice.com/sign_up
+```
+
+Program execution may be too fast to figure you out what exactly is going on, so to slow it down a bit, add a sleep time after each step using `pause(#time_in_ms)`. So our new program will look something like this
+
+```js
+const webdriverio = require('webdriverio');
+
+webdriverio
+  .remote({ desiredCapabilities: { browserName: 'chrome' } })
+  .init()
+  .url('https://qa.aceinvoice.com')
+  .pause(1000)
+  .$('.signup-button.border-radius-lg').click()
+  .pause(1000)
+  .getUrl().then(url => { console.log('URL is: ', url) })
+  .end();
+```
+
+That's it, you ran your first program successfully. Here, we have captured the URL and printed it.
+We are not testing if it is correct or not.
+
+
+## 2.3 Understading the code
+
 Let's break down the code, to understand it.
 
 First, we are importing `webdriverio` from the node package that we installed earlier by calling
 
-```
+```js
 const webdriverio = require('webdriverio');
 ```
 
@@ -69,43 +111,3 @@ _`url => console.log('URL is: ', url)` is example of an arrow function, learn mo
 After getting the URL for the webpage, we are terminating our session by calling `end()`.
 
 Now, this is the time to run our first program.
-
-## 2.2 Running your first program
-
-Start the `selenium-standalone` server, using the following command in the terminal
-
-```
-selenium-standalone start --version=3.4.0
-```
-
-Once the server starts, open up a new terminal window and navigate to the directory and start executing a program by
-
-```
-node first_program.js
-```
-
-You will see Chrome window popping up and navigating to `qa.aceinvoice.com`, then completing the sign up flow and closing chrome window. And on the terminal, you will see the output as
-
-```
-URL is :  https://qa.aceinvoice.com/sign_up
-```
-
-Program execution may be too fast to figure you out what exactly is going on, so to slow it down a bit, add a sleep time after each step using `pause(#time_in_ms)`. So our new program will look something like this
-
-```
-const webdriverio = require('webdriverio');
-
-webdriverio
-  .remote({ desiredCapabilities: { browserName: 'chrome' } })
-  .init()
-  .url('https://qa.aceinvoice.com')
-  .pause(1000)
-  .$('.signup-button.border-radius-lg').click()
-  .pause(1000)
-  .getUrl().then(url => { console.log('URL is: ', url) })
-  .end();
-```
-
-That's it, you ran your first program successfully. It's time to get more serious. Here, we have just completed login flow for AceInvoice. We are not testing if it is correct or not. In the upcoming chapters, we will write and run test cases with the `wdio` test runner. Till that time, you can play with the code above and try some permutations and combinations.
-
-See you in the next chapter.
