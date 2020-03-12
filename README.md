@@ -70,36 +70,36 @@
 
 9.3 [Declaring getter](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-09.md#93-declaring-getter)
 
-#### [Chapter 10 - Polishing code](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-010.md#polishing-code)
+#### [Chapter 10 - Polishing code](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-10.md#polishing-code)
 
-10.1 [Creating a selector file](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-010.md#101-creating-a-selector-file)
+10.1 [Creating a selector file](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-10.md#101-creating-a-selector-file)
 
-10.2 [Creating a getter file](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-010.md#102-creating-a-getter-file)
+10.2 [Creating a getter file](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-10.md#102-creating-a-getter-file)
 
-10.3 [Setting a babel](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-010.md#103-setting-a-babel)
+10.3 [Setting a babel](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-10.md#103-setting-a-babel)
 
-10.4 [Creating a babel config file](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-010.md#104-creating-a-babel-config-file)
+10.4 [Creating a babel config file](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-10.md#104-creating-a-babel-config-file)
 
-10.5 [Add a hook in wdio config](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-010.md#105-add-a-hook-in-wdio-config)
+10.5 [Add a hook in wdio config](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-10.md#105-add-a-hook-in-wdio-config)
 
-10.6 [Setup babel for mocha](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-010.md#106-setup-babel-for-mocha)
+10.6 [Setup babel for mocha](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-10.md#106-setup-babel-for-mocha)
 
-#### [Chapter 11 - Page Elements and Page Objects](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-011.md#page-elements-and-page-objects)
+#### [Chapter 11 - Page Elements and Page Objects](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-11.md#page-elements-and-page-objects)
 
-11.1 [Creating a page](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-011.md#111-creating-a-page)
+11.1 [Creating a page](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-11.md#111-creating-a-page)
 
-11.2 [Page actions](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-011.md#112-page-actions)
+11.2 [Page actions](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-11.md#112-page-actions)
 
-11.3 [Use case in test cases](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-011.md#113-use-case-in-test-cases)
+11.3 [Use case in test cases](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-11.md#113-use-case-in-test-cases)
 
-11.4 [Miscellaneous](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-011.md#114-miscellaneous)
+11.4 [Miscellaneous](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-11.md#114-miscellaneous)
 
-#### [Chapter 12 - Making code generic](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-012.md#making-code-generic)
+#### [Chapter 12 - Making code generic](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-12.md#making-code-generic)
 
-12.1 [Creating components](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-012.md#121-creating-components)
+12.1 [Creating components](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-12.md#121-creating-components)
 
-#### [Chapter 13 - How WebdriverIO and Selenium work together](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-013.md)
+#### [Chapter 13 - How WebdriverIO and Selenium work together](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-13.md)
 
-13.1 [Getting Ready](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-013.md#getting-ready)
+13.1 [Getting Ready](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-13.md#getting-ready)
 
-13.2 [Explanation](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-013.md#explanation)
+13.2 [Explanation](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/chapter-13.md#explanation)
