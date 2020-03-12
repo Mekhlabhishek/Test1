@@ -60,8 +60,8 @@ describe('AceInvoice SignUp', () => {
   });
 
   it('Navigates to password page after adding an valid email', () => {
-    browser.setValue('input[name="email"]', 'test@webdriverio.com');
-    browser.click('.btn.btn-primary');
+    browser.$('input[name="email"]').setValue('test@webdriver.com');
+    browser.$('input.btn.btn-primary').click();
 
     var passwordInputHeight = browser.getCssProperty('input[name="password"]', 'height');
     assert.notEqual(passwordInputHeight.parsed.value, 0);
