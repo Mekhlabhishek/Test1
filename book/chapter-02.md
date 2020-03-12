@@ -1,7 +1,7 @@
 # Your first program
 
-In this chapter, we will be writing program with [webdriverio](https://webdriver.io).
-This program will go to the [qa.aceinvoice.com](http://qa.aceinvoice.com)
+In this chapter, we will be writing a program with [webdriverio](https://webdriver.io).
+This program will go to [qa.aceinvoice.com](http://qa.aceinvoice.com)
 and will complete signup procedure.
 
 ## 2.1 Writing and understanding basic program
@@ -84,7 +84,7 @@ webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
 ```
 
-_You can go through all the available options [here](https://webdriver.io/docs/options.html). We will be covering those in later part of the book. So, you don't have to worry about it now._
+_You can go through all the available options [here](https://webdriver.io/docs/options.html). We will be covering those in later parts of the book. So, you don't have to worry about it now._
 
 After that, we are initializing the remote client by calling the `init()` method, which will assign the session to the remote client.
 
@@ -92,7 +92,7 @@ Then we are navigating to our website by calling `url('https://qa.aceinvoice.com
 
 The above url will navigate us to the signin page of AceInvoice application.
 
-On the page, there are input elements for user's email & password and a link for `signup` .
+On the page, there are input elements for the user's email & password and a link for `signup`.
 
 First, we are selecting an anchor tag by JQuery code `$(".signup-button.border-radius-lg")`.
 
