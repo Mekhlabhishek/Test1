@@ -2,7 +2,7 @@
 
 # Installation
 
-Welcome to the first chapter of learning webdriverio. In this chapter, we will ensure that we have the requisite software to start writing our test.
+Welcome to the first chapter of learning WebdriverIo. In this chapter, we will ensure that we have the requisite software to start writing our test.
 
 
 ### 1.1 Check Node is installed
@@ -96,7 +96,7 @@ Windows user may face error here stating that `npm command not found`. In order 
 2. Click on `User accounts`
 3. click on `Change my environment variables`
 4. At the end of the variable add `C:\Program Files\nodejs` and click Ok.
-5. Restart command prompt as admin and try again. This time it it should show correct version.
+5. Restart command prompt as admin and try again. This time it should show correct version.
 
 ### 1.2 Installing selenium-standalone and WebdriverIO
 
@@ -132,7 +132,7 @@ npm install selenium-standalone -g
 ```
 
 Let's install dependencies for selenium by executing the following command.
-This will install "selenium-server", "chrome webdriver" for chrome browser and "geckodriver" for Firefox.
+This will install "selenium-server", "ChromeDriver" for chrome browser and "geckodriver" for Firefox.
 
 ```
 selenium-standalone install --version=3.4.0
