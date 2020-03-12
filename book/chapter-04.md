@@ -87,9 +87,9 @@ Try running the program now with the command
 npm test
 ```
 
-we will see the output on console `0 passing` and it seems browser is not performing any operations. However that is not the case. Above commnads are executed however they are not yet using synchronous mode of test runner. As we can see that `browser.getUrl()` is returning a promise here and not resoving.
+we will see the output on console `0 passing` and it seems browser is not performing any operations. However, that is not the case. Above commands are executed however they are not yet using synchronous mode of test runner. As we can see that `browser.getUrl()` is returning a promise here and not resolving.
 
-Output is `{ state: 'pending' }`. Lets fix that in next section.
+Output is `{ state: 'pending' }`. Let's fix that in the next section.
 
 ## 4.3 Wrap program into the mocha framework
 
