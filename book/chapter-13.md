@@ -1,6 +1,6 @@
 # How WebdriverIO and Selenium Work Together
 
-Welcome to the last section of the WebdriverIO course. In last few chapters, we saw how to write test cases and run them with the mocha framework. Now, we are going to see some advanced features for WebdriverIO. So, let's begin with taking a look into how WebdriverIO and Selenium do a job for us.
+Welcome to the last section of the WebdriverIO course. In the last few chapters, we saw how to write test cases and run them with the mocha framework. Now, we are going to see some advanced features for WebdriverIO. So, let's begin by taking a look into how WebdriverIO and Selenium do a job for us.
 
 ## Getting ready
 
@@ -64,7 +64,7 @@ Title is :  Ace Invoice
 
 Webdriver does not handle browser on its own, it is Selenium which takes care of the browser operations. Webdriver just sends a request to selenium server and then selenium server performs operations on browser based on the request that it gets from the Webdriver.
 
-The very first request that Webdriver will send out to Selenium server is for getting the session ID. As you can see in a response above, first Webdriver is requesting the session ID to the Selenium server. The server then starts the browser and gives back the session ID in JSON response. This session ID will be used by Webdriver to make all future requests to the Selenium server.
+The very first request that Webdriver will send out to Selenium server is to get the session ID. As you can see in a response above, first Webdriver is requesting the session ID to the Selenium server. The server then starts the browser and gives back the session ID in JSON response. This session ID will be used by Webdriver to make all future requests to the Selenium server.
 
 Next, as we are setting URL to the browser, Webdriver sends out a `post` request to the Selenium server with URL in `DATA` as follows
 
@@ -97,7 +97,7 @@ Once Webdriver gets element ID, it will send out a request to clear out the cont
 
 Same way, Webdriver will send out requests for setting value in the password field and then for clicking on submit button.
 
-Then we are fetching the title of the webpage, similarly, webdriver will send out the request for fetching the title of the page. Selenium will then return the title in response as follows.
+Then we are fetching the title of the webpage, similarly, Webdriver will send out the request for fetching the title of the page. Selenium will then return the title in response as follows.
 
 ```
 [17:24:19]  COMMAND     GET      "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/title"
@@ -109,4 +109,4 @@ After that, you will see the console log that we created from the program.
 
 Last request Webdriver will send to the Selenium server to kill the session. After receiving the delete command for the session, selenium will quit the browser.
 
-So as we all know how exactly WebdriverIO and Selenium works together let's go and add some real test cases.
+So as we all know how exactly WebdriverIO and Selenium work together let's go and add some real test cases.
