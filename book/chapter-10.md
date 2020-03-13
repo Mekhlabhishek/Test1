@@ -1,6 +1,6 @@
 # Polishing code
 
-Ok, so with our last chapter we saw how to define getters and elements. With all the data in the same file doesn't look good. Let's separate out our code based on the scope.
+Ok, so with our last chapter we saw how to define getters and elements. With all the data in the same file doesn't look good. Let's separate our code based on the scope.
 
 First, we will create two more folders at the same level where our `specs` folder is namely, `selectors` and `getters`. You can choose any name you want, we found these names pretty easy to understand and get an idea about what folder exactly contains.
 
@@ -76,7 +76,7 @@ signUpGetters.primaryButton.click();
 
 ## 10.3 Setting babel
 
-Babel is next-gen JS compiler and allows source code transformations. To write test cases using next-gen JS install all necessary dependencies using.
+Babel is the next-gen JS compiler and allows source code transformations. To write test cases using next-gen JS install all necessary dependencies using.
 
 ```
 npm install --save @babel/core @babel/cli @babel/preset-env @babel/register
@@ -100,7 +100,7 @@ module.exports = {
 
 ## 10.5 Add a hook in wdio config
 
-Next step is to tell wdio to use babel to compile all of our JS files. We will use the before hook from `wdio.config.js`. So uncomment the before hook in wdio config file and add `require('@babel/register');` to the function. Your before hook should look like
+Next step is to tell `wdio` to use babel to compile all of our JS files. We will use the before hook from `wdio.config.js`. So uncomment the before hook in `wdio` config file and add `require('@babel/register');` to the function. Your before hook should look like
 
 ```
 before: function (capabilities, specs) {
@@ -110,7 +110,7 @@ before: function (capabilities, specs) {
 
 ## 10.6 Setup babel for mocha
 
-As the last step, we will set mocha to use babel compiler by adding config in `mochaOpts`, which is `compilers: ['js:@babel/register']`. Add this config right after `ui` option and we are done with babel setup.
+As the last step, we will set mocha to use babel compiler by adding config in `mochaOpts`, which is `compilers: ['js:@babel/register']`. Add this config right after `UI` option and we are done with babel setup.
 
 With babel setup in place, we can change the JS code in our test cases. First, we will rewrite how we export our data from the files.
 
@@ -126,7 +126,7 @@ With this, we can change the import statement `const signUpSelectors = require('
 import signUpSelectors from '../selectors/sign_up_selectors';
 ```
 
-For importing assert from chai though we will have to use a little twist in syntax like
+For importing assert from chai though we will have to use a little twist in the syntax like
 
 ```
 import { assert } from 'chai';
@@ -197,7 +197,7 @@ describe('AceInvoice Signup', () => {
     signUpGetters.card.waitForVisible(3000);
 
     const name = signUpGetters.card.getText();
-    assert.equal(name, 'Ace Invoice will be sending emails to your client and to your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
+    assert.equal(name, 'Ace Invoice will be sending emails to your client and your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
 
     const url = browser.getUrl();
     assert.include(url, '/team/active');
