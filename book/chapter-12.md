@@ -1,6 +1,6 @@
 # Making code generic
 
-In the last chapter, we created a page object and used in our test cases. If you have still not converted your code, then please take some time and convert all your test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md)
+In the last chapter, we created a page object and used it in our test cases. If you have still not converted your code, then please take some time and convert all your test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md)
 
 ## 12.1 Creating components
 
@@ -66,6 +66,6 @@ class SignUpPage extends FormComponent {
 export default new SignUpPage();
 ```
 
-Take time and separate out all the components from pages.
+Take time and separate all the components from pages.
 
 At this moment you are ready to write test cases for an entire application. For getting started, try writing test cases for sign-in flow. In the next chapter, we will take an overview of how WebdriverIO and Selenium work hand-in-hand.
