@@ -55,9 +55,10 @@ const signUpGetters = {
   get firstNameInput() { return $(signUpSelectors.firstNameInputSelector); },
   get lastNameInput() { return $(signUpSelectors.lastNameInputSelector); },
   get timeZoneDropdown() { return $(signUpSelectors.timeZoneDropdownSelector); },
-  get dateFormatDropdown() { return $(signUpSelectors.dateFormatDropdownSelector); },
-  get startWeekDropdown() { return $(signUpSelectors.startWeekDropdownSelector); },
-  get pageHeader() { return $(signUpSelectors.pageHeaderSelector); },
+  get dateFormatDropdown() { return $(signUpSelectors.dateFormatSelector); },
+  get startWeekDropdown() { return $(signUpSelectors.startWeekSelector); },
+  get basicDetails() { return $(signUpSelectors.basicDetails); },
+  get addYourPreference() { return $(signUpSelectors.addYourPreference); },
   get organizationNameInput() { return $(signUpSelectors.organizationNameInputSelector); },
 }
 

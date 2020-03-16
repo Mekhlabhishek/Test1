@@ -43,8 +43,8 @@ import {
   firstNameInputSelector,
   lastNameInputSelector,
   timeZoneDropdownSelector,
-  dateFormatDropdownSelector,
-  startWeekDropdownSelector,
+  dateFormatSelector,
+  startWeekSelector,
   primaryButtonSelector,
   pageHeaderSelector
 } from '../selectors/sign_up_selectors';
@@ -53,8 +53,8 @@ class PreferencePage {
   get firstNameInput() { return $(firstNameInputSelector); }
   get lastNameInput() { return $(lastNameInputSelector); }
   get timeZoneDropdown() { return $(timeZoneDropdownSelector); }
-  get dateFormatDropdown() { return $(dateFormatDropdownSelector); }
-  get startWeekDropdown() { return $(startWeekDropdownSelector); }
+  get dateFormatDropdown() { return $(dateFormatSelector); }
+  get startWeekDropdown() { return $(startWeekSelector); }
   get primaryButton() { return $(primaryButtonSelector); }
   get pageHeader() { return $(pageHeaderSelector); }
 
@@ -170,11 +170,11 @@ export const confirmPasswordInputSelector = "input[name='password_confirmation']
 export const firstNameInputSelector = "input[name='user[first_name]']";
 export const lastNameInputSelector = "input[name='user[last_name]']";
 export const timeZoneDropdownSelector = "select[name='user[time_zone]']";
-export const dateFormatDropdownSelector = "select[name='user[date_format]']";
-export const startWeekDropdownSelector = "select[name='user[start_of_week]']";
-export const pageHeaderSelector = ".page-header-left";
+export const dateFormatSelector: "//div[contains(text(),'MM/DD/YYYY')]";
+export const startWeekSelector: "//div[contains(text(),'Monday')]";
+export const basicDetails: "//h1[contains(text(),'Basic details')]";
+export const addYourPreference: "//h1[contains(text(),'Add your details and preferences.')]";
 export const organizationNameInputSelector = "input[name='name']";
-export const organizationEmailInputSelector = "input[name='email']";
 export const sortingIconSelector = ".sorting_1";
 ```
 
