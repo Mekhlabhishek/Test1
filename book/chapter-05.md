@@ -34,7 +34,7 @@ const assert = require('assert')
 describe('My first program for test runner', () => {
   it('My first test', () => {
     browser.url('./');
-    browser.click('input.btn.btn-primary');
+    browser.$('input.btn.btn-primary').click();
     const url = browser.getUrl();
     assert.equal(url, 'http://www.google.com');
   });
