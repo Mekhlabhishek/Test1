@@ -64,7 +64,7 @@ describe('AceInvoice SignUp', () => {
     browser.$('input.btn.btn-primary').click();
 
     var passwordInputHeight = browser.getCssProperty('input[name="password"]', 'height');
-    assert.notEqual(passwordInputHeight.parsed.value, 0);
+    assert.notEqual(passwordInputHeight.value, 0);
   });
 });
 ```
