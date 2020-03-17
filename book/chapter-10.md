@@ -10,20 +10,24 @@ First, we will create a file in the `selectors` folder with the name `sign_up_se
 
 ```
 const signUpSelectors = {
-  signUpButtonSelector: ".signup-button.border-radius-lg",
+  signUpButtonSelector: "//strong[contains(text(),'Sign Up')]",
   emailInputSelector: "input[name='email']",
-  primaryButtonSelector: ".btn.btn-primary",
+  getStartButton": "//input[@value='Get Started'],
   passwordInputSelector: "input[name='password']",
   confirmPasswordInputSelector: "input[name='password_confirmation']",
   firstNameInputSelector: "input[name='user[first_name]']",
   lastNameInputSelector: "input[name='user[last_name]']",
   timeZoneDropdownSelector: "select[name='user[time_zone]']",
-  dateFormatDropdownSelector: "select[name='user[date_format]']",
-  startWeekDropdownSelector: "select[name='user[start_of_week]']",
-  pageHeaderSelector: ".page-header-left",
+  dateFormatSelector: "//div[contains(text(),'MM/DD/YYYY')]",
+  startWeekSelector: "//div[contains(text(),'Monday')]",
+  basicDetails: "//h1[contains(text(),'Basic details')]",
+  addYourPreference: "//span[contains(text(),'Add your details and preferences.')]",
+  byCheckingTextCheckBox: "//input[@name='user[terms_of_service_accepted]']",
+  continue: "//input[@value='Continue']"
   organizationNameInputSelector: "input[name='name']",
-  organizationEmailInputSelector: "input[name='email']",
-  cardSelector: ".card",
+  organizationSubmitButtonInput: "//input[@value='Continue']",
+  skipThisStep: "//a[contains(text(),'Skip this step')]",
+  continueButton: "//input[@value='Continue']"
 }
 
 module.exports = signUpSelectors;
@@ -51,12 +55,11 @@ const signUpGetters = {
   get firstNameInput() { return $(signUpSelectors.firstNameInputSelector); },
   get lastNameInput() { return $(signUpSelectors.lastNameInputSelector); },
   get timeZoneDropdown() { return $(signUpSelectors.timeZoneDropdownSelector); },
-  get dateFormatDropdown() { return $(signUpSelectors.dateFormatDropdownSelector); },
-  get startWeekDropdown() { return $(signUpSelectors.startWeekDropdownSelector); },
-  get pageHeader() { return $(signUpSelectors.pageHeaderSelector); },
+  get dateFormatDropdown() { return $(signUpSelectors.dateFormatSelector); },
+  get startWeekDropdown() { return $(signUpSelectors.startWeekSelector); },
+  get basicDetails() { return $(signUpSelectors.basicDetails); },
+  get addYourPreference() { return $(signUpSelectors.addYourPreference); },
   get organizationNameInput() { return $(signUpSelectors.organizationNameInputSelector); },
-  get organizationEmailInput() { return $(signUpSelectors.organizationEmailInputSelector); },
-  get card() { return $(signUpSelectors.cardSelector); }
 }
 
 module.exports = signUpGetters;

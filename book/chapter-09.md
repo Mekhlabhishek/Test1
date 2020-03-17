@@ -70,8 +70,8 @@ const confirmPasswordInputSelector = "input[name='password_confirmation']";
 const firstNameInputSelector = "input[name='user[first_name]']";
 const lastNameInputSelector = "input[name='user[last_name]']";
 const timeZoneDropdownSelector = "select[name='user[time_zone]']";
-const dateFormatDropdownSelector = "select[name='user[date_format]']";
-const startWeekDropdownSelector = "select[name='user[start_of_week]']";
+const dateFormatSelector = "//div[contains(text(),'MM/DD/YYYY')]";
+const startWeekSelector = "//div[contains(text(),'Monday')]";
 const pageHeaderSelector = ".page-header-left";
 const organizationNameInputSelector = "input[name='name']";
 const organizationEmailInputSelector = "input[name='email']";
@@ -86,8 +86,8 @@ const signUp = {
   get firstNameInput() { return $(firstNameInputSelector); },
   get lastNameInput() { return $(lastNameInputSelector); },
   get timeZoneDropdown() { return $(timeZoneDropdownSelector); },
-  get dateFormatDropdown() { return $(dateFormatDropdownSelector); },
-  get startWeekDropdown() { return $(startWeekDropdownSelector); },
+  get dateFormatDropdown() { return $(dateFormatSelector); },
+  get startWeekDropdown() { return $(startWeekSelector); },
   get pageHeader() { return $(pageHeaderSelector); },
   get organizationNameInput() { return $(organizationNameInputSelector); },
   get organizationEmailInput() { return $(organizationEmailInputSelector); },
