@@ -66,7 +66,7 @@ Instead of selecting an element with JQuery and then clicking on that element, i
 We can pass a selector to the click function, so update our click function to look like.
 
 ```
-.click('.signup-button.border-radius-lg')
+.click('//strong[contains(text(),'Sign Up')]')
 ```
 
 4. Remove `.end()` call
@@ -77,7 +77,7 @@ At this stage, your final program will look something like this
 
 ```
 browser.url('./');
-browser.click('.signup-button.border-radius-lg');
+browser.click('//strong[contains(text(),'Sign Up')]');
 console.log(browser.getUrl());
 ```
 
@@ -127,7 +127,7 @@ describe('My first program for test runner', () => {
   it('My first test', () => {
       browser.url('./');
       browser.pause(1000);
-      browser.click('.signup-button.border-radius-lg');
+      browser.click('//strong[contains(text(),'Sign Up')]');
       console.log(browser.getUrl());
       browser.pause(1000);
   });
