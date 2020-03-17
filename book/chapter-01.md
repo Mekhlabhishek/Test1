@@ -135,17 +135,31 @@ Let's install dependencies for selenium by executing the following command.
 This will install "selenium-server", "ChromeDriver" for chrome browser and "geckodriver" for Firefox.
 
 ```
-selenium-standalone install --version=3.4.0
+selenium-standalone install
+```
+
+If you want to install dependencies for selenium only in your project/directory, execute the following commad.
+
+```
+node_modules/.bin/selenium-standalone install
 ```
 
 Verify that you installed the selenium correctly by executing the following command.
 
 ```
-selenium-standalone start --version=3.4.0
+selenium-standalone start
+```
+
+If you have installed dependencies only in your project/directory, verify by execute following command.
+
+```
+node_modules/.bin/selenium-standalone start
 ```
 
 This will start the selenium server on port `4444`.
 Open your browser and try to visit [http://localhost:4444](http://localhost:4444)
 and you will see the selenium webpage.
+
+To see the console and all sessions visit [http://localhost:4444/wd/hub/](http://localhost:4444/wd/hub/) and you will see the console screen.
 
 Hola! That's it. Now, you are ready to write your first program.
