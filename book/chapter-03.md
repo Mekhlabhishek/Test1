@@ -54,7 +54,7 @@ Here we are specifying where wdio should look for the executable files.
 browserName: 'chrome'
 ```
 
-For this course, we will be using the Chrome browser and not FireFox.
+For this course, we will be using the Chrome browser not Firefox.
 
 3. Setting for running specs synchronously
 
@@ -100,7 +100,7 @@ _What about other settings? Let's focus on these right now to get started with t
 
 ## 3.4 Use selenium as a service
 
-Last part of this chapter is to make sure that your `package.json` file contains correct values. At this moment you `package.json` file should look like this
+The last part of this chapter is to make sure that your `package.json` file contains correct values. At this moment you `package.json` file should look like this
 
 ```
 {
@@ -115,14 +115,14 @@ Last part of this chapter is to make sure that your `package.json` file contains
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@wdio/cli": "^5.4.17",
+    "@wdio/cli": "^^5.8.3",
     "webdriverio": "^4.6.0"
   },
   "devDependencies": {
     "wdio-dot-reporter": "0.0.10",
     "wdio-mocha-framework": "^0.6.4",
     "wdio-selenium-standalone-service": "0.0.12",
-    "wdio-spec-reporter": "~0.1.0"
+    "wdio-spec-reporter": "~0.1.5"
   }
 }
 
@@ -134,7 +134,7 @@ Execute test runner by command
 ./node_modules/.bin/wdio wdio.conf.js
 ```
 
-you will see an error on terminal as
+you will see an error on the terminal as
 
 ```
 pattern ./test/specs/**/*.js did not match any file
