@@ -162,7 +162,7 @@ export default new TeamIndexPage();
 ### /test/selectors/sign_up_selectors.js
 
 ```
-export const signUpButtonSelector = ".signup-button.border-radius-lg";
+export const signUpButtonSelector = "//strong[contains(text(),'Sign Up')]";
 export const emailInputSelector = "input[name='email']";
 export const primaryButtonSelector = ".btn.btn-primary";
 export const passwordInputSelector = "input[name='password']";

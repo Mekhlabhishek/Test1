@@ -35,7 +35,7 @@ const assert = require('assert');
 describe('AceInvoice Signup', () => {
   it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
-    browser.click('.signup-button.border-radius-lg');
+    browser.click('//strong[contains(text(),'Sign Up')]');
 
     var url = browser.getUrl();
     assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
@@ -103,7 +103,7 @@ const assert = require('assert');
 describe('AceInvoice Signup', () => {
   it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
-    browser.click('.signup-button.border-radius-lg');
+    browser.click('//strong[contains(text(),'Sign Up')]');
 
     var url = browser.getUrl();
     assert.equal(url, 'https://qa.aceinvoice.com/sign_up');

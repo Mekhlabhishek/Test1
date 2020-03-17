@@ -22,7 +22,7 @@ webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
   .url('https://qa.aceinvoice.com')
-  .$('.signup-button.border-radius-lg').click()
+  .$('//strong[contains(text(),'Sign Up')]').click()
   .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
 ```
@@ -57,7 +57,7 @@ webdriverio
   .init()
   .url('https://qa.aceinvoice.com')
   .pause(1000)
-  .$('.signup-button.border-radius-lg').click()
+  .$('//strong[contains(text(),'Sign Up')]').click()
   .pause(1000)
   .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
@@ -94,7 +94,7 @@ The above url will navigate us to the signin page of AceInvoice application.
 
 On the page, there are input elements for the user's email & password and a link for `signup`.
 
-First, we are selecting an anchor tag by JQuery code `$(".signup-button.border-radius-lg")`.
+First, we are selecting an anchor tag by JQuery code `$("//strong[contains(text(),'Sign Up')]")`.
 
 _How do we know what selector value we should give? On signin page, right click on the signup link and select `inspect`. You will see some html code for the link. Check for CSS class that signup link has. We can use CSS class, id or name attribute as the selector value._
 

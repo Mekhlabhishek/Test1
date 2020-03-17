@@ -9,25 +9,25 @@ So far, we are calling a method on the browser object. This does not look good, 
 With this method in place, we can rewrite our old code
 
 ```
-browser.click('.signup-button.border-radius-lg');
+browser.click('//strong[contains(text(),'Sign Up')]');
 ```
 
 as follows
 
 ```
-browser.element('.signup-button.border-radius-lg').click();
+browser.element('//strong[contains(text(),'Sign Up')]').click();
 ```
 
 Webdriverio provides a handy operator to define this as
 
 ```
-$('.signup-button.border-radius-lg').click();
+$('//strong[contains(text(),'Sign Up')]').click();
 ```
 
 Isn't this look like a JQuery code and also this makes the code more readable. Also, we can define a selector as a constant at the top of the code as
 
 ```
-const signUpButtonSelector = '.signup-button.border-radius-lg';
+const signUpButtonSelector = '//strong[contains(text(),'Sign Up')]';
 ```
 
 and then replace the code for same as
@@ -62,7 +62,7 @@ Simple right? With this let's change our code to use the getters. Make sure all 
 ```
 const assert = require('chai').assert;
 
-const signUpButtonSelector = ".signup-button.border-radius-lg";
+const signUpButtonSelector = "//strong[contains(text(),'Sign Up')]";
 const emailInputSelector = "input[name='email']";
 const primaryButtonSelector = ".btn.btn-primary";
 const passwordInputSelector = "input[name='password']";
