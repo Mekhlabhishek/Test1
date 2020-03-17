@@ -163,3 +163,5 @@ and you will see the selenium webpage.
 To see the console and all sessions visit [http://localhost:4444/wd/hub/](http://localhost:4444/wd/hub/) and you will see the console screen.
 
 Hola! That's it. Now, you are ready to write your first program.
+
+https://www.loom.com/share/274bc70c98b5473fa7a230a1a1fe4416
