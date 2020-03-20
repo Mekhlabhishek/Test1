@@ -17,6 +17,7 @@ export default class FormComponent {
 
   submit() {
     this.primaryButton.click();
+    browser.pause(500);
   }
 }
 ```
