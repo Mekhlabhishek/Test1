@@ -59,6 +59,8 @@ class SignInPage {
   get primaryButton() { return $(signUpSelectors.primaryButtonSelector); }
 
   clickSignUpLink() {
+    browser.moveToObject(this.signUpLink);
+    browser.pause(100);
     this.signUpLink.click();
   }
 }
@@ -104,6 +106,7 @@ class SignUpPage {
       this.emailInput.setValue(email);
     }
     this.primaryButton.click();
+    browser.pause(500);
   }
 
   enterPassword(password) {
@@ -112,6 +115,7 @@ class SignUpPage {
       this.confirmPasswordInput.setValue(password);
     }
     this.primaryButton.click();
+    browser.pause(500);
   }
 }
 
@@ -131,7 +135,7 @@ With sign-up page object is in place, let's use it in test cases. Our very next 
     signUpPage.enterPassword('welcome');
     signUpGetters.pageHeader.waitForVisible(5000);
     var headerText = signUpGetters.pageHeader.getText();
-    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
+    assert.equal(headerText, 'Basic details\nAdd your details and preferences.');
   });
 ```
 
