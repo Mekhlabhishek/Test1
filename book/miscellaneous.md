@@ -5,7 +5,9 @@ import {
   pageHeaderSelector,
   organizationNameInputSelector,
   sortingIconSelector,
-  primaryButtonSelector
+  primaryButtonSelector,
+  skipThisStepSelector,
+  clickOnContinue
 } from '../selectors/sign_up_selectors';
 
 class CreateOrganization {
@@ -13,7 +15,8 @@ class CreateOrganization {
   get organizationNameInput() { return $(organizationNameInputSelector); }
   get sortingIcon() { return $(sortingIconSelector); }
   get primaryButton() { return $(primaryButtonSelector); }
-  get pageHeader() { return $(pageHeaderSelector); }
+  get skipThisStepSelector() { return $(skipThisStepSelector); }
+  get clickOnContinue() { return $(clickOnContinue); }
 
   enterOrganizationData(name) {
     this.organizationNameInput.waitForVisible(3000);
@@ -27,6 +30,14 @@ class CreateOrganization {
   getPageHeader() {
     this.pageHeader.waitForVisible(5000);
     return this.pageHeader.getText();
+  }
+
+  skipThisStep() {
+    this.skipThisStepSelector.click();
+  }
+
+  clickOnContinue() {
+    this.clickOnContinue.click();
   }
 }
 
@@ -172,11 +183,13 @@ export const firstNameInputSelector = "input[name='user[first_name]']";
 export const lastNameInputSelector = "input[name='user[last_name]']";
 export const timeZoneDropdownSelector = "select[name='user[time_zone]']";
 export const dateFormatSelector: "//div[contains(text(),'MM/DD/YYYY')]";
-export const startWeekSelector: "//div[contains(text(),'Monday')]";
-export const agreeToTermsCheckBox: "//input[@name='user[terms_of_service_accepted]']/../div[1]",
-export const basicDetails: "//h1[contains(text(),'Basic details')]";
-export const addYourPreference: "//h1[contains(text(),'Add your details and preferences.')]";
+export const startWeekSelector = "//div[contains(text(),'Monday')]";
+export const agreeToTermsCheckBox = "//input[@name='user[terms_of_service_accepted]']/../div[1]",
+export const basicDetails = "//h1[contains(text(),'Basic details')]";
+export const addYourPreference = "//h1[contains(text(),'Add your details and preferences.')]";
 export const organizationNameInputSelector = "input[name='name']";
+export const skipThisStepSelector = "//a[contains(text(),'Skip')]";
+export const clickOnContinue = "//button[contains(text(),'Continue')]";
 export const sortingIconSelector = ".sorting_1";
 ```
 
@@ -195,6 +208,8 @@ describe('AceInvoice Signup', () => {
   it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
     signInPage.clickSignUpLink();
+
+    browser.pause(500);
     var url = browser.getUrl();
 
     assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
@@ -218,6 +233,8 @@ describe('AceInvoice Signup', () => {
     preferencePage.enterFullName('test', 'webdriverio');
     preferencePage.setPreferences(browser, 'Mumbai', '%m/%d/%Y', 'Monday');
     preferencePage.submit();
+
+    browser.pause(500);
     const createOrgHeader = createOrgPage.getPageHeader();
 
     assert.equal(createOrgHeader, 'Create your organization\nTo continue please enter your organization details, you can also create multiple organizations.');
@@ -226,6 +243,12 @@ describe('AceInvoice Signup', () => {
   it('Creates an organization', () => {
     createOrgPage.enterOrganizationData('WebdriverIO');
     createOrgPage.submit();
+
+    createOrgPage.skipThisStep();
+    createOrgPage.clickOnContinue();
+
+    browser.pause(500);
+
     const name = teamIndexPage.getSortingIconText();
     const url = browser.getUrl();
 
