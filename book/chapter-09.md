@@ -72,7 +72,7 @@ const lastNameInputSelector = "input[name='user[last_name]']";
 const timeZoneDropdownSelector = "select[name='user[time_zone]']";
 const dateFormatSelector = "//div[contains(text(),'MM/DD/YYYY')]";
 const startWeekSelector = "//div[contains(text(),'Monday')]";
-const agreeToTermsCheckBox = "//input[@name='user[terms_of_service_accepted]']",
+const agreeToTermsCheckBox = "//input[@name='user[terms_of_service_accepted]']/../div[1]",
 const pageHeaderSelector = ".page-header-left";
 const organizationNameInputSelector = "input[name='name']";
 const cardSelector = ".card";
