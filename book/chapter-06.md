@@ -28,7 +28,7 @@ After entering an email for our new account, server will redirect us to the seco
 So we can check that height for the password field is not 0 using
 
 ```
-var passwordHight = browser.getCssProperty('input[name="password"]', 'height');
+var passwordHeight = browser.getCssProperty('input[name="password"]', 'height');
 ```
 
 Before making an assertion let's check what this function returns. Check the value for `passwordHeight` using a console log. You will see something like this
@@ -64,12 +64,12 @@ describe('AceInvoice SignUp', () => {
     browser.$('input.btn.btn-primary').click();
 
     var passwordInputHeight = browser.getCssProperty('input[name="password"]', 'height');
-    assert.notEqual(passwordInputHeight.value, 0);
+    assert.notEqual(passwordInputHeight.parsed.value, 0);
   });
 });
 ```
 
-Now check if your test cases are running correctly using `npm test`. You will see all test cases are passing.
+Now check if your test cases are running correctly using `npm run test`. You will see all test cases are passing.
 
 _Getting timeout exception? Increase timeout in mochaOpts in config file by adding the parameter `timeout: 99999` for now, but this is not a right way, for the time being we are using that._
 
