@@ -23,6 +23,8 @@ Don't forget to print the email to console as this will be useful for our furthe
 Now you can make an assertion for checking header on the signup page, but we might not get the *Set Preferences* page right after we click the submit button. So, we will have to wait for some time till *Set Preferences* page renders.
 At this point, we will use `pause()` command that webdriverio provides us like.
 
+We are using `moveToObject()` command to move the mouse to the specified element when the element is not visible.
+
 ```
 browser.pause(500);
 ```
@@ -35,6 +37,8 @@ const assert = require('assert');
 describe('AceInvoice Signup', () => {
   it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
+    browser.moveToObject('//strong[contains(text(),'Sign Up')]');
+    browser.pause(500);
     browser.click('//strong[contains(text(),'Sign Up')]');
 
     var url = browser.getUrl();
@@ -44,6 +48,7 @@ describe('AceInvoice Signup', () => {
   it('Navigates to password page after adding an valid email', () => {
     browser.setValue('input[name="email"]', `test${Math.random()}@webdriverio.com`);
     browser.click('.btn.btn-primary');
+    browser.pause(500);
 
     var passwordInputHeight = browser.getCssProperty('input[name="password"]', 'height');
     assert.notEqual(passwordInputHeight.parsed.value, 0);
@@ -55,7 +60,7 @@ describe('AceInvoice Signup', () => {
     browser.click('.btn.btn-primary');
     browser.pause(500);
     var headerText = browser.getText('.page-header-left');
-    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
+    assert.equal(headerText, 'Basic details\nAdd your details and preferences.');
   });
 });
 ```
@@ -88,6 +93,7 @@ We will pass an arrow function here to simply check the text length of the selec
 ```
 browser.waitUntil(() => $("select[name='user[time_zone]']").getText().length > 100, 3000);
 ```
+To know more about the webdriverio commands, refer : http://v4.webdriver.io/api/action/moveToObject.html
 
 Moving ahead if you want to change the DateTime format and start of the week go ahead and add the code for same and click submit and add code to check if server redirected us to the create organization page same way we did for the preferences page.
 
@@ -103,6 +109,8 @@ const assert = require('assert');
 describe('AceInvoice Signup', () => {
   it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
+    browser.moveToObject('//strong[contains(text(),'Sign Up')]');
+    browser.pause(500);
     browser.click('//strong[contains(text(),'Sign Up')]');
 
     var url = browser.getUrl();
@@ -112,6 +120,7 @@ describe('AceInvoice Signup', () => {
   it('Navigates to password page after adding an valid email', () => {
     browser.setValue('input[name="email"]', `test${Math.random()}@webdriverio.com`);
     browser.click('.btn.btn-primary');
+    browser.pause(500);
 
     var passwordInputHeight = browser.getCssProperty('input[name="password"]', 'height');
     assert.notEqual(passwordInputHeight.parsed.value, 0);
@@ -123,7 +132,7 @@ describe('AceInvoice Signup', () => {
     browser.click('.btn.btn-primary');
     browser.pause(500);
     var headerText = browser.getText('.page-header-left');
-    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
+    assert.equal(headerText, 'Basic details\nAdd your details and preferences.');
   });
 
   it('Create preferences', () => {
@@ -140,26 +149,28 @@ describe('AceInvoice Signup', () => {
 
     browser.click('//input[@id="Monday"]/../div[1]');
 
+    browser.click("//input[@name='user[terms_of_service_accepted]']/../div[1]");
+
     browser.click('.btn.btn-primary');
 
     $("input[name='name']").waitForVisible(3000);
     const createOrgHeader = browser.getText('.page-header-left');
-    assert.equal(createOrgHeader, 'Add New Organization');
+    assert.equal(createOrgHeader, 'Create your organization\nTo continue please enter your organization details, you can also create multiple organizations.');
   });
 
   it('Creates an organization', () => {
     $("input[name='name']").waitForVisible(3000);
     browser.setValue("input[name='name']", 'WebdriverIO');
-    browser.setValue("input[name='email']", 'test2@webdriverio.com');
     browser.click(".btn.btn-primary");
+    browser.pause(500);
     $('.card').waitForVisible(3000);
     const name = browser.getText('.card');
-    assert.equal(name, 'Ace Invoice will be sending emails to your client and to your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
+    assert.equal(name, 'This will be the default due date period for all the invoices. It can be changed while creating an invoice.');
   });
 });
 ```
 
-Run the test now with the `npm test` and you will see that webdriver is creating a user and organization for us.
+Run the test now with the `npm run test` and you will see that webdriver is creating a user and organization for us.
 
 ## 7.5 Next steps
 
