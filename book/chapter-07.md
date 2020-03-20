@@ -170,7 +170,7 @@ describe('AceInvoice Signup', () => {
 });
 ```
 
-Run the test now with the `npm run test` and you will see that webdriver is creating a user and organization for us.
+Run the test now with the `npm test` and you will see that webdriver is creating a user and organization for us.
 
 ## 7.5 Next steps
 

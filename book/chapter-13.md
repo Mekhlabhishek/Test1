@@ -12,9 +12,10 @@ const assert = require('assert');
 describe('My first program for test runner', () => {
   it('My first test', () => {
     browser.url('./');
-    browser.setValue('input[name="email"]', 'neeraj@bigbinary.com');
+    browser.setValue('input[name="email"]', 'sam@example.com');
     browser.setValue('input[name="password"]', 'welcome');
     browser.click('input.btn.btn-primary');
+    browser.pause(500);
 
     var title = browser.getTitle();
     console.log('Title is : ', title);
@@ -39,7 +40,7 @@ Good to go, let's run our program with `npm test` command. You will see a bunch 
 [17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/clear"
 [17:24:17]  DATA                {}
 [17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/value"
-[17:24:17]  DATA                {"value":["n","e","e","r","a","j","@","b","i","g","(10 more items)"],"text":"neeraj@bigbinary.com"}
+[17:24:17]  DATA                {"value":["s","a","m","@","e","x","a","m","p","l","(5 more items)"],"text":"sam@example.com"}
 [17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/elements"
 [17:24:17]  DATA                {"using":"css selector","value":"input[name=\"password\"]"}
 [17:24:17]  RESULT              [{"ELEMENT":"0.07742633503067009-2"}]
@@ -92,7 +93,7 @@ Once Webdriver gets element ID, it will send out a request to clear out the cont
 
 ```
 [17:24:17]  COMMAND     POST     "/wd/hub/session/5facf94a01bffed6e1479c39778b89bf/element/0.07742633503067009-1/value"
-[17:24:17]  DATA                {"value":["n","e","e","r","a","j","@","b","i","g","(10 more items)"],"text":"neeraj@bigbinary.com"}
+[17:24:17]  DATA                {"value":["s","a","m","@","e","x","a","m","p","l","(5 more items)"],"text":"sam@example.com"}
 ```
 
 Same way, Webdriver will send out requests for setting value in the password field and then for clicking on submit button.
