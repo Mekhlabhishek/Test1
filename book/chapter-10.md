@@ -22,7 +22,7 @@ const signUpSelectors = {
   startWeekSelector: "//div[contains(text(),'Monday')]",
   basicDetails: "//h1[contains(text(),'Basic details')]",
   addYourPreference: "//span[contains(text(),'Add your details and preferences.')]",
-  byCheckingTextCheckBox: "//input[@name='user[terms_of_service_accepted]']",
+  agreeToTermsCheckBox = "//input[@name='user[terms_of_service_accepted]']/../div[1]",
   continue: "//input[@value='Continue']"
   organizationNameInputSelector: "input[name='name']",
   organizationSubmitButtonInput: "//input[@value='Continue']",
@@ -57,6 +57,7 @@ const signUpGetters = {
   get timeZoneDropdown() { return $(signUpSelectors.timeZoneDropdownSelector); },
   get dateFormatDropdown() { return $(signUpSelectors.dateFormatSelector); },
   get startWeekDropdown() { return $(signUpSelectors.startWeekSelector); },
+  get agreeToTermsCheckBox() { return $(agreeToTermsCheckBox); },
   get basicDetails() { return $(signUpSelectors.basicDetails); },
   get addYourPreference() { return $(signUpSelectors.addYourPreference); },
   get organizationNameInput() { return $(signUpSelectors.organizationNameInputSelector); },
@@ -146,6 +147,8 @@ import signUpGetters from '../getters/sign_up_getters';
 describe('AceInvoice Signup', () => {
   it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
+    browser.moveToObject(signUpGetters.signUpLink);
+    browser.pause(500);
     signUpGetters.signUpLink.click();
 
     var url = browser.getUrl();
@@ -155,6 +158,7 @@ describe('AceInvoice Signup', () => {
   it('Navigates to password page after adding an valid email', () => {
     signUpGetters.emailInput.setValue(`test${Math.random()}@webdriverio.com`);
     signUpGetters.primaryButton.click();
+    browser.pause(500);
 
     var passwordInputHeight = signUpGetters.passwordInput.getCssProperty('height');
     assert.notEqual(passwordInputHeight.parsed.value, 0);
@@ -166,7 +170,7 @@ describe('AceInvoice Signup', () => {
     signUpGetters.primaryButton.click();
     browser.pause(500);
     var headerText = signUpGetters.pageHeader.getText();
-    assert.equal(headerText, 'Basic details\nCreate your profile by adding your personal details and setting some of the app preferences');
+    assert.equal(headerText, 'Basic details\nAdd your details and preferences.');
   });
 
   it('Create preferences', () => {
@@ -185,22 +189,25 @@ describe('AceInvoice Signup', () => {
 
     var startSelector = signUpGetters.startWeekDropdown;
     startSelector.selectByAttribute('value', 'Monday');
+
+    signUpGetters.agreeToTermsCheckBox.click();
     signUpGetters.primaryButton.click();
+    browser.pause(500);
 
     signUpGetters.organizationNameInput.waitForVisible(3000);
     const createOrgHeader = signUpGetters.pageHeader.getText();
-    assert.equal(createOrgHeader, 'Add New Organization');
+    assert.equal(createOrgHeader, 'Create your organization\nTo continue please enter your organization details, you can also create multiple organizations.');
   });
 
   it('Creates an organization', () => {
     signUpGetters.organizationNameInput.waitForVisible(3000);
     signUpGetters.organizationNameInput.setValue('WebdriverIO');
-    signUpGetters.organizationEmailInput.setValue('test2@webdriverio.com');
     signUpGetters.primaryButton.click();
+    browser.pause(500);
     signUpGetters.card.waitForVisible(3000);
 
     const name = signUpGetters.card.getText();
-    assert.equal(name, 'Ace Invoice will be sending emails to your client and your team members once you start using this application. If they reply to those emails this is where the replied emails will come.');
+    assert.equal(name, 'This will be the default due date period for all the invoices. It can be changed while creating an invoice.');
 
     const url = browser.getUrl();
     assert.include(url, '/team/active');
