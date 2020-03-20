@@ -69,7 +69,7 @@ describe('AceInvoice SignUp', () => {
 });
 ```
 
-Now check if your test cases are running correctly using `npm run test`. You will see all test cases are passing.
+Now check if your test cases are running correctly using `npm test`. You will see all test cases are passing.
 
 _Getting timeout exception? Increase timeout in mochaOpts in config file by adding the parameter `timeout: 99999` for now, but this is not a right way, for the time being we are using that._
 
