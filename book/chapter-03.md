@@ -100,7 +100,7 @@ _What about other settings? Let's focus on these right now to get started with t
 
 ## 3.4 Use selenium as a service
 
-The last part of this chapter is to make sure that your `package.json` file contains correct values. At this moment you `package.json` file should look like this
+The last part of this chapter is to make sure that your `package.json` file contains correct values. At this moment your `package.json` file should look like this (but version of dependencies might differ).
 
 ```
 {
