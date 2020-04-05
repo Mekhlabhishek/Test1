@@ -57,7 +57,7 @@ webdriverio
   .init()
   .url('https://qa.aceinvoice.com')
   .pause(1000)
-  .$('//strong[contains(text(),'Sign Up')]').click()
+  .$("//strong[contains(text(),'Sign Up')]").click()
   .pause(1000)
   .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
