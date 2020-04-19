@@ -26,27 +26,24 @@ Download the desired node version from the [official](https://nodejs.org/en/down
 Once you have Node in place, let's go ahead and install tools that we will be using to test application.
 
 
-```
-mkdir aceinvoice-selenium-tests
-cd aceinvoice-selenium-tests
+```bash
+$ mkdir aceinvoice-selenium-tests
+$ cd aceinvoice-selenium-tests
 ```
 
 Initialize npm using the following command.
+`-y` is yes for  all questions that npm init will ask.
 
+```bash
+$ npm init -y
 ```
-npm init -y
-```
 
-`-y` is yes for all questions that npm init will ask.
-
-
-Next, install `webdriverio` by typing
+Next let's install `webdriverio`.
+`--save` will add these modules as project dependencies and `xx@4` is the version number for the package.
 
 ```
 npm install --save webdriverio@4
 ```
-
-_`--save` will add these modules as project dependencies and `xx@4` is the version number for the package._
 
 We will be installing `selenium-standalone` globally by running the following command.
 
