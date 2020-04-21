@@ -1,9 +1,9 @@
-# Learn WebdriverIO
+# Learn Selenium
 
 ## Setting up local development
 
 ```bash
-$ git clone https://github.com/bigbinary/learn-webdriverio-book.git
+$ git clone https://github.com/bigbinary/learn-selenium-book.git
 $ cd website
 $ npm install
 
