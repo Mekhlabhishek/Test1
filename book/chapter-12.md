@@ -1,15 +1,13 @@
-# Making code generic
-
 In the last chapter, we created a page object and used it in our test cases. If you have still not converted your code, then please take some time and convert all your test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md)
 
-## 12.1 Creating components
+## Creating components
 
 As you can see we are creating a getter for `primaryButton` in almost every page class. At this point, we will take a glimpse of the components.
 We will take out the `primaryButton` getter declaration and action related around that.
 
 Create a new folder called `components` and create a file in that folder with the name `form.component.js` and paste the following code into it.
 
-```
+```js
 import { primaryButtonSelector } from '../selectors/sign_up_selector';
 
 export default class FormComponent {
@@ -24,7 +22,7 @@ export default class FormComponent {
 
 Back to our `sign_up.page.js` import this component and inherent in class as follows
 
-```
+```js
 import FormComponent from '../components/form.component';
 
 class SignUpPage extends FormComponent {
@@ -34,7 +32,7 @@ class SignUpPage extends FormComponent {
 
 Next, remove getter definition for a primary button and `click` action around that getter and instead use `submit` method from FormComponent class. Your final `sign_up.page.js` file should look like
 
-```
+```js
 import {
   emailInputSelector,
   passwordInputSelector,

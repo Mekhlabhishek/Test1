@@ -1,9 +1,7 @@
-# Exercise for sign up flow
-
 In the last chapter, we checked if the URL of the page is correct or not. In this chapter, we will cover the entire signup workflow.
 So let's begin.
 
-## 6.1 Setting email for a test account
+## Setting email for a test account
 
 In the same namespace, we will create another test case for adding the email for the new account. Create a new `it` block just below the previous one.
 
@@ -13,13 +11,13 @@ selector and the second one is the value for an input field.
 
 Add value for email in `it` block, in the following way
 
-```
+```js
 browser.setValue('input[name="email"]', 'test@webdriver.com');
 ```
 
 After adding an email, we also want to click on the submit button. So our next step will be to click on the submit button using `click()` function as follows.
 
-```
+```js
 browser.click('.btn.btn-primary');
 ```
 
@@ -27,13 +25,13 @@ After entering an email for our new account, server will redirect us to the seco
 
 So we can check that height for the password field is not 0 using
 
-```
+```js
 var passwordHeight = browser.getCssProperty('input[name="password"]', 'height');
 ```
 
 Before making an assertion let's check what this function returns. Check the value for `passwordHeight` using a console log. You will see something like this
 
-```
+```js
 { property: 'height',
   value: '38px',
   parsed: { type: 'number', string: '38px', unit: 'px', value: 38 } }
@@ -41,13 +39,13 @@ Before making an assertion let's check what this function returns. Check the val
 
 So here we can see that function returns the complete CSS data about the element. For this test case, we will be using a parsed height of the element which is 38 and will be checking that height is always greater than 0 as
 
-```
+```js
 assert.notEqual(passwordHeight.parsed.value, 0);
 ```
 
 At this moment our file will look something like this
 
-```
+```js
 const assert = require('assert');
 
 describe('AceInvoice SignUp', () => {
