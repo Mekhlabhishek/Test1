@@ -1,3 +1,5 @@
+## Introduction to Selenium WebDriver
+
 Welcome to the first chapter of learning Selenium. 
 
 Selenium is an open source tool to test web applications running in browsers.
