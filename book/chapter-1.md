@@ -1,4 +1,7 @@
-Welcome to the first chapter of learning WebdriverIo. In this chapter, we will ensure that we have the requisite software to start writing our test.
+Welcome to the first chapter of learning Selenium. We will be using [webdriver](https://www.selenium.dev/documentation/en/webdriver/) to write our tests.
+
+
+In this chapter, we will ensure that we have the requisite software to start writing our test.
 
 
 ## Check Node is installed
