@@ -1,0 +1,54 @@
+[
+  {
+    "title": "Installing pre-requisites",
+    "name": "chapter-1.md"
+  },
+  {
+    "title": "Writing your first program",
+    "name": "chapter-2.md"
+  },
+  {
+    "title": "Introduction to the WebdriverIO test runner",
+    "name": "chapter-3.md"
+  },
+  {
+    "title": "Running program with wdio",
+    "name": "chapter-4.md"
+  },
+  {
+    "title": "Writing your first test case",
+    "name": "chapter-5.md"
+  },
+  {
+    "title": "Exercise for sign up flow",
+    "name": "chapter-6.md"
+  },
+  {
+    "title": "Setting Preferences",
+    "name": "chapter-7.md"
+  },
+  {
+    "title": "Integrating chai library",
+    "name": "chapter-8.md"
+  },
+  {
+    "title": "Moving to page objects",
+    "name": "chapter-9.md"
+  },
+  {
+    "title": "Polishing code",
+    "name": "chapter-10.md"
+  },
+  {
+    "title": "Page Elements and Page Objects",
+    "name": "chapter-11.md"
+  },
+  {
+    "title": "Making code generic",
+    "name": "chapter-12.md"
+  },
+  {
+    "title": "How WebdriverIO and Selenium Work Together",
+    "name": "chapter-13.md"
+  }
+]

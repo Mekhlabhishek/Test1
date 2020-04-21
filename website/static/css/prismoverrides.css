@@ -1,0 +1,103 @@
+code[class*="language-"],
+pre[class*="language-"] {
+    border-radius: 7px;
+    font-size: 0.96em;
+}
+ 
+  /* Code blocks */
+pre[class*="language-"] {
+    margin: 10px 0 35px;
+}
+
+pre[data-line] {
+    margin: 10px 0 35px;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #243552;
+}
+
+.line-highlight {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: inherit 0;
+    margin-top: 0.8em; /* Same as .prism’s padding-top */
+    background: rgba(223, 226, 229, 0.3);
+    pointer-events: none;
+    line-height: inherit;
+    white-space: pre;
+    border-left: 5px solid #cc99cd;
+}
+
+    .line-highlight:before,
+    .line-highlight[data-end]:after {
+        content: attr(data-start);
+        position: absolute;
+        top: .4em;
+        left: .6em;
+        min-width: 1em;
+        padding: 0 .5em;
+        background-color: hsla(24, 20%, 50%,.4);
+        color: hsl(24, 20%, 95%);
+        font: bold 65%/1.5 sans-serif;
+        text-align: center;
+        vertical-align: .3em;
+        border-radius: 999px;
+        text-shadow: none;
+        box-shadow: 0 1px white;
+    }
+
+    .line-highlight[data-end]:after {
+        content: attr(data-end);
+        top: auto;
+        bottom: .4em;
+    }
+
+.line-numbers .line-highlight:before,
+.line-numbers .line-highlight:after {
+    content: none;
+}
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }

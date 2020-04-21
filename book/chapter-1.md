@@ -1,27 +1,23 @@
-
-
-# Installation
-
 Welcome to the first chapter of learning WebdriverIo. In this chapter, we will ensure that we have the requisite software to start writing our test.
 
 
-### 1.1 Check Node is installed
+## Check Node is installed
 
 Open `terminal` on your machine and check the version of the node using the following command.
 
-```
-node -v
+```bash
+$ node -v
 ```
 
 _This should print node version >= 8.15.0_.
 
-### 1.2 Installing nodejs
+## Installing nodejs
 
 
 Download the desired node version from the [official](https://nodejs.org/en/download) site.
 
 
-### 1.2 Installing selenium-standalone and WebdriverIO
+## Installing selenium-standalone and WebdriverIO
 
 Once you have Node in place, let's go ahead and install tools that we will be using to test application.
 
@@ -34,6 +30,7 @@ $ cd aceinvoice-selenium-tests
 Initialize npm using the following command.
 `-y` is yes for  all questions that npm init will ask.
 
+
 ```bash
 $ npm init -y
 ```
@@ -41,39 +38,39 @@ $ npm init -y
 Next let's install `webdriverio`.
 `--save` will add these modules as project dependencies and `xx@4` is the version number for the package.
 
-```
-npm install --save webdriverio@4
+```bash
+$ npm install --save webdriverio@4
 ```
 
 We will be installing `selenium-standalone` globally by running the following command.
 
-```
-npm install selenium-standalone -g
+```bash
+$ npm install selenium-standalone -g
 ```
 
 Let's install dependencies for selenium by executing the following command.
 This will install "selenium-server", "ChromeDriver" for chrome browser and "geckodriver" for Firefox.
 
-```
-selenium-standalone install
+```bash
+$ selenium-standalone install
 ```
 
 If you want to install dependencies for selenium only in your project/directory, execute the following commad.
 
-```
-node_modules/.bin/selenium-standalone install
+```bash
+$ node_modules/.bin/selenium-standalone install
 ```
 
 Verify that you installed the selenium correctly by executing the following command.
 
-```
-selenium-standalone start
+```bash
+$ selenium-standalone start
 ```
 
 If you have installed dependencies only in your project/directory, verify by execute following command.
 
-```
-node_modules/.bin/selenium-standalone start
+```bash
+$ node_modules/.bin/selenium-standalone start
 ```
 
 This will start the selenium server on port `4444`.

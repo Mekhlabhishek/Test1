@@ -1,50 +1,48 @@
-# Moving to page objects
-
 In the last chapter, we added a complete test suite for the signup flow, but while achieving this we wrote a lot of duplicate code. Page objects help us to get rid of the duplicate code. The page object is a very interesting topic but at the same time is also complex to understand. So we will not jump onto page objects here. First, we will take the first step towards it in this chapter.
 
-## 9.1 Browser element
+## Browser element
 
 So far, we are calling a method on the browser object. This does not look good, webdriverio gives us a way to get an element from the browser and then call a method to it. We can get a hold of the element using `element()` method. This method accepts the selector as a parameter.
 
 With this method in place, we can rewrite our old code
 
-```
+```js
 browser.click('//strong[contains(text(),'Sign Up')]');
 ```
 
 as follows
 
-```
+```js
 browser.element('//strong[contains(text(),'Sign Up')]').click();
 ```
 
 Webdriverio provides a handy operator to define this as
 
-```
+```js
 $('//strong[contains(text(),'Sign Up')]').click();
 ```
 
 Isn't this look like a JQuery code and also this makes the code more readable. Also, we can define a selector as a constant at the top of the code as
 
-```
+```js
 const signUpButtonSelector = '//strong[contains(text(),'Sign Up')]';
 ```
 
 and then replace the code for same as
 
-```
+```js
 $(signUpButtonSelector).click();
 ```
 
-## 9.2 Introduction to getters
+## Introduction to getters
 
 Sometimes we unknowingly define an element declaration even before it is present on the page. In such cases, you might not get a result that you expected. To overcome this `getter` are pretty much handy
 
-## 9.3 Declaring getter
+## Declaring getter
 
 Creating a getter is very simple. Let's take a look at simple getter to start with.
 
-```
+```js
 const getter = {
   get element() { return $('#password_input') }
 }
@@ -53,13 +51,13 @@ const getter = {
 This is similar to defining a hash object with a few twists. We are declaring key with name `element` and this has to be a function. With the above getter defined we can now call it like
 
 
-```
+```js
 getter.element.click();
 ```
 
 Simple right? With this let's change our code to use the getters. Make sure all of your test cases are passing.
 
-```
+```js
 const assert = require('chai').assert;
 
 const signUpButtonSelector = "//strong[contains(text(),'Sign Up')]";

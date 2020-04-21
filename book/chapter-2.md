@@ -1,15 +1,13 @@
-# Your first program
-
 In this chapter, we will be writing a program with [webdriverio](https://webdriver.io).
 This program will go to [qa.aceinvoice.com](http://qa.aceinvoice.com)
 and will complete signup procedure.
 
-## 2.1 Writing and understanding basic program
+## Writing and understanding basic program
 
 
 Create a file by executing the following command.
 
-```
+```bash
 touch first_program.js
 ```
 
@@ -27,7 +25,7 @@ webdriverio
   .end();
 ```
 
-## 2.2 Running your first program
+## Running your first program
 
 Start the `selenium-standalone` server, using the following command in the terminal
 
@@ -37,13 +35,13 @@ selenium-standalone start --version=3.4.0
 
 Once the server starts, open up a new terminal window and navigate to the directory and start executing a program by
 
-```
+```bash
 node first_program.js
 ```
 
 You will see Chrome window popping up and navigating to `qa.aceinvoice.com`, then completing the sign up flow and closing chrome window. And on the terminal, you will see the output as
 
-```
+```msg
 URL is :  https://qa.aceinvoice.com/sign_up
 ```
 
@@ -67,7 +65,7 @@ That's it, you ran your first program successfully. Here, we have captured the U
 We are not testing if it is correct or not.
 
 
-## 2.3 Understading the code
+## Understading the code
 
 Let's break down the code, to understand it.
 
@@ -79,7 +77,7 @@ const webdriverio = require('webdriverio');
 
 Next, we are creating a remote client with some basic options like the browser that we want to use
 
-```
+```msg
 webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
 ```

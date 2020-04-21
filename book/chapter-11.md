@@ -1,14 +1,12 @@
-# Page Elements and Page Objects
-
 In the last chapter, we saw how to define a browser element. Page objects are similar to browser elements with few tweaks.
 In page objects, we can define a class and custom method.
 
-## 11.1 Creating a page
+## Creating a page
 
 Create a folder named `pages` at the level of `specs` folder. Inside that folder create two files with names `sign_in.page.js` and `sign_up.page.js`.
 Now, let's define a class in each of the files as follows
 
-```
+```js
 # sign_in.page.js
 
 class SignInPage {
@@ -24,7 +22,7 @@ class SignUpPage {
 
 Now, let's move code related to the sign-in page to `signInPage` class first. To do this we need to import signUpSelectors into the file. After importing the selector in file move all the getters related to the sign-in page in class as follows
 
-```
+```js
 import signUpSelectors from '../selectors/sign_up_selectors';
 
 class SignInPage {
@@ -35,15 +33,15 @@ class SignInPage {
 
 As you can see we haven't exported our class yet, we need to export the object of the class in order to use it directly in test cases. Add export statement at the end of the file as
 
-```
+```js
 export default new SignInPage();
 ```
 
-## 11.2 Page actions
+## Page actions
 
 Now, on the sign-in page in order to redirect to the sign-up page, we need to take action and click on a link on a page. Page action is nothing but a method in a class, by calling that method we can perform our actions. Let's define our click action first as follows
 
-```
+```js
 clickSignUpLink() {
     this.signUpLink.click();
   }
@@ -51,7 +49,7 @@ clickSignUpLink() {
 
 Final code in `sign_in.page.js` will look as follows.
 
-```
+```js
 import signUpSelectors from '../selectors/sign_up_selectors';
 
 class SignInPage {
@@ -68,17 +66,17 @@ class SignInPage {
 export default new SignInPage();
 ```
 
-## 11.3 Use case in test cases
+## Use case in test cases
 
 Import class object that we exported as
 
-```
+```js
 import signInPage from '../pages/sign_in.page';
 ```
 
 Now, with this import in place, our very first test case will look like
 
-```
+```js
 it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
   browser.url('./');
   signInPage.clickSignUpLink();
@@ -88,11 +86,11 @@ it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
 });
 ```
 
-## 11.4 Miscellaneous
+## Miscellaneous
 
 Now page for sign-in is in place, let's create a page for sign-up as follows
 
-```
+```js
 import signUpSelectors from "../selectors/sign_up_selectors";
 
 class SignUpPage {
@@ -124,7 +122,7 @@ export default new SignUpPage();
 
 With sign-up page object is in place, let's use it in test cases. Our very next test case will look like as follows
 
-```
+```js
   it('Navigates to password page after adding an valid email', () => {
     signUpPage.enterEmail(`test${Math.random()}@webdriverio.com`);
     var passwordInputHeight = signUpPage.passwordInput.getCssProperty('height');

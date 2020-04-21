@@ -1,14 +1,12 @@
-# Polishing code
-
 Ok, so with our last chapter we saw how to define getters and elements. With all the data in the same file doesn't look good. Let's separate our code based on the scope.
 
 First, we will create two more folders at the same level where our `specs` folder is namely, `selectors` and `getters`. You can choose any name you want, we found these names pretty easy to understand and get an idea about what folder exactly contains.
 
-## 10.1 Creating a selector file
+## Creating a selector file
 
 First, we will create a file in the `selectors` folder with the name `sign_up_selectors.js`. Let's move all our selectors to this file and export them from this file as
 
-```
+```js
 const signUpSelectors = {
   signUpButtonSelector: "//strong[contains(text(),'Sign Up')]",
   emailInputSelector: "input[name='email']",
@@ -35,17 +33,17 @@ module.exports = signUpSelectors;
 
 So as you can see we created one single hash object with all the selectors and then exported it.
 
-## 10.2 Creating a getter file
+## Creating a getter file
 
 Similar to the selector create a getter file in `getters` folder with the name `sign_up_getters.js`. In this file first, we will import the selectors as
 
-```
+```js
 const signUpSelectors = require('../selectors/sign_up_selectors');
 ```
 
 Next, same like selector, we will define a hash object and export it like
 
-```
+```js
 const signUpGetters = {
   get signUpLink() { return $(signUpSelectors.signUpButtonSelector) },
   get emailInput() { return $(signUpSelectors.emailInputSelector); },
@@ -68,29 +66,29 @@ module.exports = signUpGetters;
 
 Now back to our test case file, we will remove all the declarations that we made about selectors and getters and only import `sign_up_getters.js` like
 
-```
+```js
 const signUpGetters = require('../getters/sign_up_getters');
 ```
 
 and now we will use this getter object from an imported file to get elements like
 
-```
+```js
 signUpGetters.primaryButton.click();
 ```
 
-## 10.3 Setting babel
+## Setting babel
 
 Babel is the next-gen JS compiler and allows source code transformations. To write test cases using next-gen JS install all necessary dependencies using.
 
-```
-npm install --save @babel/core @babel/cli @babel/preset-env @babel/register
+```bash
+$ npm install --save @babel/core @babel/cli @babel/preset-env @babel/register
 ```
 
-## 10.4 Creating a babel config file
+## Creating a babel config file
 
 Create a file with name `babel.config.js` at the root of the folder with the following config in it.
 
-```
+```js
 module.exports = {
     presets: [
         ['@babel/preset-env', {
@@ -102,17 +100,17 @@ module.exports = {
 }
 ```
 
-## 10.5 Add a hook in wdio config
+## Add a hook in wdio config
 
 Next step is to tell `wdio` to use babel to compile all of our JS files. We will use the before hook from `wdio.config.js`. So uncomment the before hook in `wdio` config file and add `require('@babel/register');` to the function. Your before hook should look like
 
-```
+```js
 before: function (capabilities, specs) {
     require('@babel/register');
 },
 ```
 
-## 10.6 Setup babel for mocha
+## Setup babel for mocha
 
 As the last step, we will set mocha to use babel compiler by adding config in `mochaOpts`, which is `compilers: ['js:@babel/register']`. Add this config right after `UI` option and we are done with babel setup.
 
@@ -120,19 +118,19 @@ With babel setup in place, we can change the JS code in our test cases. First, w
 
 Instead of exporting using `module.exports`, we will export it with `export default`. So now your selector file will have an export statement as
 
-```
+```js
 export default signUpSelectors;
 ```
 
 With this, we can change the import statement `const signUpSelectors = require('../selectors/sign_up_selectors');` in getter file to
 
-```
+```js
 import signUpSelectors from '../selectors/sign_up_selectors';
 ```
 
 For importing assert from chai though we will have to use a little twist in the syntax like
 
-```
+```js
 import { assert } from 'chai';
 ```
 
@@ -140,7 +138,7 @@ _When a library is exporting multiple data instead of default data then wrapping
 
 With babel and other settings in place, our code now should look like
 
-```
+```js
 import { assert } from 'chai';
 import signUpGetters from '../getters/sign_up_getters';
 
