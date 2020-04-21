@@ -27,15 +27,21 @@ write selenium webdriver tests in any of the following languages.
 * Python
 * PHP
 
-In this book we will be writing selenium webdriver tests using JavaScript programming language.
 
+
+
+
+
+## WebdriverIO
+
+[WebdriverIO](https://webdriver.io) is a custom implementation for selenium's webdriver API. 
+It is written in Javascript and runs on Node.js.
+WebdriverIO is distributed as an npm package.
+
+In this book we will be writing selenium webdriver tests using JavaScript programming language.
 We will be using [webdriver](https://www.selenium.dev/documentation/en/webdriver/) to write our tests.
 
-
-In this chapter, we will ensure that we have the requisite software to start writing our test.
-
-
-## Check Node is installed
+## Check Node.js is installed
 
 Open `terminal` on your machine and check the version of the node using the following command.
 
@@ -45,15 +51,14 @@ $ node -v
 
 _This should print node version >= 8.15.0_.
 
-## Installing nodejs
-
+## Installing Node.js
 
 Download the desired node version from the [official](https://nodejs.org/en/download) site.
 
 
 ## Installing selenium-standalone and WebdriverIO
 
-Once you have Node in place, let's go ahead and install tools that we will be using to test application.
+Once web have Node.js in place, let's go ahead and install tools that we will be using to test our application.
 
 
 ```bash
