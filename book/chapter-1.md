@@ -8,8 +8,8 @@ Selenium WebDriver was the first cross platform testing framework that could con
 Using Selenium WebDriver we identify web elements on web pages and then actions are performed on those elements.
 We have one web driver for each browser.
 
-* Firefox Driver (Gecko Driver)
 * Chrome Driver
+* Firefox Driver (Gecko Driver)
 * Internet Explorer Driver
 * Opera Driver
 * Safari Driver
