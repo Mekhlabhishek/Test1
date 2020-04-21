@@ -1,14 +1,12 @@
 ## Introduction to Selenium WebDriver
 
-Welcome to the first chapter of learning Selenium. 
-
 Selenium is an open source tool to test web applications running in browsers.
-Selenium does not test desktop applilcations.
+Selenium does not test desktop applications.
 
 
-Selenium WebDriver was the first cross platform testing framework that could control the browser from OS level. 
+Selenium WebDriver was the first cross platform testing framework that could control the browser from the OS. 
 Using Selenium WebDriver we identify web elements on web pages and then actions are performed on those elements.
-Each browser has its own web driver. The different WebDrivers are:
+We have one web driver for each browser.
 
 * Firefox Driver (Gecko Driver)
 * Chrome Driver
@@ -26,10 +24,6 @@ write selenium webdriver tests in any of the following languages.
 * Ruby
 * Python
 * PHP
-
-
-
-
 
 
 ## WebdriverIO
