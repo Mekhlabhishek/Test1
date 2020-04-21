@@ -75,20 +75,14 @@ Next let's install `webdriverio`.
 $ npm install --save webdriverio@4
 ```
 
-We will be installing `selenium-standalone` globally by running the following command.
+We will be installing `selenium-standalone` by running the following command.
 
 ```bash
-$ npm install selenium-standalone -g
+$ npm install selenium-standalone
 ```
 
 Let's install dependencies for selenium by executing the following command.
 This will install "selenium-server", "ChromeDriver" for chrome browser and "geckodriver" for Firefox.
-
-```bash
-$ selenium-standalone install
-```
-
-If you want to install dependencies for selenium only in your project/directory, execute the following commad.
 
 ```bash
 $ node_modules/.bin/selenium-standalone install
@@ -97,20 +91,17 @@ $ node_modules/.bin/selenium-standalone install
 Verify that you installed the selenium correctly by executing the following command.
 
 ```bash
-$ selenium-standalone start
-```
-
-If you have installed dependencies only in your project/directory, verify by execute following command.
-
-```bash
 $ node_modules/.bin/selenium-standalone start
 ```
+
 
 This will start the selenium server on port `4444`.
 Open your browser and try to visit [http://localhost:4444](http://localhost:4444)
 and you will see the selenium webpage.
 
-To see the console and all sessions visit [http://localhost:4444/wd/hub/](http://localhost:4444/wd/hub/) and you will see the console screen.
+To see the console and all sessions visit 
+[http://localhost:4444/wd/hub/](http://localhost:4444/wd/hub/) 
+and you will see the console screen.
 
 Hola! That's it. Now, you are ready to write your first program.
 
