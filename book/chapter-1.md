@@ -1,4 +1,11 @@
-Welcome to the first chapter of learning Selenium. We will be using [webdriver](https://www.selenium.dev/documentation/en/webdriver/) to write our tests.
+Welcome to the first chapter of learning Selenium. 
+
+Selenium is an open source tool to test web applications running in browsers.
+Selenium does not test desktop applilcations.
+
+
+
+We will be using [webdriver](https://www.selenium.dev/documentation/en/webdriver/) to write our tests.
 
 
 In this chapter, we will ensure that we have the requisite software to start writing our test.
