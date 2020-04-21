@@ -1,7 +1,7 @@
 const siteConfig = {
-  title: "Learn WebdriverIO", // Title for website.
+  title: "Learn Selenium book", // Title for website.
   tagline: "markdown-book-generator ",
-  url: "https://your-website-url", // website URL
+  url: "https://learnselenium.bigbinary.com/docs/", // website URL
   baseUrl: "/",
 
   projectName: "bigbinary-ebook",
@@ -21,7 +21,7 @@ const siteConfig = {
     secondaryColor: "#00E5FF"
   },
   editUrl:
-    "https://github.com/bigbinary/learn-webdriverio-book/blob/master/book",
+    "https://github.com/bigbinary/learn-selenium-book/blob/master/book",
   //copyright in footer
   copyright: `Copyright © ${new Date().getFullYear()} BigBinary`,
 
