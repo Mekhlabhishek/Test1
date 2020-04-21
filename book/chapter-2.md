@@ -8,7 +8,7 @@ and will complete signup procedure.
 Create a file by executing the following command.
 
 ```bash
-touch first_program.js
+$ touch first_program.js
 ```
 
 Add the following code in that file:
