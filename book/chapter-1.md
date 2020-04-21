@@ -4,6 +4,28 @@ Selenium is an open source tool to test web applications running in browsers.
 Selenium does not test desktop applilcations.
 
 
+Selenium WebDriver was the first cross platform testing framework that could control the browser from OS level. 
+Using Selenium WebDriver we identify web elements on web pages and then actions are performed on those elements.
+Each browser has its own web driver. The different WebDrivers are:
+
+* Firefox Driver (Gecko Driver)
+* Chrome Driver
+* Internet Explorer Driver
+* Opera Driver
+* Safari Driver
+* HTML Unit Driver
+
+Selenium Webdriver supports following languages. What it means is that we can
+write selenium webdriver tests in any of the following languages.
+
+* C#
+* Java
+* JavaScript
+* Ruby
+* Python
+* PHP
+
+In this book we will be writing selenium webdriver tests using JavaScript programming language.
 
 We will be using [webdriver](https://www.selenium.dev/documentation/en/webdriver/) to write our tests.
 
