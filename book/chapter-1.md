@@ -78,7 +78,7 @@ $ npm install --save webdriverio@4
 We will be installing `selenium-standalone` by running the following command.
 
 ```bash
-$ npm install selenium-standalone --version=3.4.0
+$ npm install selenium-standalone
 ```
 
 Let's install dependencies for selenium by executing the following command.
@@ -86,6 +86,12 @@ This will install "selenium-server", "ChromeDriver" for chrome browser and "geck
 
 ```bash
 $ node_modules/.bin/selenium-standalone install
+```
+
+Let us install selenium-server v3.4.0 by executing the following command.
+
+```bash
+$ selenium-standalone install --version=3.4.0
 ```
 
 Verify that you installed the selenium correctly by executing the following command.
