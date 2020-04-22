@@ -1,8 +1,7 @@
-In this chapter, we will be writing a program with [webdriverio](https://webdriver.io).
-This program will go to [qa.aceinvoice.com](http://qa.aceinvoice.com)
+In this chapter, we will be write a program that will go to [qa.aceinvoice.com](http://qa.aceinvoice.com)
 and will complete signup procedure.
 
-## Writing and understanding basic program
+## Writing and understanding a basic program
 
 
 Create a file by executing the following command.
@@ -25,27 +24,38 @@ webdriverio
   .end();
 ```
 
-## Running your first program
+## Running  first program
 
-Start the `selenium-standalone` server, using the following command in the terminal
+Start the `selenium-standalone` server, using the following command in the terminal.
 
 ```
 $ node_modules/.bin/selenium-standalone start
 ```
 
-Once the server starts, open up a new terminal window and navigate to the directory and start executing a program by
+We will start a new terminal tab and would execute our program.
 
 ```bash
 node first_program.js
 ```
 
-You will see Chrome window popping up and navigating to `qa.aceinvoice.com`, then completing the sign up flow and closing chrome window. And on the terminal, you will see the output as
+We will see Chrome window popping up and navigating to `qa.aceinvoice.com`, then completing the sign up flow and closing chrome window. And on the terminal, we will see following output.
 
 ```msg
 URL is :  https://qa.aceinvoice.com/sign_up
 ```
 
-Program execution may be too fast to figure you out what exactly is going on, so to slow it down a bit, add a sleep time after each step using `pause(#time_in_ms)`. So our new program will look something like this
+Here are the things selenium did behind the scene.
+
+* Selenium opened chrome browser
+* Asked the browser to visit `https://qa.aceinvoice.com`
+* Found the location of text containing word "Sign Up"
+* Clicked on the "Sign Up"
+* Grabbed the new url
+* Write the new url on console.
+
+All this happened so fast that it was hard to notice all that.
+So we will ask Selenium to pause in between. Here is modified code.
+Notice that we have added `pause` statements.
 
 ```js
 const webdriverio = require('webdriverio');
@@ -54,15 +64,15 @@ webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
   .url('https://qa.aceinvoice.com')
-  .pause(1000)
+  .pause(3000)
   .$("//strong[contains(text(),'Sign Up')]").click()
-  .pause(1000)
+  .pause(3000)
   .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
 ```
 
-That's it, you ran your first program successfully. Here, we have captured the URL and printed it.
-We are not testing if it is correct or not.
+That's it, we ran our first program successfully. 
+Here, we captured the URL and printed it.
 
 
 ## Understading the code
