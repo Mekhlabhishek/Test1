@@ -20,7 +20,7 @@ webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
   .url('https://qa.aceinvoice.com')
-  .$('//strong[contains(text(),'Sign Up')]').click()
+  .$("//strong[contains(text(),'Sign Up')]").click()
   .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
 ```
@@ -30,7 +30,7 @@ webdriverio
 Start the `selenium-standalone` server, using the following command in the terminal
 
 ```
-$ selenium-standalone start --version=3.4.0
+$ node_modules/.bin/selenium-standalone start
 ```
 
 Once the server starts, open up a new terminal window and navigate to the directory and start executing a program by
