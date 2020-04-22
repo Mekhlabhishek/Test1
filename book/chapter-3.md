@@ -1,6 +1,6 @@
 We ran our first program successfully in the last chapter and saw webdriverio in action.
 
-In this chapter, we will be setting up our test runner to run test cases. Follow along to know how.
+In this chapter, we will be setting up our test runner to run test cases. 
 
 ## Install wdio-cli
 
@@ -15,10 +15,8 @@ $ npm install --save @wdio/cli
 
 ## Creating a config file
 
-When you install the package, it will get saved under `node_modules/.bin/`. So, in order to create a config file we
+When we installed the package, it got saved under `node_modules/.bin/`. So, in order to create a config file we
 will use the wdio package installed under the `node_modules`.
-
-Create a configuration file by command
 
 ```bash
 $ ./node_modules/.bin/wdio config
