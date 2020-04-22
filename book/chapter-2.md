@@ -75,34 +75,35 @@ That's it, we ran our first program successfully.
 Here, we captured the URL and printed it.
 
 
-## Understading the code
+## Code walkthrough
 
-Let's break down the code, to understand it.
+Let's go over the code.
 
-First, we are importing `webdriverio` from the node package that we installed earlier by calling
+First, we are importing `webdriverio` from the node package that we installed earlier.
 
 ```js
 const webdriverio = require('webdriverio');
 ```
 
-Next, we are creating a remote client with some basic options like the browser that we want to use
+Next, we are creating a remote client with some basic options like the browser that we want to use.
 
 ```msg
 webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
 ```
 
-_You can go through all the available options [here](https://webdriver.io/docs/options.html). We will be covering those in later parts of the book. So, you don't have to worry about it now._
+Selenium provides lots of [options](https://webdriver.io/docs/options.html). 
+We will be covering these in the later parts of the book. 
 
 After that, we are initializing the remote client by calling the `init()` method, which will assign the session to the remote client.
 
 Then we are navigating to our website by calling `url('https://qa.aceinvoice.com')`.
 
-The above url will navigate us to the signin page of AceInvoice application.
+The above url will redirect to the signin page of AceInvoice.
 
-On the page, there are input elements for the user's email & password and a link for `signup`.
+On this page, there are input elements for the user's email & password and a link for `signup`.
 
-First, we are selecting an anchor tag by JQuery code `$("//strong[contains(text(),'Sign Up')]")`.
+Here we are looking for any element containing the desired text `$("//strong[contains(text(),'Sign Up')]")`.
 
 _How do we know what selector value we should give? On signin page, right click on the signup link and select `inspect`. You will see some html code for the link. Check for CSS class that signup link has. We can use CSS class, id or name attribute as the selector value._
 
