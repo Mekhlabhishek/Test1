@@ -30,7 +30,7 @@ webdriverio
 Start the `selenium-standalone` server, using the following command in the terminal
 
 ```
-$ selenium-standalone start --version=3.4.0
+$ node_modules/.bin/selenium-standalone start
 ```
 
 Once the server starts, open up a new terminal window and navigate to the directory and start executing a program by

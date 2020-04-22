@@ -88,17 +88,12 @@ This will install "selenium-server", "ChromeDriver" for chrome browser and "geck
 $ node_modules/.bin/selenium-standalone install
 ```
 
-Let us install selenium-server v3.4.0 by executing the following command.
-
-```bash
-$ selenium-standalone install --version=3.4.0
-```
-
 Verify that you installed the selenium correctly by executing the following command.
 
 ```bash
-$ selenium-standalone start --version=3.4.0
+$ node_modules/.bin/selenium-standalone start
 ```
+
 
 This will start the selenium server on port `4444`.
 Open your browser and try to visit [http://localhost:4444](http://localhost:4444)
