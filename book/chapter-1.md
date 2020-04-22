@@ -78,7 +78,7 @@ $ npm install --save webdriverio@4
 We will be installing `selenium-standalone` by running the following command.
 
 ```bash
-$ npm install selenium-standalone
+$ npm install selenium-standalone --version=3.4.0
 ```
 
 Let's install dependencies for selenium by executing the following command.
@@ -91,9 +91,8 @@ $ node_modules/.bin/selenium-standalone install
 Verify that you installed the selenium correctly by executing the following command.
 
 ```bash
-$ node_modules/.bin/selenium-standalone start
+$ selenium-standalone start --version=3.4.0
 ```
-
 
 This will start the selenium server on port `4444`.
 Open your browser and try to visit [http://localhost:4444](http://localhost:4444)

@@ -20,7 +20,7 @@ webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
   .url('https://qa.aceinvoice.com')
-  .$('//strong[contains(text(),'Sign Up')]').click()
+  .$("//strong[contains(text(),'Sign Up')]").click()
   .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
 ```
