@@ -5,7 +5,7 @@ So let's begin.
 
 In the same namespace, we will create another test case for adding the email for the new account. Create a new `it` block just below the previous one.
 
-When you visit the signup page you will see the field for the email. Now we have to set up the email for our test account.
+When we visit the signup page we will see the field for the email. Now we have to set up the email for our test account.
 To enter values to the input fields, webdriver gives a handy method called `setValue()`. The method accepts two values here, the first one is
 selector and the second one is the value for an input field.
 
@@ -29,7 +29,7 @@ So we can check that height for the password field is not 0 using
 var passwordHeight = browser.getCssProperty('input[name="password"]', 'height');
 ```
 
-Before making an assertion let's check what this function returns. Check the value for `passwordHeight` using a console log. You will see something like this
+Before making an assertion let's check what this function returns. Check the value for `passwordHeight` using a console log. We will see something like this
 
 ```js
 { property: 'height',
@@ -51,7 +51,7 @@ const assert = require('assert');
 describe('AceInvoice SignUp', () => {
   it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
-    browser.click('//strong[contains(text(),'Sign Up')]');
+    browser.click("//strong[contains(text(),'Sign Up')]");
 
     var url = browser.getUrl();
     assert.equal(url, 'https://qa.aceinvoice.com/sign_up');
@@ -67,7 +67,7 @@ describe('AceInvoice SignUp', () => {
 });
 ```
 
-Now check if your test cases are running correctly using `npm test`. You will see all test cases are passing.
+Now let's check if our test cases are running correctly using `npm test`. We will see all test cases are passing.
 
 _Getting timeout exception? Increase timeout in mochaOpts in config file by adding the parameter `timeout: 99999` for now, but this is not a right way, for the time being we are using that._
 

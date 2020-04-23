@@ -1,8 +1,8 @@
-In the last chapter, we created a page object and used it in our test cases. If you have still not converted your code, then please take some time and convert all your test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md)
+In the last chapter, we created a page object and used it in our test cases. If the code is still not modified, then let's take some time and convert all our test cases to use page object and not getters. Sample code is [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md)
 
 ## Creating components
 
-As you can see we are creating a getter for `primaryButton` in almost every page class. At this point, we will take a glimpse of the components.
+As we can see we are creating a getter for `primaryButton` in almost every page class. At this point, we will take a glimpse of the components.
 We will take out the `primaryButton` getter declaration and action related around that.
 
 Create a new folder called `components` and create a file in that folder with the name `form.component.js` and paste the following code into it.
@@ -30,7 +30,7 @@ class SignUpPage extends FormComponent {
 }
 ```
 
-Next, remove getter definition for a primary button and `click` action around that getter and instead use `submit` method from FormComponent class. Your final `sign_up.page.js` file should look like
+Next, remove getter definition for a primary button and `click` action around that getter and instead use `submit` method from FormComponent class. Our final `sign_up.page.js` file should look like
 
 ```js
 import {
@@ -67,4 +67,4 @@ export default new SignUpPage();
 
 Take time and separate all the components from pages.
 
-At this moment you are ready to write test cases for an entire application. For getting started, try writing test cases for sign-in flow. In the next chapter, we will take an overview of how WebdriverIO and Selenium work hand-in-hand.
+At this moment we are ready to write test cases for an entire application. For getting started, try writing test cases for sign-in flow. In the next chapter, we will take an overview of how WebdriverIO and Selenium work hand-in-hand.

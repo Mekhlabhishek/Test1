@@ -137,4 +137,4 @@ With sign-up page object is in place, let's use it in test cases. Our very next 
   });
 ```
 
-At this point, you will see we are still using `signUpGetter` at some places. Give it a try and convert all test cases to use page objects. You can check your code if you get stuck [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md).
+At this point, we will see we are still using `signUpGetter` at some places. Give it a try and convert all test cases to use page objects. We can check our code if we get stuck [here](https://github.com/bigbinary/learn-webdriverio-book/blob/master/book/miscellaneous.md).

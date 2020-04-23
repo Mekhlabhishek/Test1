@@ -19,6 +19,8 @@ webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
   .url('https://qa.aceinvoice.com')
+  .scroll("//strong[contains(text(),'Sign Up')]")
+  .pause(100)
   .$("//strong[contains(text(),'Sign Up')]").click()
   .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
@@ -64,7 +66,8 @@ webdriverio
   .remote({ desiredCapabilities: { browserName: 'chrome' } })
   .init()
   .url('https://qa.aceinvoice.com')
-  .pause(3000)
+  .scroll("//strong[contains(text(),'Sign Up')]")
+  .pause(200)
   .$("//strong[contains(text(),'Sign Up')]").click()
   .pause(3000)
   .getUrl().then(url => { console.log('URL is: ', url) })
@@ -104,6 +107,8 @@ The above url will redirect to the signin page of AceInvoice.
 On this page, there are input elements for the user's email & password and a link for `signup`.
 
 Here we are looking for any element containing the desired text `$("//strong[contains(text(),'Sign Up')]")`.
+
+Command `scroll` is used to move the mouse pointer to the particular element.
 
 _How do we know what selector value we should give? On signin page, right click on the signup link and select `inspect`. You will see some html code for the link. Check for CSS class that signup link has. We can use CSS class, id or name attribute as the selector value._
 

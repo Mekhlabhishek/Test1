@@ -23,7 +23,7 @@ describe('My first program for test runner', () => {
 
 Now, the next thing, which is important to this chapter, change log level to `verbose` in `wdio.config.js`.
 
-Good to go, let's run our program with `npm test` command. You will see a bunch of operations happening and printing some data on the console, something like this.
+Good to go, let's run our program with `npm test` command. We will see a bunch of operations happening and printing some data on the console, something like this.
 
 ```bash
 [17:24:04]  COMMAND     POST     "/wd/hub/session"
@@ -63,7 +63,7 @@ Title is :  Ace Invoice
 
 Webdriver does not handle browser on its own, it is Selenium which takes care of the browser operations. Webdriver just sends a request to selenium server and then selenium server performs operations on browser based on the request that it gets from the Webdriver.
 
-The very first request that Webdriver will send out to Selenium server is to get the session ID. As you can see in a response above, first Webdriver is requesting the session ID to the Selenium server. The server then starts the browser and gives back the session ID in JSON response. This session ID will be used by Webdriver to make all future requests to the Selenium server.
+The very first request that Webdriver will send out to Selenium server is to get the session ID. As we can see in a response above, first Webdriver is requesting the session ID to the Selenium server. The server then starts the browser and gives back the session ID in JSON response. This session ID will be used by Webdriver to make all future requests to the Selenium server.
 
 Next, as we are setting URL to the browser, Webdriver sends out a `post` request to the Selenium server with URL in `DATA` as follows
 
@@ -104,7 +104,7 @@ Then we are fetching the title of the webpage, similarly, Webdriver will send ou
 [17:24:19]  RESULT              "Ace Invoice"
 ```
 
-After that, you will see the console log that we created from the program.
+After that, we will see the console log that we created from the program.
 
 Last request Webdriver will send to the Selenium server to kill the session. After receiving the delete command for the session, selenium will quit the browser.
 

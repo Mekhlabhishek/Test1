@@ -18,9 +18,9 @@ Replacing the assertion is a simple step. Instead of importing the assertion fro
 const assert = require('chai').assert;
 ```
 
-That's all, you have integrated chai successfully, go ahead and run test cases once again and make sure they all are passing.
+That's all, we have integrated chai successfully, go ahead and run test cases once again and make sure they all are passing.
 
-You can also choose the style which you want to use, as `chai` provides two more styles as `expect` and `should`. `expect` style is very popular in the real world as it makes your test cases more readable, but we will stick to `assert` for now. You are free to update the style if you are not comfortable with `assert`.
+We can also choose the style which we want to use, as `chai` provides two more styles as `expect` and `should`. `expect` style is very popular in the real world as it makes our test cases more readable, but we will stick to `assert` for now. We are free to update the style if we are not comfortable with `assert`.
 
 ## Quick peek in chai's assertion
 
@@ -33,4 +33,4 @@ const url = browser.getUrl();
 assert.include(url, '/team/active');
 ```
 
-You can try some of them for practice. Also, try `expect` style as a warm up and then jump on to the next chapter.
+We can try some of them for practice. Also, try `expect` style as a warm up and then jump on to the next chapter.

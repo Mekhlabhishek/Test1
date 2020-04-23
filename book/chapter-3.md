@@ -22,7 +22,7 @@ will use the wdio package installed under the `node_modules`.
 $ ./node_modules/.bin/wdio config
 ```
 
-It will ask a bunch of [questions](https://webdriver.io/docs/gettingstarted.html#generate-configuration-file).
+It will ask a bunch of [questions](https://webdriver.io/docs/clioptions.html).
 Just hit enter to accept default answer for all the questions except for the one which says
 
 ```bash
@@ -31,10 +31,10 @@ $ Do you want to add a service to your test setup?
 
 Select `selenium-standalone` as an answer for this as we will be running the test cases using the selenium server.
 
-## Review config file
+## Correct the config file
 
-After completing those questions dependencies, other packages will get installed on the system. Let's review the config file that the system just created.
-Open `wdio.conf.js` in your favorite text editor and inspect & modify the following to appropriate values
+After completing those questions dependencies, other packages will get installed on the system. Let's fix the config file that the system just created.
+Open `wdio.conf.js` in your favorite text editor and inspect & modify the following to appropriate values.
 
 1. Specs folder
 
@@ -50,40 +50,35 @@ Here we are specifying where wdio should look for the executable files.
 browserName: 'chrome'
 ```
 
-For this course, we will be using the Chrome browser not Firefox.
+It says 'firefox' by default, let's change it to 'chrome' as we are using Chrome browser in this course.
 
-3. Setting for running specs synchronously
 
-```msg
-sync: true
-```
-
-We will be running our test in a synchronous manner, for two reasons. First, it is easier to understand and write test cases in a synchronous manner and second we won't have to check output using `then` callback.
-
-4. Settings for log level
+3. Settings for log level
 
 ```msg
-logLevel: 'silent'
+logLevel: 'info'
 ```
 
-5. Base URL
+4. Base URL
 
 ```msg
 baseUrl: 'https://qa.aceinvoice.com'
 ```
 
-Every time when browser instance gets created, it will call out for base URL
+It shows as 'http://localhost' by default, let's change it to 'https://qa.aceinvoice.com'.
 
-6. Services
+Every time when browser instance gets created, it will call out for base URL.
+
+5. Services
 
 ```msg
 services: ['selenium-standalone']
 ```
 
-Make sure you have `selenium-standalone` as a test runner service for you
+We need to make sure `selenium-standalone` is selected as a test runner service.
 
 
-7. Path
+6. Path
 
 ```msg
 path: '\',
@@ -96,7 +91,7 @@ _What about other settings? Let's focus on these right now to get started with t
 
 ## Use selenium as a service
 
-The last part of this chapter is to make sure that your `package.json` file contains correct values. At this moment your `package.json` file should look like this (but version of dependencies might differ).
+The last part of this chapter is to verify our `package.json` file. At this moment our `package.json` file should look like this (but version of dependencies might differ).
 
 ```js
 {
@@ -130,13 +125,13 @@ Execute test runner by command
 ./node_modules/.bin/wdio wdio.conf.js
 ```
 
-you will see an error on the terminal as
+we will see an error on the terminal as
 
 ```bash
 pattern ./test/specs/**/*.js did not match any file
 ```
 
-In addition, if you are getting any errors other than the above, may it be while starting selenium server or getting an error for a local runner, install following packages and try again
+In addition, if we are getting any errors other than the above, may it be while starting selenium server or getting an error for a local runner, install following packages and try again
 
 ```bash
 npm install --save wdio-selenium-standalone-service selenium-standalone wdio-mocha-framework wdio-local-runner
@@ -146,7 +141,7 @@ _Report to us if you are still facing issues with the test runner. We would love
 
 ## Creating script command
 
-In your `package.json` file you will see scripts set as follows
+In our `package.json` file, we will see scripts set as follows
 
 ```js
 "scripts": {
@@ -154,7 +149,7 @@ In your `package.json` file you will see scripts set as follows
   }
 ```
 
-Change it to look like as
+Change it to look like:
 
 ```js
 "scripts": {
@@ -162,10 +157,10 @@ Change it to look like as
   },
 ```
 
-After doing this you can run your tests with command on terminal
+After doing this we can run our tests with command on terminal
 
 ```bash
 npm test
 ```
 
-Go ahead and paste command on a terminal and hit enter. You will see an error on a terminal as previous this is because we haven't created our first program/test under `test/specs/`. Hop on to the next chapter where we will run our program with a test runner.
+Go ahead and paste command on a terminal and hit enter. We will see an error on a terminal as previous this is because we haven't created our first program/test under `test/specs/`. Hop on to the next chapter where we will run our program with a test runner.
