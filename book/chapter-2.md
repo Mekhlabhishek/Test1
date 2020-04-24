@@ -110,18 +110,27 @@ Here we are looking for any element containing the desired text `$("//strong[con
 
 Command `scroll` is used to move the mouse pointer to the particular element.
 
-_How do we know what selector value we should give? On signin page, right click on the signup link and select `inspect`. You will see some html code for the link. Check for CSS class that signup link has. We can use CSS class, id or name attribute as the selector value._
+How do we know what selector value we should give? 
+On the signin page, right click on the signup link and select `inspect`. 
+We will see some html code for the link. 
+Check for CSS class that signup link has. 
+We can use CSS class, id or name attribute as the selector value.
 
-_If you want to take a quick look at what other selectors are available, [visit](https://webdriver.io/docs/selectors.html). Don't worry about them now, as said earlier we will be taking look at selectors in later part of the course._
+
+Selenium supports  many different type of 
+[selectors](https://webdriver.io/docs/selectors.html). 
+Don't worry about them for now. 
+We will be taking look at selectors in later part of the course.
 
 Once we get hold of the link, we are clicking that link using `click()`.
 
 Once we click the link, we are checking the URL of the page by `getUrl()` function.
 
-_`then()` is a way to resolve a promise. You can get the basic idea of a promise in JS [here](https://javascript.info/promise-basics). You may have noticed that we are not calling an `await` and `async` here, these are reserved keywords to resolve the promise. As moving to the WebdriverIO@5 in later part of the course we will start using them, but don't worry about it now._
+`then()` is a way to resolve a promise. 
+[Promise is](https://javascript.info/promise-basics) a concept in JavaScript. 
 
-_`url => console.log('URL is: ', url)` is example of an arrow function, learn more about arrow functions [here](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)._
+
+`url => console.log('URL is: ', url)` is example of an arrow function.
+Learn more about arrow functions [here](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc).
 
 After getting the URL for the webpage, we are terminating our session by calling `end()`.
-
-Now, this is the time to run our first program.
