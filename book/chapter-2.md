@@ -48,12 +48,12 @@ URL is :  https://qa.aceinvoice.com/sign_up
 
 Here are the things selenium did behind the scene.
 
-* Selenium opened chrome browser
-* Asked the browser to visit `https://qa.aceinvoice.com`
-* Found the location of text containing word "Sign Up"
-* Clicked on the "Sign Up"
-* Grabbed the new url
-* Write the new url on console.
+* Selenium opened the chrome browser.
+* Selenium asked the browser to visit `https://qa.aceinvoice.com`.
+* Found the location of text containing word "Sign Up".
+* Clicked on the "Sign Up" button.
+* Grabbed the new url.
+* Wrote the new url on the terminal.
 
 All this happened so fast that it was hard to notice all that.
 So we will ask Selenium to pause in between. Here is modified code.
