@@ -37,7 +37,7 @@ We will be using [webdriver](https://www.selenium.dev/documentation/en/webdriver
 
 ## Check Node.js is installed
 
-Open `terminal` on your machine and check the version of the node using the following command.
+Open `terminal` on the machine and check the version of the node using the following command.
 
 ```bash
 $ node -v
@@ -88,7 +88,7 @@ This will install "selenium-server", "ChromeDriver" for chrome browser and "geck
 $ node_modules/.bin/selenium-standalone install
 ```
 
-Verify that you installed the selenium correctly by executing the following command.
+Let us verify that we have installed the selenium correctly by executing the following command.
 
 ```bash
 $ node_modules/.bin/selenium-standalone start
@@ -96,13 +96,13 @@ $ node_modules/.bin/selenium-standalone start
 
 
 This will start the selenium server on port `4444`.
-Open your browser and try to visit [http://localhost:4444](http://localhost:4444)
-and you will see the selenium webpage.
+Open the browser and try to visit [http://localhost:4444](http://localhost:4444)
+and will see the selenium webpage.
 
 To see the console and all sessions visit 
 [http://localhost:4444/wd/hub/](http://localhost:4444/wd/hub/) 
-and you will see the console screen.
+and will see the console screen.
 
-Hola! That's it. Now, you are ready to write your first program.
+Hola! That's it. Now we are ready to write our first program.
 
 https://www.loom.com/share/274bc70c98b5473fa7a230a1a1fe4416

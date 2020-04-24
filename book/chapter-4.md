@@ -1,6 +1,6 @@
 In the last chapter, we installed wdio command line interface for running our test suite.
 
-At this point, you might be wondering why to install test runner when we can execute the program without it. Here are some reasons
+At this point, we might be wondering why to install test runner when we can execute the program without it. Here are some reasons
 
 1. Right now we are running only one program, but as we go further into the course there will be different files for different modules. Executing those files one by one will be a very time-consuming job.
 2. Once we add wdio as a test runner, we do not need to set up the environment every time we run our program. When we execute our program with the test runner, some basic settings will be available to us by default.
@@ -21,18 +21,18 @@ So, in order to run a test suite, let's create a folder test & specs respectivel
 $ mkdir test && cd test && mkdir specs && cd specs && cp ../../first_program.js first_program.spec.js
 ```
 
-_Test runner will find program into this folder so the name has to be case sensitive. If you wish to give a different name to the folder change the configuration file respective to the path._
+_Test runner will find program into this folder so the name has to be case sensitive. If we wish to give a different name to the folder change the configuration file respective to the path._
 
 
 So let's tweak our old program a little bit to run using test runner.
 
 ## Changing our program
 
-Open `test/specs/first_program.spec.js` into your favorite text editor and change it so as to run with the test runner.
+Let us open `test/specs/first_program.spec.js` into our favorite text editor and change it so as to run with the test runner.
 
 1. Remove remote client
 
-When executing test runner we don't have to configure and initialize the client every time and by default, you will be able to get hold of `browser` variable in the program file, so replace
+When executing test runner we don't have to configure and initialize the client every time and by default, we will be able to get hold of `browser` variable in the program file, so replace
 
 ```js
 const webdriverio = require('webdriverio');
@@ -64,18 +64,18 @@ Instead of selecting an element with JQuery and then clicking on that element, i
 We can pass a selector to the click function, so update our click function to look like.
 
 ```js
-.click('//strong[contains(text(),'Sign Up')]')
+.click("//strong[contains(text(),'Sign Up')]")
 ```
 
 4. Remove `.end()` call
 
 As said earlier, we will not have to worry about starting & closing the browser session. So go ahead and remove `.end()` method call.
 
-At this stage, your final program will look something like this
+At this stage, our final program will look something like this
 
 ```js
 browser.url('./');
-browser.click('//strong[contains(text(),'Sign Up')]');
+browser.click("//strong[contains(text(),'Sign Up')]");
 console.log(browser.getUrl());
 ```
 
@@ -104,7 +104,7 @@ describe('My first program for test runner', () => {
 });
 ```
 
-As you can see `describe` takes two arguments. First one is the namespacing title and second is a function to execute.
+As we can see `describe` takes two arguments. First one is the namespacing title and second is a function to execute.
 
 Now, we will add a blank test case to it using `it` as
 
@@ -116,8 +116,8 @@ describe('My first program for test runner', () => {
 });
 ```
 
-Now as the last step, move browser code to the test case function definition. You can also add browser.pause() statements to actually see what's happening
-Your final code in `first_program.spec.js` should look like
+Now as the last step, move browser code to the test case function definition. We can also add browser.pause() statements to actually see what's happening
+Our final code in `first_program.spec.js` should look like
 
 
 ```js
@@ -125,7 +125,7 @@ describe('My first program for test runner', () => {
   it('My first test', () => {
       browser.url('./');
       browser.pause(1000);
-      browser.click('//strong[contains(text(),'Sign Up')]');
+      browser.click("//strong[contains(text(),'Sign Up')]");
       console.log(browser.getUrl());
       browser.pause(1000);
   });
@@ -136,6 +136,6 @@ Output now is `https://qa.aceinvoice.com/sign_up`.
 
 ## Kickoff execution
 
-Once again, kickoff program with `npm test`. This time, you will see the browser making some progress and logging in into AceInvoice app.
+Once again, kickoff program with `npm test`. This time, we will see the browser making some progress and logging in into AceInvoice app.
 
 So far so good. Till now we are just logging into an app but we are not checking if elements on the browser are correct or not, after completing the execution flow. In the next chapter, we will convert our program into a test case.

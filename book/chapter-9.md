@@ -7,25 +7,25 @@ So far, we are calling a method on the browser object. This does not look good, 
 With this method in place, we can rewrite our old code
 
 ```js
-browser.click('//strong[contains(text(),'Sign Up')]');
+browser.click('//strong[contains(text(),"Sign Up")]');
 ```
 
 as follows
 
 ```js
-browser.element('//strong[contains(text(),'Sign Up')]').click();
+browser.element('//strong[contains(text(),"Sign Up")]').click();
 ```
 
 Webdriverio provides a handy operator to define this as
 
 ```js
-$('//strong[contains(text(),'Sign Up')]').click();
+$('//strong[contains(text(),"Sign Up")]').click();
 ```
 
 Isn't this look like a JQuery code and also this makes the code more readable. Also, we can define a selector as a constant at the top of the code as
 
 ```js
-const signUpButtonSelector = '//strong[contains(text(),'Sign Up')]';
+const signUpButtonSelector = '//strong[contains(text(),"Sign Up")]';
 ```
 
 and then replace the code for same as
@@ -36,7 +36,7 @@ $(signUpButtonSelector).click();
 
 ## Introduction to getters
 
-Sometimes we unknowingly define an element declaration even before it is present on the page. In such cases, you might not get a result that you expected. To overcome this `getter` are pretty much handy
+Sometimes we unknowingly define an element declaration even before it is present on the page. In such cases, we might not get a result that we expected. To overcome this `getter` are pretty much handy
 
 ## Declaring getter
 
@@ -55,7 +55,7 @@ This is similar to defining a hash object with a few twists. We are declaring ke
 getter.element.click();
 ```
 
-Simple right? With this let's change our code to use the getters. Make sure all of your test cases are passing.
+Simple right? With this let's change our code to use the getters. Make sure all of the test cases are passing.
 
 ```js
 const assert = require('chai').assert;

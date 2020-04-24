@@ -24,7 +24,7 @@ While writing test cases, it is a good practice to make a test case fail first a
 assert.equal(url, 'http://www.google.com');
 ```
 
-Also remove `.pause()` calls from the program as we don't need them anymore. Our test case at this moment will look like
+Also remove `.pause()` calls from the program as we don't need them anymore. Our test case at this moment will look like,
 
 ```js
 const assert = require('assert')
@@ -32,14 +32,14 @@ const assert = require('assert')
 describe('My first program for test runner', () => {
   it('My first test', () => {
     browser.url('./');
-    browser.$('input.btn.btn-primary').click();
+    browser.$("//strong[contains(text(),'Sign Up')]").click();
     const url = browser.getUrl();
     assert.equal(url, 'http://www.google.com');
   });
 });
 ```
 
-Go ahead and run the test case using `npm test`. You will see that our test case failed, with the below error in console.
+Go ahead and run the test case using `npm test`. We see that our test case failed with the below error in console.
 
 ```msg
 F

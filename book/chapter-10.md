@@ -1,6 +1,6 @@
 Ok, so with our last chapter we saw how to define getters and elements. With all the data in the same file doesn't look good. Let's separate our code based on the scope.
 
-First, we will create two more folders at the same level where our `specs` folder is namely, `selectors` and `getters`. You can choose any name you want, we found these names pretty easy to understand and get an idea about what folder exactly contains.
+First, we will create two more folders at the same level where our `specs` folder is namely, `selectors` and `getters`. We can choose any name we want, it should be easy to understand and should give an idea about the folder contents.
 
 ## Creating a selector file
 
@@ -10,7 +10,7 @@ First, we will create a file in the `selectors` folder with the name `sign_up_se
 const signUpSelectors = {
   signUpButtonSelector: "//strong[contains(text(),'Sign Up')]",
   emailInputSelector: "input[name='email']",
-  getStartButton": "//input[@value='Get Started'],
+  getStartButton: "//input[@value='Get Started']",
   passwordInputSelector: "input[name='password']",
   confirmPasswordInputSelector: "input[name='password_confirmation']",
   firstNameInputSelector: "input[name='user[first_name]']",
@@ -31,7 +31,7 @@ const signUpSelectors = {
 module.exports = signUpSelectors;
 ```
 
-So as you can see we created one single hash object with all the selectors and then exported it.
+So as we can see we created one single hash object with all the selectors and then exported it.
 
 ## Creating a getter file
 
@@ -102,7 +102,7 @@ module.exports = {
 
 ## Add a hook in wdio config
 
-Next step is to tell `wdio` to use babel to compile all of our JS files. We will use the before hook from `wdio.config.js`. So uncomment the before hook in `wdio` config file and add `require('@babel/register');` to the function. Your before hook should look like
+Next step is to tell `wdio` to use babel to compile all of our JS files. We will use the before hook from `wdio.config.js`. So uncomment the before hook in `wdio` config file and add `require('@babel/register');` to the function. Our before hook should look like
 
 ```js
 before: function (capabilities, specs) {
@@ -116,7 +116,7 @@ As the last step, we will set mocha to use babel compiler by adding config in `m
 
 With babel setup in place, we can change the JS code in our test cases. First, we will rewrite how we export our data from the files.
 
-Instead of exporting using `module.exports`, we will export it with `export default`. So now your selector file will have an export statement as
+Instead of exporting using `module.exports`, we will export it with `export default`. So now our selector file will have an export statement as
 
 ```js
 export default signUpSelectors;

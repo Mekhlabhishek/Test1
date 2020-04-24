@@ -1,6 +1,6 @@
 In the last chapter, we added all data for the signup process, but we need to generate the new email every time to make our test cases pass. In this chapter, we will see how to generate new emails and how to create an organization in AceInvoice.
 
-Before moving further, give yourself a small break and grab a coffee as we will be covering lots of new ideas in this chapter
+Before moving further, let's give ourself a small break and grab a coffee as we will be covering lots of new ideas in this chapter
 
 ## Creating a unique email
 
@@ -18,7 +18,7 @@ Don't forget to print the email to console as this will be useful for our furthe
 
 ## Checking page after signup
 
-Now you can make an assertion for checking header on the signup page, but we might not get the *Set Preferences* page right after we click the submit button. So, we will have to wait for some time till *Set Preferences* page renders.
+Now we can make an assertion for checking header on the signup page, but we might not get the *Set Preferences* page right after we click the submit button. So, we will have to wait for some time till *Set Preferences* page renders.
 At this point, we will use `pause()` command that webdriverio provides us like.
 
 We are using `moveToObject()` command to move the mouse to the specified element when the element is not visible.
@@ -27,7 +27,7 @@ We are using `moveToObject()` command to move the mouse to the specified element
 browser.pause(500);
 ```
 
-So your final program may look like this
+So our final program may look like this
 
 ```js
 const assert = require('assert');
@@ -35,7 +35,7 @@ const assert = require('assert');
 describe('AceInvoice Signup', () => {
   it('URL has sign_up and qa.aceinvoice.com as a server address', () => {
     browser.url('./');
-    browser.moveToObject('//strong[contains(text(),'Sign Up')]');
+    browser.moveToObject('//strong[contains(text(),"Sign Up")]');
     browser.pause(500);
     browser.click('//strong[contains(text(),'Sign Up')]');
 
@@ -67,7 +67,7 @@ describe('AceInvoice Signup', () => {
 
 Now as we are on preferences page let's add the details and proceed further. Set value to the first name and last name field.
 
-At this moment you may get an `element with a specified selector is not found`. That's because the browser is still loading the page when we are trying to access an element to set a value. You can use the `pause` command like before, but let's take a look at another method which we will call on the element.
+At this moment we may get an `element with a specified selector is not found`. That's because the browser is still loading the page when we are trying to access an element to set a value. We can use the `pause` command like before, but let's take a look at another method which we will call on the element.
 
 First, select the element and then call `waitForVisible(#timeout)` on that element, something similar as shown below
 
@@ -82,7 +82,7 @@ var timezoneSelector = $("select[name='user[time_zone]']");
 timezoneSelector.selectByAttribute('value', 'Mumbai');
 ```
 
-At this moment as well, it is likely that you will end up getting error and method `waitForVisible` won't work here. Any idea why? Right now element is visible but the options in that list are not loaded yet. We have to wait until those options are available to select.
+At this moment as well, it is likely that we will end up getting error and method `waitForVisible` won't work here. Any idea why? Right now element is visible but the options in that list are not loaded yet. We have to wait until those options are available to select.
 
 Let's take a look at another method called `waitUntil`. This method takes a function as an argument and other optional arguments are timeout, error message and interval.
 
@@ -93,7 +93,7 @@ browser.waitUntil(() => $("select[name='user[time_zone]']").getText().length > 1
 ```
 To know more about the webdriverio commands, refer : http://v4.webdriver.io/api/action/moveToObject.html
 
-Moving ahead if you want to change the DateTime format and start of the week go ahead and add the code for same and click submit and add code to check if server redirected us to the create organization page same way we did for the preferences page.
+Moving ahead if we want to change the DateTime format and start of the week go ahead and add the code for same and click submit and add code to check if server redirected us to the create organization page same way we did for the preferences page.
 
 ## Creating an organization
 
@@ -168,7 +168,7 @@ describe('AceInvoice Signup', () => {
 });
 ```
 
-Run the test now with the `npm test` and you will see that webdriver is creating a user and organization for us.
+Run the test now with the `npm test` and we will see that webdriver is creating a user and organization for us.
 
 ## Next steps
 
