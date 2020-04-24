@@ -5,12 +5,11 @@ In this chapter, we will be setting up our test runner to run test cases.
 ## Install wdio-cli
 
 In order to run our test suite we need wdio cli, let's install it.
+`--save` is an option for npm to add package as a project dependency.
 
 ```bash
 $ npm install --save @wdio/cli
 ```
-
-`--save` is an option for npm to add package as a project dependency.
 
 
 ## Creating a config file
