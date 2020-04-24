@@ -34,10 +34,10 @@ Start the `selenium-standalone` server, using the following command in the termi
 $ node_modules/.bin/selenium-standalone start
 ```
 
-We will start a new terminal tab and would execute our program.
+Start a new terminal tab and  execute the program.
 
 ```bash
-node first_program.js
+$ node first_program.js
 ```
 
 We will see Chrome window popping up and navigating to `qa.aceinvoice.com`, then completing the sign up flow and closing chrome window. And on the terminal, we will see following output.
