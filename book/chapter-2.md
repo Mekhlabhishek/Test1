@@ -30,7 +30,7 @@ webdriverio
 
 Start the `selenium-standalone` server, using the following command in the terminal.
 
-```
+```bash
 $ node_modules/.bin/selenium-standalone start
 ```
 
