@@ -54,11 +54,11 @@ browserName: 'chrome'
 
 3. Settings for log level
 
-It should already be "info".
-
 ```msg
-logLevel: 'info'
+logLevel: 'silent'
 ```
+
+If it shows as 'info', then let's change it to 'silent'.
 
 4. Base URL
 

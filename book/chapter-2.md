@@ -3,6 +3,7 @@ and will complete signup procedure.
 
 ## Writing and understanding a basic program
 
+Before writing the program, we need to make sure that we are in `aceinvoice-selenium-tests` folder.
 
 Create a file by executing the following command.
 
@@ -20,8 +21,9 @@ webdriverio
   .init()
   .url('https://qa.aceinvoice.com')
   .scroll("//strong[contains(text(),'Sign Up')]")
-  .pause(100)
+  .pause(200)
   .$("//strong[contains(text(),'Sign Up')]").click()
+  .waitForVisible("//form[@id='new_user']")
   .getUrl().then(url => { console.log('URL is: ', url) })
   .end();
 ```
@@ -48,39 +50,18 @@ URL is :  https://qa.aceinvoice.com/sign_up
 
 Here are the things selenium did behind the scene.
 
-* Selenium opened the chrome browser.
-* Selenium asked the browser to visit `https://qa.aceinvoice.com`.
-* Found the location of text containing word "Sign Up".
-* Clicked on the "Sign Up" button.
-* Grabbed the new url.
-* Wrote the new url on the terminal.
-
-All this happened so fast that it was hard to notice all that.
-So we will ask Selenium to pause in between. Here is modified code.
-Notice that we have added `pause` statements.
-
-```js
-const webdriverio = require('webdriverio');
-
-webdriverio
-  .remote({ desiredCapabilities: { browserName: 'chrome' } })
-  .init()
-  .url('https://qa.aceinvoice.com')
-  .scroll("//strong[contains(text(),'Sign Up')]")
-  .pause(200)
-  .$("//strong[contains(text(),'Sign Up')]").click()
-  .pause(3000)
-  .getUrl().then(url => { console.log('URL is: ', url) })
-  .end();
-```
-
-That's it, we ran our first program successfully. 
-Here, we captured the URL and printed it.
+* Selenium opened chrome browser
+* Asked the browser to visit `https://qa.aceinvoice.com`
+* Found the location of text containing word "Sign Up"
+* Clicked on the "Sign Up"
+* Waited for the Create user form to load
+* Grabbed the new url
+* Write the new url on console.
 
 
 ## Code walkthrough
 
-Let's go over the code.
+Let's go through the code.
 
 First, we are importing `webdriverio` from the node package that we installed earlier.
 
@@ -108,7 +89,7 @@ On this page, there are input elements for the user's email & password and a lin
 
 Here we are looking for any element containing the desired text `$("//strong[contains(text(),'Sign Up')]")`.
 
-Command `scroll` is used to move the mouse pointer to the particular element.
+Command `scroll` is used to move the mouse pointer to the particular element. We pass the selector of that element as an argument to the command.
 
 How do we know what selector value we should give? 
 On the signin page, right click on the signup link and select `inspect`. 
@@ -124,7 +105,9 @@ We will be taking look at selectors in later part of the course.
 
 Once we get hold of the link, we are clicking that link using `click()`.
 
-Once we click the link, we are checking the URL of the page by `getUrl()` function.
+We use command `waitForVisible()` for the page to load. We pass the selector of an element present in the page as an argument to the command.
+
+Once the page loads, we are checking the URL of the page by `getUrl()` function.
 
 `then()` is a way to resolve a promise. 
 [Promise is](https://javascript.info/promise-basics) a concept in JavaScript. 

@@ -15,7 +15,7 @@ In the configuration, we have a path for test cases as
 specs: [ './test/specs/**/*.js' ]
 ```
 
-So, in order to run a test suite, let's create a folder test & specs respectively in `aceinvoice_web_selenium_tests` folder as follows
+So, in order to run a test suite, let's create folders test & specs respectively in `aceinvoice_web_selenium_tests` folder as follows
 
 ```bash
 $ mkdir test && cd test && mkdir specs && cd specs && cp ../../first_program.js first_program.spec.js
@@ -71,11 +71,14 @@ We can pass a selector to the click function, so update our click function to lo
 
 As said earlier, we will not have to worry about starting & closing the browser session. So go ahead and remove `.end()` method call.
 
-At this stage, our final program will look something like this
+At this stage, our final program will look like this.
 
 ```js
 browser.url('./');
+browser.scroll("//strong[contains(text(),'Sign Up')]");
+browser.pause(200);
 browser.click("//strong[contains(text(),'Sign Up')]");
+browser.waitForVisible("//form[@id='new_user']");
 console.log(browser.getUrl());
 ```
 
