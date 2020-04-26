@@ -56,8 +56,10 @@ It says 'firefox' by default, let's change it to 'chrome' as we are using Chrome
 3. Settings for log level
 
 ```msg
-logLevel: 'info'
+logLevel: 'silent'
 ```
+
+If it shows as 'info', then let's change it to 'silent'.
 
 4. Base URL
 
@@ -95,7 +97,7 @@ The last part of this chapter is to verify our `package.json` file. At this mome
 
 ```js
 {
-  "name": "aceinvoice_web_selenium_tests",
+  "name": "aceinvoice_selenium_tests",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -122,7 +124,7 @@ The last part of this chapter is to verify our `package.json` file. At this mome
 Execute test runner by command
 
 ```bash
-./node_modules/.bin/wdio wdio.conf.js
+$ ./node_modules/.bin/wdio wdio.conf.js
 ```
 
 we will see an error on the terminal as
