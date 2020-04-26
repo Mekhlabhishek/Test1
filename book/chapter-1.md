@@ -1,10 +1,11 @@
 ## Introduction to Selenium WebDriver
 
-Selenium is an open source tool to test web applications running in browsers.
+[Selenium](https://www.selenium.dev) is an open source tool to test web applications running in browsers.
 Selenium does not test desktop applications.
 
 
-Selenium WebDriver was the first cross platform testing framework that could control the browser from the OS. 
+[Selenium WebDriver](https://www.selenium.dev/documentation/en/webdriver) 
+was the first cross platform testing framework that could control the browser from the OS. 
 Using Selenium WebDriver we identify web elements on web pages and then actions are performed on those elements.
 We have one web driver for each browser.
 
